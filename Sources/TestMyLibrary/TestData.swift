@@ -9,5 +9,6 @@ import Foundation
 
 public struct Tes2MyLibrary {
     public private(set) var text = "Hello, World!"
-
+    public init() {
+    }
 }
