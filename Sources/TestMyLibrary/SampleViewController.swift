@@ -94,7 +94,7 @@ public class SampleViewController: UIViewController,UIScrollViewDelegate {
         let jsonDecoder = JSONDecoder()
         do {
             let decoder = JSONDecoder()
-            let messages = try decoder.decode(ModelSeatMap.self, from: readLocalFile(forName: "2325Flight")!)
+            let messages = try decoder.decode(ModelSeatMap.self, from: readLocalFile(forName: "201Update")!)
             test = messages
         } catch DecodingError.dataCorrupted(let context) {
             print(context)
