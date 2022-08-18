@@ -18,10 +18,10 @@ public class SampleViewController: UIViewController,UIScrollViewDelegate {
         viewTest.frame = CGRect(x: 10, y: 20, width: 200, height: 40)
         
         var label: UILabel = UILabel()
-        let headerFrame = mScrollView.frame
+        /*let headerFrame = mScrollView.frame
         mScrollView.frame.origin.y = CGFloat(max(40, scrollView.contentOffset.y))
         mScrollView.frame = headerFrame
-        self.yPosition = scrollView.contentOffset.y
+        self.yPosition = scrollView.contentOffset.*/
         for (index,i) in header.enumerated() {
             if index != header.count - 1 {
             if scrollView.contentOffset.y < header[index + 1].height! {
@@ -36,7 +36,7 @@ public class SampleViewController: UIViewController,UIScrollViewDelegate {
             }
             }else{
                 label.text = i.name
-                viewTest.addSubview(label)
+               // viewTest.addSubview(label)
                 self.view.bringSubviewToFront(viewTest)
                // view.insertSubview(viewTest, aboveSubview: mScrollView)
                 print(i.name)
