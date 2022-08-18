@@ -48,7 +48,7 @@ public class SampleViewController: UIViewController,UIScrollViewDelegate {
     
     //SE 13 13 pro max  ipad  8 plus
 
-    @IBOutlet weak var mScrollView: UIScrollView!
+   public @IBOutlet weak var mScrollView: UIScrollView!
     var seatsVMData : NSMutableDictionary?
     var yPosition : CGFloat = 0
     let label = UILabel()
