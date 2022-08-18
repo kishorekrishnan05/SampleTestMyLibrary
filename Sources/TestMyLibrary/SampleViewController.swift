@@ -240,15 +240,15 @@ public class SampleViewController: UIViewController,UIScrollViewDelegate {
                                 button.layer.borderWidth = 1
                                 button.layer.borderColor = UIColor.gray.cgColor
                                 imageView = UIImageView()
-                                imageView = UIImageView(image: #imageLiteral(resourceName: "Icons_24px_Travel_"))
+                               // imageView = UIImageView(image: #imageLiteral(resourceName: "Icons_24px_Travel_"))
                                     imageView  = UIImageView(frame:CGRect(x: xnewOffset, y: CGFloat(ynewOffset ), width: widthHeightButton, height: widthHeightButton));
-                                imageView.image = UIImage(named:"left")
+                               // imageView.image = UIImage(named:"left")
                                 imageView.backgroundColor = UIColor.clear
                                 imageView.clipsToBounds = true
                                 imageView.translatesAutoresizingMaskIntoConstraints = false
                                 ///    imageView.image = UIImage(named:"Icons_24px_Travel_")
                                 var iconbutton = UIButton()
-                                iconbutton.setImage(UIImage(named: "action"), for: .normal)
+                                //iconbutton.setImage(UIImage(named: "action"), for: .normal)
                                 iconbutton.backgroundColor = UIColor.green
                                 iconbutton.imageView?.contentMode = .scaleAspectFill
                                 iconbutton.frame = CGRect(x: xnewOffset - 18, y: CGFloat(ynewOffset - 8), width: 16, height: 16)
