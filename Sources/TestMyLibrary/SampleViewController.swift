@@ -6,7 +6,7 @@
 //
 
 import UIKit
-protocol scrollviewDelegete: AnyObject {
+public protocol scrollviewDelegete: AnyObject {
     func lastIndex(
         flightInfo: String ,
         selecetdIndexDate: String
