@@ -117,7 +117,7 @@ public class SampleViewController: UIViewController,UIScrollViewDelegate {
     var header = [TestDataForHeight]()
     var height:CGFloat = 16
     var button = UIButton()
-    var delegate : scrollviewDelegete?
+   public var delegate : scrollviewDelegete?
     var viewTest = UIView()
     var ynewOffset:CGFloat = 8
     var xnewOffset:CGFloat = 16
