@@ -124,7 +124,7 @@ public class SampleViewController: UIViewController,UIScrollViewDelegate {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        setupScrollHeader() 
+        setupScrollHeader()
         testJson()
         newFunc()
         mScrollView.delegate = self
@@ -233,7 +233,7 @@ public class SampleViewController: UIViewController,UIScrollViewDelegate {
                 button.imageView?.contentMode = .scaleAspectFit
                 button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: SeatWidthHeight, height: SeatWidthHeight)
                 xnewOffset = xnewOffset  + CGFloat(8) + SeatWidthHeight
-                var iconbutton = UIButton()
+            let iconbutton = UIButton()
                 iconbutton.setImage(UIImage(named: "action"), for: .normal)
                 iconbutton.backgroundColor = UIColor.green
                 iconbutton.imageView?.contentMode = .scaleAspectFill
