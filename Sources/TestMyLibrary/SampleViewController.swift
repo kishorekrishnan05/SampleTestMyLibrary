@@ -124,13 +124,26 @@ public class SampleViewController: UIViewController,UIScrollViewDelegate {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        setupScrollHeader() 
         testJson()
         newFunc()
         mScrollView.delegate = self
         // Do any additional setup after loading the view.
         
     }
-    
+    func setupScrollHeader() {
+        viewTest.frame = CGRect(x: 10, y: 20, width: view.frame.width - 40, height: 40)
+        
+       
+        label.frame = CGRect(x: 10, y: 20, width: viewTest.frame.width, height: 40)
+        label.textAlignment = .center
+        button.frame = CGRect(x: 10, y: 50, width: viewTest.frame.width, height: 40)
+        viewTest.addSubview(button)
+        viewTest.addSubview(label)
+        self.view.addSubview(viewTest)
+        self.view.bringSubviewToFront(viewTest)
+        self.viewTest.isHidden = true
+    }
     func setupHeader(tilte: String,configuration: String) {
         var header1 = TestDataForHeight()
         let button = UIButton()
