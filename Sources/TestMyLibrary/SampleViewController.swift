@@ -151,7 +151,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewTest.frame = CGRect(x: 8, y: 60, width: view.frame.width - 16, height: 60)
+        viewTest.frame = CGRect(x: 16, y: 60, width: view.frame.width - 16, height: 60)
         viewTest.backgroundColor = .lightText
         
         
