@@ -30,13 +30,10 @@ enum SeatsColor: String, Codable {
     }
 }
 public class MyTapGesture: UITapGestureRecognizer {
-    var title : Seats?
+    var data : Seats?
 }
 public protocol scrollviewDelegete: AnyObject {
-    func lastIndex(
-        flightInfo: String ,
-        selecetdIndexDate: String
-    )
+    func deatilsSeats(seats :Seats)
 }
 public struct  TestDataForHeight{
     var height: CGFloat?
@@ -144,7 +141,10 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     var imageView = UIImageView()
     var imageView1 = UIImageView()
     @objc func tapped(sender : MyTapGesture) {
-            print(sender.title)
+            print(sender.data)
+        if let seats = sender.data {
+            delegate?.deatilsSeats(seats: seats)
+        }
            // label1.text = sender.title
         }
     public override func viewDidLoad() {
@@ -222,7 +222,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         if let value = self.test?.crmSeatMapResponse?.seatMap?.cabins {
             print(value[0].rows?[0].seats?[sender.tag])
         }
-        delegate?.lastIndex(flightInfo: "Kishore", selecetdIndexDate: "Kishore")
+        //delegate?.lastIndex(flightInfo: "Kishore", selecetdIndexDate: "Kishore")
     }
     
     func setupHeader(tilte: String,configuration: String) {
@@ -326,7 +326,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             setupSeatColor(seatValue: seat.seatvalue!)
             let tappy = MyTapGesture(target: self, action: #selector(tapped(sender:)))
                     button.addGestureRecognizer(tappy)
-                    tappy.title = seat
+                    tappy.data = seat
             //button.addTarget(self, action: #selector(pressedd), for: .touchUpInside)
             button.imageView?.contentMode = .scaleAspectFit
             button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: SeatWidthHeight, height: SeatWidthHeight)
