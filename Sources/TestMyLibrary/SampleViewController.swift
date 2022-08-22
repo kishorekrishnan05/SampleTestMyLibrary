@@ -118,7 +118,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     
     
     //SE 13 13 pro max  ipad  8 plus
-    var delegate : scrollviewDelegete?
+   public var delegate : scrollviewDelegete?
     var viewTest = UIView()
     var label: UILabel = UILabel()
     
