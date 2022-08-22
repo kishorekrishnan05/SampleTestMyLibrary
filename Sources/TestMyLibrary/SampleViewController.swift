@@ -238,7 +238,10 @@ public class SampleViewController: UIViewController,UIScrollViewDelegate {
                     button.backgroundColor = UIColor.white
                     button.layer.borderColor = UIColor.gray.cgColor
                 }
-            button.addTarget(self, action: #selector(pressedd), for: .touchUpInside)
+            let tappy = MyTapGesture(target: self, action:#selector(tapped(sender:)))
+            button.addGestureRecognizer(tappy)
+            tappy.data = seat
+            //button.addTarget(self, action: #selector(pressedd), for: .touchUpInside)
                 button.imageView?.contentMode = .scaleAspectFit
                 button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: SeatWidthHeight, height: SeatWidthHeight)
                 xnewOffset = xnewOffset  + CGFloat(8) + SeatWidthHeight
