@@ -151,7 +151,7 @@ class ScrollViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         viewTest.frame = CGRect(x: 0, y: 0, width: view.frame.width - 16, height: 60)
-        viewTest.backgroundColor = .green
+        viewTest.backgroundColor = .lightText
         
         
         
