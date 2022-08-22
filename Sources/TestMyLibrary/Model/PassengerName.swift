@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct PassengerName : Codable {
+public struct PassengerName : Codable {
 	let title : String?
 	let first : String?
 	let middle : String?
@@ -28,7 +28,7 @@ struct PassengerName : Codable {
 		case suffix = "suffix"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		title = try values.decodeIfPresent(String.self, forKey: .title)
 		first = try values.decodeIfPresent(String.self, forKey: .first)

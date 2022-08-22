@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct SpecialMeals : Codable {
+public struct SpecialMeals : Codable {
 	let specialmealDescription : String?
 	let specialmealCode : String?
 
@@ -22,7 +22,7 @@ struct SpecialMeals : Codable {
 		case specialmealCode = "specialmealCode"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		specialmealDescription = try values.decodeIfPresent(String.self, forKey: .specialmealDescription)
 		specialmealCode = try values.decodeIfPresent(String.self, forKey: .specialmealCode)

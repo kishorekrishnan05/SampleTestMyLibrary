@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct ConnectingFlight : Codable {
+public struct ConnectingFlight : Codable {
 	let airline : String?
 	let departureDate : String?
 	let departureGate : String?
@@ -42,7 +42,7 @@ struct ConnectingFlight : Codable {
 		case localEstimatedDepartureDateTime = "localEstimatedDepartureDateTime"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		airline = try values.decodeIfPresent(String.self, forKey: .airline)
 		departureDate = try values.decodeIfPresent(String.self, forKey: .departureDate)

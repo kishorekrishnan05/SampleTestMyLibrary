@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Seats : Codable {
+public struct Seats : Codable {
 	let servicesAndFees : String?
 	let number : String?
 	let seatvalue : String?
@@ -40,7 +40,7 @@ struct Seats : Codable {
 		case ssrs = "ssrs"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		servicesAndFees = try values.decodeIfPresent(String.self, forKey: .servicesAndFees)
 		number = try values.decodeIfPresent(String.self, forKey: .number)

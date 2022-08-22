@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct KeyInsightsResponseList : Codable {
+public struct KeyInsightsResponseList : Codable {
 	let keyInsightCode : String?
 	let keyInsightValue : String?
 
@@ -22,7 +22,7 @@ struct KeyInsightsResponseList : Codable {
 		case keyInsightValue = "KeyInsightValue"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		keyInsightCode = try values.decodeIfPresent(String.self, forKey: .keyInsightCode)
 		keyInsightValue = try values.decodeIfPresent(String.self, forKey: .keyInsightValue)

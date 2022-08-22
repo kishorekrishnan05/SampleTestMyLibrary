@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct ActionResponseList : Codable {
+public struct ActionResponseList : Codable {
 	let action : String?
 	let shortMessage : String?
 	let longMessage : String?
@@ -24,7 +24,7 @@ struct ActionResponseList : Codable {
 		case longMessage = "LongMessage"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		action = try values.decodeIfPresent(String.self, forKey: .action)
 		shortMessage = try values.decodeIfPresent(String.self, forKey: .shortMessage)

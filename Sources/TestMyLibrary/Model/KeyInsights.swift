@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct KeyInsights : Codable {
+public struct KeyInsights : Codable {
 	let mPLevelAndReason : String?
 	let numYearsAsMPMember : String?
 	let corporateAffiliation : String?
@@ -60,7 +60,7 @@ struct KeyInsights : Codable {
 		case redemptionLifeCycle = "RedemptionLifeCycle"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		mPLevelAndReason = try values.decodeIfPresent(String.self, forKey: .mPLevelAndReason)
 		numYearsAsMPMember = try values.decodeIfPresent(String.self, forKey: .numYearsAsMPMember)

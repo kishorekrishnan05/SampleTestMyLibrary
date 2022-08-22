@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct AccountSummary : Codable {
+public struct AccountSummary : Codable {
 	let mileagePlusNumber : String?
 	let customerId : Int?
 	let name : String?
@@ -86,7 +86,7 @@ struct AccountSummary : Codable {
 		case paxType = "paxType"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		mileagePlusNumber = try values.decodeIfPresent(String.self, forKey: .mileagePlusNumber)
 		customerId = try values.decodeIfPresent(Int.self, forKey: .customerId)

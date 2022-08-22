@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct TripHistoryList : Codable {
+public struct TripHistoryList : Codable {
 	let scheduleDepartureDatetime : String?
 	let lofKeys : String?
 	let lofScore : String?
@@ -28,7 +28,7 @@ struct TripHistoryList : Codable {
 		case compensationInd = "CompensationInd"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		scheduleDepartureDatetime = try values.decodeIfPresent(String.self, forKey: .scheduleDepartureDatetime)
 		lofKeys = try values.decodeIfPresent(String.self, forKey: .lofKeys)

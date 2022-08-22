@@ -8,8 +8,7 @@
 import UIKit
 public protocol scrollviewDelegete: AnyObject {
     func lastIndex(
-        flightInfo: String ,
-        selecetdIndexDate: String
+        seat: Seats
     )
 }
 struct  TestDataForHeight{
@@ -18,9 +17,19 @@ struct  TestDataForHeight{
     var configuration : String?
     var seatSize : CGFloat?
 }
+class MyTapGesture:UITapGestureRecognizer{
+    var data : Seats?
+}
 
 
 public class SampleViewController: UIViewController,UIScrollViewDelegate {
+    
+    @objc func tapped( sender : MyTapGesture){
+        print("set")
+        if let seats = sender.data{
+        delegate?.lastIndex(seat: seats)
+        }
+    }
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         setupScrollHeader(scrollYPosition: scrollView.contentOffset.y)
         
@@ -375,7 +384,7 @@ public class SampleViewController: UIViewController,UIScrollViewDelegate {
     @objc func pressedd(sender: UIButton) {
         print("\(sender.tag)")
         print("Kishore")
-        delegate?.lastIndex(flightInfo: "Kishore", selecetdIndexDate: "Kishore")
+        //delegate?.lastIndex(flightInfo: "Kishore", selecetdIndexDate: "Kishore")
     }
     func buttonWidthrowWise(index: Int) -> CGFloat{
         return (view.frame.width - 40) / CGFloat(index)

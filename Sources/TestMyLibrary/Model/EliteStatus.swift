@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct EliteStatus : Codable {
+public struct EliteStatus : Codable {
 	let code : String?
 	let description : String?
 	let descriptionShort : String?
@@ -30,7 +30,7 @@ struct EliteStatus : Codable {
 		case level = "level"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		code = try values.decodeIfPresent(String.self, forKey: .code)
 		description = try values.decodeIfPresent(String.self, forKey: .description)

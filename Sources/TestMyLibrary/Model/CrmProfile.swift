@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct CrmProfile : Codable {
+public struct CrmProfile : Codable {
 	let averageCSATScore : Double?
 	let recentCSATScore : Double?
 	let customerValueScore : Int?
@@ -78,7 +78,7 @@ struct CrmProfile : Codable {
 		case awarenessType = "awarenessType"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		averageCSATScore = try values.decodeIfPresent(Double.self, forKey: .averageCSATScore)
 		recentCSATScore = try values.decodeIfPresent(Double.self, forKey: .recentCSATScore)

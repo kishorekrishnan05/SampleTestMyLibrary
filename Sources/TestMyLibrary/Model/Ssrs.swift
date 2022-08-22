@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Ssrs : Codable {
+public struct Ssrs : Codable {
 	let code : String?
 	let comment : String?
 	let priority : Int?
@@ -28,7 +28,7 @@ struct Ssrs : Codable {
 		case ssrCodeDescription = "ssrCodeDescription"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		code = try values.decodeIfPresent(String.self, forKey: .code)
 		comment = try values.decodeIfPresent(String.self, forKey: .comment)

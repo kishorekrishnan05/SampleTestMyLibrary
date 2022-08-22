@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Pnr : Codable {
+public struct Pnr : Codable {
 	let sessionId : String?
 	let recordLocator : String?
 	let dateCreated : String?
@@ -100,7 +100,7 @@ struct Pnr : Codable {
 		case syncedWithConcur = "syncedWithConcur"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		sessionId = try values.decodeIfPresent(String.self, forKey: .sessionId)
 		recordLocator = try values.decodeIfPresent(String.self, forKey: .recordLocator)

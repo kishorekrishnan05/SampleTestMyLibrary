@@ -12,7 +12,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct CrmInfo : Codable {
+public struct CrmInfo : Codable {
 	let passengerName : PassengerName?
 	let accountSummary : AccountSummary?
 	let crmProfile : CrmProfile?
@@ -28,7 +28,7 @@ struct CrmInfo : Codable {
 		case flightStatusList = "flightStatusList"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		passengerName = try values.decodeIfPresent(PassengerName.self, forKey: .passengerName)
 		accountSummary = try values.decodeIfPresent(AccountSummary.self, forKey: .accountSummary)
