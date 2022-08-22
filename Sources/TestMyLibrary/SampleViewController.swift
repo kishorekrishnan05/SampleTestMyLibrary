@@ -339,7 +339,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             xnewOffset = xnewOffset  + CGFloat(8) + SeatWidthHeight
             var iconbutton = UIButton()
             iconbutton.setImage(UIImage(named: "action"), for: .normal)
-            iconbutton.backgroundColor = UIColor.green
+            iconbutton.backgroundColor = fontStyle?.colorBlue//UIColor.green
             iconbutton.imageView?.contentMode = .scaleAspectFill
             iconbutton.frame = CGRect(x: xnewOffset - 18, y: CGFloat(ynewOffset - 8), width: 16, height: 16)
             iconbutton.layer.cornerRadius = 0.5 * iconbutton.bounds.size.width
