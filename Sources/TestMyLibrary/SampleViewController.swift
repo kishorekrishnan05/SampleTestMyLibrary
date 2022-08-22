@@ -351,7 +351,7 @@ public class SampleViewController: UIViewController,UIScrollViewDelegate {
         let jsonDecoder = JSONDecoder()
         do {
             let decoder = JSONDecoder()
-            let messages = try decoder.decode(ModelSeatMap.self, from: readLocalFile(forName: "201Update")!)
+            let messages = try decoder.decode(ModelSeatMap.self, from: readLocalFile(forName: "2325Flight")!)
             test = messages
         } catch DecodingError.dataCorrupted(let context) {
             print(context)
@@ -368,7 +368,7 @@ public class SampleViewController: UIViewController,UIScrollViewDelegate {
             print("error: ", error)
         }
         
-        let responseModel = try? jsonDecoder.decode(ModelSeatMap.self, from: readLocalFile(forName: "201Update")!)
+        let responseModel = try? jsonDecoder.decode(ModelSeatMap.self, from: readLocalFile(forName: "2325Flight")!)
         self.test = responseModel
        // dynamicButtonCreationNew()
     }
