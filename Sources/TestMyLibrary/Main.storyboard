@@ -17,19 +17,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6M-kj-Jhk">
-                                <rect key="frame" x="8" y="60" width="414" height="818"/>
-                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ae7-CS-f6P">
+                                <rect key="frame" x="8" y="64" width="398" height="778"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6M-kj-Jhk">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="778"/>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="c6M-kj-Jhk" firstAttribute="leading" secondItem="ae7-CS-f6P" secondAttribute="leading" id="Du2-59-6w3"/>
+                                    <constraint firstAttribute="trailing" secondItem="c6M-kj-Jhk" secondAttribute="trailing" id="OPC-zy-3qe"/>
+                                    <constraint firstItem="c6M-kj-Jhk" firstAttribute="top" secondItem="ae7-CS-f6P" secondAttribute="top" id="rGE-ca-3hL"/>
+                                    <constraint firstAttribute="bottom" secondItem="c6M-kj-Jhk" secondAttribute="bottom" id="uLH-Oj-3XF"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="c6M-kj-Jhk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3YD-sy-klx"/>
-                            <constraint firstItem="c6M-kj-Jhk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="8bd-9x-qjx"/>
-                            <constraint firstAttribute="trailing" secondItem="c6M-kj-Jhk" secondAttribute="trailing" id="Rbq-ve-Bia"/>
-                            <constraint firstItem="c6M-kj-Jhk" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="8" id="Tlc-2u-ABo"/>
-                            <constraint firstItem="c6M-kj-Jhk" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="X53-90-7jM"/>
-                            <constraint firstItem="c6M-kj-Jhk" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="16" id="kgN-TV-QOP"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ae7-CS-f6P" secondAttribute="trailing" constant="8" id="IQ2-bS-xCa"/>
+                            <constraint firstItem="ae7-CS-f6P" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="MVf-jO-X84"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ae7-CS-f6P" secondAttribute="bottom" constant="20" id="cGX-Oc-T1B"/>
+                            <constraint firstItem="ae7-CS-f6P" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="tu4-Bq-fxs"/>
                         </constraints>
                     </view>
                     <connections>
