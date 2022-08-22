@@ -6,7 +6,7 @@
 //
 
 import UIKit
-struct fontDetails {
+public struct fontDetails {
     var mediumFont : UIFont?
 }
 enum SeatsColor: String, Codable {
@@ -136,7 +136,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     var isFirstRowInCabin: Bool?
     var height:CGFloat = 16
     var button = UIButton()
-    var fontStyle : fontDetails?
+    public var fontStyle : fontDetails?
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var labelHeader: UILabel!
     
