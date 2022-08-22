@@ -164,7 +164,6 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         //LabelUI()
         //newFuncRowWise()
         //newFuncEqualSpacing()
-        viewHeader.isHidden = true
         newFunc()
         //newFuncWorkingFine()
         mScrollView.delegate = self
