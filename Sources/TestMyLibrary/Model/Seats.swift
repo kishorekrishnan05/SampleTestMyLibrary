@@ -13,17 +13,17 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 public struct Seats : Codable {
-	let servicesAndFees : String?
-	let number : String?
-	let seatvalue : String?
-	let fee : String?
-	let exit : Bool?
-	let limitedRecline : Bool?
-	let isEPlus : Bool?
-	let program : String?
-	let crmInfo : CrmInfo?
-	let crmInfoEncrypted : String?
-	let ssrs : [Ssrs]?
+    public let servicesAndFees : String?
+    public let number : String?
+    public let seatvalue : String?
+    public let fee : String?
+    public let exit : Bool?
+    public let limitedRecline : Bool?
+    public let isEPlus : Bool?
+    public let program : String?
+    public let crmInfo : CrmInfo?
+    public let crmInfoEncrypted : String?
+    public let ssrs : [Ssrs]?
 
 	enum CodingKeys: String, CodingKey {
 
