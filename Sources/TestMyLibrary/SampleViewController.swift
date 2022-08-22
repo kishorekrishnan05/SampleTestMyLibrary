@@ -6,6 +6,9 @@
 //
 
 import UIKit
+struct fontDetails {
+    var mediumFont : UIFont?
+}
 enum SeatsColor: String, Codable {
     case occuipedSeats = "X"
     case OpenSeats = "O"
@@ -133,6 +136,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     var isFirstRowInCabin: Bool?
     var height:CGFloat = 16
     var button = UIButton()
+    var fontStyle : fontDetails?
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var labelHeader: UILabel!
     
@@ -232,7 +236,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         let button = UIButton()
         button.frame = CGRect(x: 100, y: CGFloat(height), width: 200, height: 40)
         //mScrollView.addSubview(button)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.titleLabel?.font = fontStyle?.mediumFont
         button.setTitle(tilte, for: .normal)
         button.setTitleColor(UIColor.gray, for: .normal)
         setupWingHeader(LeftWing: true)
