@@ -7,7 +7,8 @@
 
 import UIKit
 public struct fontDetails {
-    var mediumFont : UIFont?
+   public var mediumFont : UIFont?
+    public var colorBlue : UIColor?
 }
 enum SeatsColor: String, Codable {
     case occuipedSeats = "X"
@@ -238,7 +239,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         //mScrollView.addSubview(button)
         button.titleLabel?.font = fontStyle?.mediumFont
         button.setTitle(tilte, for: .normal)
-        button.setTitleColor(UIColor.gray, for: .normal)
+        button.setTitleColor(fontStyle?.colorBlue, for: .normal)
         setupWingHeader(LeftWing: true)
         setupWingHeader(LeftWing: false)
         height += 50
@@ -320,7 +321,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         if seat.seatvalue == "-"  {
             button = UIButton()
             button.backgroundColor = UIColor.clear
-            button.titleLabel?.font = .systemFont(ofSize: 12)
+            button.titleLabel?.font = fontStyle?.mediumFont
             button.setTitle(rowNumber, for: .normal)
             button.setTitleColor(UIColor.gray, for: .normal)
             button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: SeatWidthHeight, height: SeatWidthHeight)
