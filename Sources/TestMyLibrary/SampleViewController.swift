@@ -29,16 +29,16 @@ enum SeatsColor: String, Codable {
         }
     }
 }
-class MyTapGesture: UITapGestureRecognizer {
+public class MyTapGesture: UITapGestureRecognizer {
     var title : Seats?
 }
-protocol scrollviewDelegete: AnyObject {
+public protocol scrollviewDelegete: AnyObject {
     func lastIndex(
         flightInfo: String ,
         selecetdIndexDate: String
     )
 }
-struct  TestDataForHeight{
+public struct  TestDataForHeight{
     var height: CGFloat?
     var name: String?
     var configuration : String?
@@ -54,8 +54,8 @@ class MyButton: UIButton{
     var myParam2: String?
     
 }
-class SampleViewController: UIViewController, UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView){
+public class SampleViewController: UIViewController, UIScrollViewDelegate {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView){
         setupScrollHeader(scrollYPosition: scrollView.contentOffset.y)
     }
     func setupScrollHeader(scrollYPosition: CGFloat)
@@ -147,7 +147,7 @@ class SampleViewController: UIViewController, UIScrollViewDelegate {
             print(sender.title)
            // label1.text = sender.title
         }
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         viewTest.frame = CGRect(x: 0, y: 0, width: view.frame.width - 16, height: 60)
