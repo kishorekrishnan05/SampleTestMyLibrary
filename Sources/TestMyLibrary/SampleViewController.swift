@@ -54,7 +54,7 @@ class MyButton: UIButton{
     var myParam2: String?
     
 }
-class ScrollViewController: UIViewController, UIScrollViewDelegate {
+class SampleViewController: UIViewController, UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView){
         setupScrollHeader(scrollYPosition: scrollView.contentOffset.y)
     }
