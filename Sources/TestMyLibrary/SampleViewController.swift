@@ -81,6 +81,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     func setupScrollHeaderValue(Index : Int, value:TestDataForHeight ,xAxis: CGFloat){
             // self.viewTest.isHidden = false
             // button.removeFromSuperview()
+        label.textColor = UIColor.black
         var xAxisNew = xAxis
             print("\(value.name) Kishore \(index)")
             label.text = value.name
