@@ -18,14 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6M-kj-Jhk">
-                                <rect key="frame" x="0.0" y="60" width="414" height="818"/>
+                                <rect key="frame" x="8" y="60" width="414" height="818"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="c6M-kj-Jhk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3YD-sy-klx"/>
+                            <constraint firstItem="c6M-kj-Jhk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="8bd-9x-qjx"/>
                             <constraint firstAttribute="trailing" secondItem="c6M-kj-Jhk" secondAttribute="trailing" id="Rbq-ve-Bia"/>
+                            <constraint firstItem="c6M-kj-Jhk" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="8" id="Tlc-2u-ABo"/>
                             <constraint firstItem="c6M-kj-Jhk" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="X53-90-7jM"/>
                             <constraint firstItem="c6M-kj-Jhk" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="16" id="kgN-TV-QOP"/>
                         </constraints>
