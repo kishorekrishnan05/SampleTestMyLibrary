@@ -239,6 +239,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             mScrollView.addSubview(button)
             if index  == (seat.count ) - 1{
                 button = UIButton()
+                button.backgroundColor = .colorPinkRed
                 button.frame = CGRect(x: xnewOffset + seatSize + 10 , y: CGFloat(ynewOffset), width: 5, height: seatSize)
                 mScrollView.addSubview(button)
             }
