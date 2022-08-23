@@ -53,7 +53,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     {
         var newValue: CGFloat = 10
         //viewHeader.isHidden =  scrollView.contentOffset.y > 0 ? false : true
-        viewTest.isHidden =  scrollYPosition > 30 ? false : true
+        viewTest.isHidden =  scrollYPosition > 0 ? false : true
         viewTest.subviews.forEach { temp in
             temp.removeFromSuperview()
         }
@@ -62,7 +62,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             //label = UILabel()
             //label.frame = CGRect(x: 10, y: 20, width: 200, height: 40)
             if index != header.count - 1 {
-                if scrollYPosition < header[index + 1].height!  {
+                if scrollYPosition + 30 < header[index + 1].height!  {
                     setupScrollHeaderValue(Index: index, value: i, xAxis: newValue)
                     break
                 }
