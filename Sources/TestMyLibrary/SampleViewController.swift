@@ -137,7 +137,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     var isFirstRowInCabin: Bool?
     var height:CGFloat = 16
     var button = UIButton()
-    public var fontStyle : fontDetails?
+    public var fontStyle : fontDetails!
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var labelHeader: UILabel!
     
