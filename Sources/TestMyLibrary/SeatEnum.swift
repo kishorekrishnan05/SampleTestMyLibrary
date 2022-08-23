@@ -10,23 +10,26 @@ import UIKit
 
 enum SeatsColor: String, Codable {
     case occuipedSeats = "X"
-    case OpenSeats = "O"
-    case OpenEconomyPlusSeats = "S"
+    case openSeats = "O"
+    case openEconomyPlusSeats = "P"
+    case openPremiumPlus = "S"
 
     var backgroundColor: UIColor {
         switch self {
         case .occuipedSeats:
             return .colorSeatGray
-        case .OpenSeats , .OpenEconomyPlusSeats:
+        case .openSeats , .openEconomyPlusSeats , .openPremiumPlus:
             return .white
     }
     }
         var borderColor: UIColor {
             switch self {
-            case .occuipedSeats ,.OpenSeats :
+            case .occuipedSeats ,.openSeats :
                 return .colorFordGray
-            case .OpenEconomyPlusSeats:
+            case .openPremiumPlus:
                 return .colorBlue
+            case .openEconomyPlusSeats:
+                return .black
         }
     }
 }

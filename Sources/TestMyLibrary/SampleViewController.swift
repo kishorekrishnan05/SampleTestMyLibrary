@@ -190,23 +190,29 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         button = UIButton()
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 1
-        if ((seatValue == "X")){
+        if (seatValue == "X"){
             //Occuiped
             button.backgroundColor = SeatsColor.occuipedSeats.backgroundColor
             button.layer.borderColor = SeatsColor.occuipedSeats.borderColor.cgColor
-        } else if ((seatValue == "O")) {
+        } else if (seatValue == "O") {
             //Open Seats
-            button.backgroundColor = SeatsColor.OpenSeats.backgroundColor
-            button.layer.borderColor = SeatsColor.OpenSeats.borderColor.cgColor
-        } else if ((seatValue == "S")) {
+            button.backgroundColor = SeatsColor.openSeats.backgroundColor
+            button.layer.borderColor = SeatsColor.openSeats.borderColor.cgColor
+        } else if (seatValue == "S") {
+            //Open premium Plus Seats
+            button.backgroundColor = SeatsColor.openPremiumPlus.backgroundColor
+            button.layer.borderColor = SeatsColor.openPremiumPlus.borderColor.cgColor
+        } else if (seatValue == "P") {
             //Open Economy Plus Seats
-            button.backgroundColor = SeatsColor.OpenEconomyPlusSeats.backgroundColor
-            button.layer.borderColor = SeatsColor.OpenEconomyPlusSeats.borderColor.cgColor
+            button.backgroundColor = SeatsColor.openEconomyPlusSeats.backgroundColor
+            button.layer.borderColor = SeatsColor.openEconomyPlusSeats.borderColor.cgColor
+        }else{
+            button.backgroundColor = .clear
+            button.layer.borderColor = .none
         }
     }
     
     func setupSeatRowNumber(seat: Seats, rowNumber: String,seatSize: CGFloat,index: Int,cabinindex: Int) {
-        let imageView = UIImageView()
         if seat.seatvalue == "-"  {
             button = UIButton()
             button.backgroundColor = UIColor.clear
@@ -291,9 +297,6 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         
         seatScrollView.translatesAutoresizingMaskIntoConstraints = false
         if let cabinValue = self.modelSeat?.crmSeatMapResponse?.seatMap?.cabins {
-            button = UIButton()
-            
-            //print(value.count)
             for cabinIndex in 0..<cabinValue.count {
                 setupHeader(title: "\(cabinValue[cabinIndex].cos ?? "")", configuration: cabinValue[cabinIndex].configuration ?? "", headerIndex: cabinIndex)
                 if let rowValue = cabinValue[cabinIndex].rows {
