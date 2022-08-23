@@ -105,7 +105,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var mScrollView: UIScrollView!
     // let label = UILabel()
-    public var ModelSeat : ModelSeatMap?
+    public var modelSeat : ModelSeatMap?
     var headerValue = [ModelHeader]()
     var height:CGFloat = 16
     var button = UIButton()
@@ -171,31 +171,6 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
      self.mScrollView.addSubview(codedButton)
      }
      }*/
-    func testJson() {
-        let jsonDecoder = JSONDecoder()
-        do {
-            let decoder = JSONDecoder()
-            let messages = try decoder.decode(ModelSeatMap.self, from: readLocalFile(forName: "2325Flight")!)
-            ModelSeat = messages
-        } catch DecodingError.dataCorrupted(let context) {
-            print(context)
-        } catch DecodingError.keyNotFound(let key, let context) {
-            print("Key '\(key)' not found:", context.debugDescription)
-            print("codingPath:", context.codingPath)
-        } catch DecodingError.valueNotFound(let value, let context) {
-            print("Value '\(value)' not found:", context.debugDescription)
-            print("codingPath:", context.codingPath)
-        } catch DecodingError.typeMismatch(let type, let context) {
-            print("Type '\(type)' mismatch:", context.debugDescription)
-            print("codingPath:", context.codingPath)
-        } catch {
-            print("error: ", error)
-        }
-        
-        let responseModel = try? jsonDecoder.decode(ModelSeatMap.self, from: readLocalFile(forName: "201Update")!)
-        self.ModelSeat = responseModel
-        // dynamicButtonCreationNew()
-    }
     @objc func pressed() {
         print("Kishore")
     }
@@ -401,20 +376,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
      // Pass the selected object to the new view controller.
      }
      */
-    
-    private func readLocalFile(forName name: String) -> Data? {
-        do {
-            if let bundlePath = Bundle.main.path(forResource: name,
-                                                 ofType: "json"),
-               let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
-                return jsonData
-            }
-        } catch {
-            print(error)
-        }
-        
-        return nil
-    }
+
     
 }
 
