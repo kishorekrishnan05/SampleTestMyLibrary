@@ -48,7 +48,7 @@ public struct CrmSeatMapResponse : Codable {
 		case exception = "exception"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		marketingCarrierCode = try values.decodeIfPresent(String.self, forKey: .marketingCarrierCode)
 		operatingCarrierCode = try values.decodeIfPresent(String.self, forKey: .operatingCarrierCode)

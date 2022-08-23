@@ -12,13 +12,13 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct KeyInsightsActionsOrderingList : Codable {
-	let code : String?
-	let name : String?
-	let position : String?
-	let backgroundColor : String?
-	let milestone : Bool?
-	let action : Bool?
+public struct KeyInsightsActionsOrderingList : Codable {
+    public let code : String?
+    public let name : String?
+    public let position : String?
+    public let backgroundColor : String?
+    public let milestone : Bool?
+    public let action : Bool?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -30,7 +30,7 @@ struct KeyInsightsActionsOrderingList : Codable {
 		case action = "Action"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		code = try values.decodeIfPresent(String.self, forKey: .code)
 		name = try values.decodeIfPresent(String.self, forKey: .name)

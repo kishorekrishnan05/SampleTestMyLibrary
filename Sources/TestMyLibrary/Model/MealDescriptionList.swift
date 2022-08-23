@@ -12,9 +12,9 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct MealDescriptionList : Codable {
-	let cabinName : String?
-	let foodService : String?
+public struct MealDescriptionList : Codable {
+    public let cabinName : String?
+    public let foodService : String?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -22,7 +22,7 @@ struct MealDescriptionList : Codable {
 		case foodService = "foodService"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		cabinName = try values.decodeIfPresent(String.self, forKey: .cabinName)
 		foodService = try values.decodeIfPresent(String.self, forKey: .foodService)

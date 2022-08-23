@@ -44,7 +44,7 @@ public struct SeatMap : Codable {
 		case actionFeedbackQuestionList = "actionFeedbackQuestionList"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		flightNumber = try values.decodeIfPresent(Int.self, forKey: .flightNumber)
 		flightDateTime = try values.decodeIfPresent(String.self, forKey: .flightDateTime)

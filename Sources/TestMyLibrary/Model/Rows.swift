@@ -24,7 +24,7 @@ public struct Rows : Codable {
 		case wing = "wing"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		seats = try values.decodeIfPresent([Seats].self, forKey: .seats)
 		number = try values.decodeIfPresent(String.self, forKey: .number)

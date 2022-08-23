@@ -12,11 +12,11 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct KeyInsightsOrderingList : Codable {
-	let code : String?
-	let name : String?
-	let position : String?
-	let staticField : Bool?
+public struct KeyInsightsOrderingList : Codable {
+    public let code : String?
+    public let name : String?
+    public let position : String?
+    public let staticField : Bool?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -26,7 +26,7 @@ struct KeyInsightsOrderingList : Codable {
 		case staticField = "StaticField"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		code = try values.decodeIfPresent(String.self, forKey: .code)
 		name = try values.decodeIfPresent(String.self, forKey: .name)

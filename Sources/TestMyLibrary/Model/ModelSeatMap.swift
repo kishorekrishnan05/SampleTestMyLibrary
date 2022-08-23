@@ -40,7 +40,7 @@ public struct ModelSeatMap : Codable {
 		case exception = "exception"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		flightStatusInfo = try values.decodeIfPresent(String.self, forKey: .flightStatusInfo)
 		crmSeatMapResponse = try values.decodeIfPresent(CrmSeatMapResponse.self, forKey: .crmSeatMapResponse)

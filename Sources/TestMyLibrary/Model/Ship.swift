@@ -12,11 +12,11 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Ship : Codable {
-	let id : String?
-	let aircraft : Aircraft?
-	let tailNumber : String?
-	let noseNumber : String?
+public struct Ship : Codable {
+    public let id : String?
+    public let aircraft : Aircraft?
+    public let tailNumber : String?
+    public let noseNumber : String?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -26,7 +26,7 @@ struct Ship : Codable {
 		case noseNumber = "noseNumber"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		id = try values.decodeIfPresent(String.self, forKey: .id)
 		aircraft = try values.decodeIfPresent(Aircraft.self, forKey: .aircraft)

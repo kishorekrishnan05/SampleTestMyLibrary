@@ -12,73 +12,73 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct SgementFlightStatus : Codable {
-	let estimatedDepartureDateTime : String?
-	let estimatedArrivalDateTime : String?
-	let actualDepartureDateTime : String?
-	let actualArrivalDateTime : String?
-	let departureTerminal : String?
-	let arrivalTerminal : String?
-	let departureGate : String?
-	let arrivalGate : String?
-	let ship : Ship?
-	let operatingCarrier : OperatingCarrier?
-	let codeShareCarrier : String?
-	let status : String?
-	let enableSeatMap : Bool?
-	let enableStandbyList : Bool?
-	let enableUpgradeList : Bool?
-	let enableAmenity : Bool?
-	let codeShareflightNumber : String?
-	let canPushNotification : Bool?
-	let isSegmentCancelled : Bool?
-	let getInBoundSegment : Bool?
-	let inBoundSegment : String?
-	let isWiFiAvailable : Bool?
-	let lastUpdatedGMT : String?
-	let pushNotificationRegId : String?
-	let statusShort : String?
-	let lastKnownDepartureTime : String?
-	let lastKnownDepartureTimeGMT : String?
-	let blockTime : String?
-	let flightTime : String?
-	let flightTimeChange : String?
-	let arrivalUTCDateTime : String?
-	let departureUTCDateTime : String?
-	let flightAttendantBoardTime : String?
-	let customerBoardTime : String?
-	let flightAttendantBaseCheckIn : String?
-	let flightAttendantDownLineCheckIn : String?
-	let flightAttendantBaseBoardTime : String?
-	let flightAttendantDownLineBoardTime : String?
-	let flightAttendantDeadheadBoardTime : String?
-	let baseFAsCheckInCrew : [String]?
-	let downlineFAsCheckInCrew : [String]?
-	let mixedCrew : [String]?
-	let minimumCrewToBoard : String?
-	let minimumCrewToDepart : String?
-	let mealBoarded : String?
-	let liquorBoarded : String?
-	let languageIncentivePayList : [String]?
-	let awardedJumpseatList : String?
-	let mealDescriptionList : [MealDescriptionList]?
-	let flightMiles : Int?
-	let marketingCarrier : MarketingCarrier?
-	let flightNumber : String?
-	let departure : Departure?
-	let arrival : Arrival?
-	let scheduledDeparture : ScheduledDeparture?
-	let scheduledArrival : ScheduledArrival?
-	let scheduledDepartureDateTime : String?
-	let scheduledArrivalDateTime : String?
-	let scheduledDepartureTimeGMT : String?
-	let scheduledArrivalTimeGMT : String?
-	let formattedScheduledDepartureDateTime : String?
-	let formattedScheduledArrivalDateTime : String?
-	let formattedScheduledDepartureDate : String?
-	let formattedScheduledArrivalDate : String?
-	let formattedScheduledDepartureTime : String?
-	let formattedScheduledArrivalTime : String?
+public struct SgementFlightStatus : Codable {
+    public let estimatedDepartureDateTime : String?
+    public let estimatedArrivalDateTime : String?
+    public let actualDepartureDateTime : String?
+    public let actualArrivalDateTime : String?
+    public let departureTerminal : String?
+    public let arrivalTerminal : String?
+    public let departureGate : String?
+    public let arrivalGate : String?
+    public let ship : Ship?
+    public let operatingCarrier : OperatingCarrier?
+    public let codeShareCarrier : String?
+    public let status : String?
+    public let enableSeatMap : Bool?
+    public let enableStandbyList : Bool?
+    public let enableUpgradeList : Bool?
+    public let enableAmenity : Bool?
+    public let codeShareflightNumber : String?
+    public let canPushNotification : Bool?
+    public let isSegmentCancelled : Bool?
+    public let getInBoundSegment : Bool?
+    public let inBoundSegment : String?
+    public let isWiFiAvailable : Bool?
+    public let lastUpdatedGMT : String?
+    public let pushNotificationRegId : String?
+    public let statusShort : String?
+    public let lastKnownDepartureTime : String?
+    public let lastKnownDepartureTimeGMT : String?
+    public let blockTime : String?
+    public let flightTime : String?
+    public let flightTimeChange : String?
+    public let arrivalUTCDateTime : String?
+    public let departureUTCDateTime : String?
+    public let flightAttendantBoardTime : String?
+    public let customerBoardTime : String?
+    public let flightAttendantBaseCheckIn : String?
+    public let flightAttendantDownLineCheckIn : String?
+    public let flightAttendantBaseBoardTime : String?
+    public let flightAttendantDownLineBoardTime : String?
+    public let flightAttendantDeadheadBoardTime : String?
+    public let baseFAsCheckInCrew : [String]?
+    public let downlineFAsCheckInCrew : [String]?
+    public let mixedCrew : [String]?
+    public let minimumCrewToBoard : String?
+    public let minimumCrewToDepart : String?
+    public let mealBoarded : String?
+    public let liquorBoarded : String?
+    public let languageIncentivePayList : [String]?
+    public let awardedJumpseatList : String?
+    public let mealDescriptionList : [MealDescriptionList]?
+    public let flightMiles : Int?
+    public let marketingCarrier : MarketingCarrier?
+    public let flightNumber : String?
+    public let departure : Departure?
+    public let arrival : Arrival?
+    public let scheduledDeparture : ScheduledDeparture?
+    public let scheduledArrival : ScheduledArrival?
+    public let scheduledDepartureDateTime : String?
+    public let scheduledArrivalDateTime : String?
+    public let scheduledDepartureTimeGMT : String?
+    public let scheduledArrivalTimeGMT : String?
+    public let formattedScheduledDepartureDateTime : String?
+    public let formattedScheduledArrivalDateTime : String?
+    public let formattedScheduledDepartureDate : String?
+    public let formattedScheduledArrivalDate : String?
+    public let formattedScheduledDepartureTime : String?
+    public let formattedScheduledArrivalTime : String?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -150,7 +150,7 @@ struct SgementFlightStatus : Codable {
 		case formattedScheduledArrivalTime = "formattedScheduledArrivalTime"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		estimatedDepartureDateTime = try values.decodeIfPresent(String.self, forKey: .estimatedDepartureDateTime)
 		estimatedArrivalDateTime = try values.decodeIfPresent(String.self, forKey: .estimatedArrivalDateTime)

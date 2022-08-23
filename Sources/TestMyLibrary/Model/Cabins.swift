@@ -24,7 +24,7 @@ public struct Cabins : Codable {
 		case configuration = "configuration"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		rows = try values.decodeIfPresent([Rows].self, forKey: .rows)
 		cos = try values.decodeIfPresent(String.self, forKey: .cos)

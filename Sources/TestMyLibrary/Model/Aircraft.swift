@@ -12,13 +12,13 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Aircraft : Codable {
-	let code : String?
-	let shortName : String?
-	let longName : String?
-	let crmCode : String?
-	let ownerAirlineCode : String?
-	let crewLine : Int?
+public struct Aircraft : Codable {
+    public let code : String?
+    public let shortName : String?
+    public let longName : String?
+    public let crmCode : String?
+    public let ownerAirlineCode : String?
+    public let crewLine : Int?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -30,7 +30,7 @@ struct Aircraft : Codable {
 		case crewLine = "crewLine"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		code = try values.decodeIfPresent(String.self, forKey: .code)
 		shortName = try values.decodeIfPresent(String.self, forKey: .shortName)

@@ -12,10 +12,10 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct OperatingCarrier : Codable {
-	let code : String?
-	let name : String?
-	let flightNumber : String?
+public struct OperatingCarrier : Codable {
+    public let code : String?
+    public let name : String?
+    public let flightNumber : String?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -24,7 +24,7 @@ struct OperatingCarrier : Codable {
 		case flightNumber = "flightNumber"
 	}
 
-	init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		code = try values.decodeIfPresent(String.self, forKey: .code)
 		name = try values.decodeIfPresent(String.self, forKey: .name)
