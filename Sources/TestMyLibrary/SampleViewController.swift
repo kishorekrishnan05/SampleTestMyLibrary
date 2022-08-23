@@ -8,41 +8,11 @@
 import UIKit
 import Foundation
 
-enum SeatsColor: String, Codable {
-    case occuipedSeats = "X"
-    case OpenSeats = "O"
-    case OpenEconomyPlusSeats = "S"
-//    case VPES = "DEPA"
 
-    var backgroundColor: UIColor {
-        switch self {
-        case .occuipedSeats:
-            return .gray
-        case .OpenSeats , .OpenEconomyPlusSeats:
-            return .white
-    }
-    }
-        var borderColor: UIColor {
-            switch self {
-            case .occuipedSeats ,.OpenSeats :
-                return .gray
-            case .OpenEconomyPlusSeats:
-                return .blue
-        }
-    }
-}
-public class MyTapGesture: UITapGestureRecognizer {
-    var data : Seats?
-}
 public protocol scrollviewDelegete: AnyObject {
     func deatilsSeats(seats :Seats)
 }
-public struct  ModelHeader{
-    var height: CGFloat?
-    var name: String?
-    var configuration : String?
-    var seatSize : CGFloat?
-}
+
 
 
 public class SampleViewController: UIViewController, UIScrollViewDelegate {
@@ -103,18 +73,17 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     var viewHeader = UIView()
     var label: UILabel = UILabel()
     
-    @IBOutlet weak var mScrollView: UIScrollView!
+    @IBOutlet weak var seatScrollView: UIScrollView!
     // let label = UILabel()
     public var modelSeat : ModelSeatMap?
     var headerValue = [ModelHeader]()
     var height:CGFloat = 0
     var button = UIButton()
-    @IBOutlet weak var labelHeader: UILabel!
     
     var ynewOffset:CGFloat = 8
     var xnewOffset:CGFloat = 16
     var imageView = UIImageView()
-    @objc func tapped(sender : MyTapGesture) {
+    @objc func setupSeatValue(sender : seatDetails) {
             print(sender.data)
         if let seats = sender.data {
             delegate?.deatilsSeats(seats: seats)
@@ -138,7 +107,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         //newFuncEqualSpacing()
         setupSeat()
         //newFuncWorkingFine()
-        mScrollView.delegate = self
+        seatScrollView.delegate = self
         //newFuncwith4Padding()
         //newFuncclounmWise()
         // Do any additional setup after loading the view.
@@ -155,33 +124,6 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         self.view.bringSubviewToFront(viewHeader)
         self.viewHeader.isHidden = true
     }
-    /*func tstdata(){
-     var ButtonList = ["Button 1", "Button 2", "Button 3"]
-     let buttonWidth = 100
-     let buttonSpace = 10
-     for (index,ButtonText) in ButtonList.enumerated(){
-     //calculate the x coordinate of each button
-     let xCoord = CGFloat(index*buttonWidth + index*buttonSpace)
-     //CGRect(x: px+10, y: py+10, width: 100, height: 45)
-     let codedButton:UIButton = UIButton(frame: CGRectMake(xCoord, 0, 100, 50))
-     codedButton.backgroundColor = UIColor.red
-     codedButton.setTitle(ButtonText, forState: UIControlState.Normal)
-     codedButton.addTarget(self, action: #selector(ViewController.buttonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-     codedButton.tag = index
-     self.mScrollView.addSubview(codedButton)
-     }
-     }*/
-    @objc func pressed() {
-        print("Kishore")
-    }
-    @objc func pressedd(sender: UIButton) {
-        print("\(sender.tag)")
-        print("Kishore")
-        /*if let value = self.test?.crmSeatMapResponse?.seatMap?.cabins {
-            print(value[0].rows?[0].seats?[sender.tag])
-        }*/
-        //delegate?.lastIndex(flightInfo: "Kishore", selecetdIndexDate: "Kishore")
-    }
     
     func setupHeader(title: String,configuration: String,headerIndex:Int) {
         height = headerIndex == 0 ? height : height + 27
@@ -194,8 +136,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         setupWingHeader(LeftWing: true)
         setupWingHeader(LeftWing: false)
         height += 30
-        mScrollView.addSubview(labelView)
-       // mScrollView.addSubview(imageView)
+        seatScrollView.addSubview(labelView)
     }
     func setupWingHeader(LeftWing : Bool){
         let imageView = UIImageView()
@@ -203,7 +144,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         imageView.contentMode = .scaleAspectFit
         imageView.image = LeftWing ? UIImage(named:"leftUE") : UIImage(named:"RightUE")
         imageView.backgroundColor = UIColor.clear
-        mScrollView.addSubview(imageView)
+        seatScrollView.addSubview(imageView)
     }
     func setupConfiguration(configuration: String,seatSize: CGFloat,configurationHeader : String){
         var header = ModelHeader()
@@ -224,7 +165,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             
             button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: seatSize, height: seatSize)
             xnewOffset = xnewOffset  + CGFloat(8) + seatSize
-            mScrollView.addSubview(button)
+            seatScrollView.addSubview(button)
             //}
             if configurationIndex  == (configuration.count ) - 1{
                 height = ynewOffset + seatSize + 8  + 10//yaxis padding
@@ -236,18 +177,17 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             button = UIButton()
             button.backgroundColor = .colorPinkRed
             button.frame = CGRect(x: 4, y: CGFloat(ynewOffset), width: 5, height: seatSize)
-            mScrollView.addSubview(button)
+            seatScrollView.addSubview(button)
             if index  == (seat.count ) - 1{
                 button = UIButton()
                 button.backgroundColor = .colorPinkRed
                 button.frame = CGRect(x: xnewOffset + seatSize + 10 , y: CGFloat(ynewOffset), width: 5, height: seatSize)
-                mScrollView.addSubview(button)
+                seatScrollView.addSubview(button)
             }
         }
     }
     func setupSeatColor(seatValue : String) {
         button = UIButton()
-       // button.tag = 0
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 1
         if ((seatValue == "X")){
@@ -275,35 +215,18 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             button.setTitleColor(.colorGray, for: .normal)
             button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: seatSize, height: seatSize)
             xnewOffset = xnewOffset  + CGFloat(8) + seatSize
-            mScrollView.addSubview(button)
+            seatScrollView.addSubview(button)
         }else{
-            let imageSize:CGSize = CGSize(width: 20, height: 20)
             setupSeatColor(seatValue: seat.seatvalue!)
-            let tappy = MyTapGesture(target: self, action: #selector(tapped(sender:)))
-                    button.addGestureRecognizer(tappy)
-                    tappy.data = seat
+            let seatValue = seatDetails(target: self, action: #selector(setupSeatValue(sender:)))
+                button.addGestureRecognizer(seatValue)
+            seatValue.data = seat
             button.imageView?.contentMode = .scaleAspectFit
             button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: seatSize, height: seatSize)
             xnewOffset = xnewOffset  + CGFloat(8) + seatSize
-            setupbadge(imageNameString: "action", backgroundColor: .colorPinkRed)
-            /*var iconbutton = UIButton()
-            iconbutton.setImage(UIImage(named: "action"), for: .normal)
-            iconbutton.backgroundColor = UIColor.colorPinkRed//fontStyle?.colorBlue//UIColor.green
-            iconbutton.imageView?.contentMode = .scaleAspectFill
-            iconbutton.frame = CGRect(x: xnewOffset - 18, y: CGFloat(ynewOffset - 8), width: 16, height: 16)
-            iconbutton.layer.cornerRadius = 0.5 * iconbutton.bounds.size.width
-            iconbutton.clipsToBounds = true*/
-            /*var testvalue = CGFloat(seatSize * 0.6)
-            imageView.frame = CGRect(x:button.center.x - (testvalue / 2) , y: button.center.y - (testvalue / 2), width: testvalue, height: testvalue)
-            imageView.contentMode = .scaleAspectFit
-            imageView.image = UIImage(named:"Icons_24px_Travel_")
-            imageView.backgroundColor = UIColor.clear
-            mScrollView.addSubview(imageView)*/
-            ////mScrollView.addSubview(iconbutton)
-            mScrollView.addSubview(button)
-            mScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: "Icons_24px_Travel_"))
-            mScrollView.addSubview(setupbadge(imageNameString: "action", backgroundColor: .colorPinkRed))
-            //mScrollView.bringSubviewToFront(iconbutton)
+            seatScrollView.addSubview(button)
+            seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: "Icons_24px_Travel_"))
+            seatScrollView.addSubview(setupbadge(imageNameString: "action", backgroundColor: .colorPinkRed))
             
         }
     }
@@ -366,7 +289,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     }
     func setupSeat(){
         
-        mScrollView.translatesAutoresizingMaskIntoConstraints = false
+        seatScrollView.translatesAutoresizingMaskIntoConstraints = false
         if let cabinValue = self.modelSeat?.crmSeatMapResponse?.seatMap?.cabins {
             button = UIButton()
             
@@ -380,7 +303,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
                 
             }
         }
-        mScrollView.contentSize = CGSize(width: 0, height: height)
+        seatScrollView.contentSize = CGSize(width: 0, height: height)
     }
     func setupSeatSize(index: Int) -> CGFloat{
         return (view.frame.width - 40) / CGFloat(index)
@@ -400,79 +323,4 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     
 }
 
-import UIKit
 
-extension UIColor {
-
-    func aspectRatioImage() -> UIImage {
-        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
-        let ctx = UIGraphicsGetCurrentContext()
-        self.setFill()
-        ctx!.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
-        let image = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
-        UIGraphicsEndImageContext()
-        return image
-    }
-
-    open class var colorDarkblue: UIColor {
-        return "#0c2340".hexStringToUIColor()
-    }
-    open class var colorGray: UIColor {
-        return "#666666".hexStringToUIColor()
-    }
-    
-    open class var colorGhostWhite: UIColor {
-        return "#f9f9f9".hexStringToUIColor()
-    }
-
-    open class var colorPinkRed: UIColor {
-        return "#D50032".hexStringToUIColor()
-    }
-
-    open class var textFieldBorderColor: UIColor {
-        return "#333333".hexStringToUIColor()
-    }
-
-    open class var buttonEnabledColor: UIColor {
-        return "#6244BB".hexStringToUIColor()
-    }
-
-    open class var buttonDisabledColor: UIColor {
-        return "#E6E6E6".hexStringToUIColor()
-    }
-
-    
-
-    open class var shadowBottomColor: UIColor {
-        return self.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3)
-    }
-
-    open class var shadowColor: UIColor {
-        return self.init(red: 0.05, green: 0.2, blue: 0.13, alpha: 0.4)
-    }
-}
-
-extension String {
-    func hexStringToUIColor() -> UIColor {
-        var cString: String = self.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-
-        if cString.hasPrefix("#") {
-            cString.remove(at: cString.startIndex)
-        }
-
-        if (cString.count) != 6 {
-            return UIColor.gray
-        }
-
-        var rgbValue: UInt64 = 0
-        Scanner(string: cString).scanHexInt64(&rgbValue)
-
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
-
-}

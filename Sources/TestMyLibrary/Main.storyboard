@@ -43,7 +43,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mScrollView" destination="c6M-kj-Jhk" id="P7K-Vp-IVu"/>
+                        <outlet property="seatScrollView" destination="c6M-kj-Jhk" id="bHI-oQ-r6r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
