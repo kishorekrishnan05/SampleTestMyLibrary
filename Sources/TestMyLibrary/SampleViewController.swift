@@ -123,7 +123,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         }
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupScrollheaderView()
         for family in UIFont.familyNames {
             print("family:", family)
             for font in UIFont.fontNames(forFamilyName: family) {
