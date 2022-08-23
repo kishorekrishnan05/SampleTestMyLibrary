@@ -188,7 +188,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         label.textColor = UIColor.colorDarkblue
         label.font = UIFont(name: "OpenSans-SemiBold", size: 16)
             label.text = title
-        label.frame = CGRect(x: 0, y: CGFloat(height) + 4 , width: view.frame.width, height: 24)
+        label.frame = CGRect(x: 0, y: CGFloat(height), width: view.frame.width, height: 24)
             label.textAlignment = .center
        /* button.frame = CGRect(x: 100, y: CGFloat(height), width: 200, height: 40)
         //mScrollView.addSubview(button)
@@ -203,7 +203,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     }
     func setupWingHeader(LeftWing : Bool){
         var imageView = UIImageView()
-        imageView.frame = CGRect(x:LeftWing ? view.frame.width - 120 : 8, y: height + 5, width: 100, height: 40)
+        imageView.frame = CGRect(x:LeftWing ? view.frame.width - 120 : 8, y: height + 5, width: 100, height: 24)
         imageView.contentMode = .scaleAspectFit
         imageView.image = LeftWing ? UIImage(named:"leftUE") : UIImage(named:"RightUE")
         imageView.backgroundColor = UIColor.clear
