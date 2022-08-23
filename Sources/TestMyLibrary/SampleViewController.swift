@@ -51,7 +51,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     }
     func setupScrollHeader(scrollYPosition: CGFloat)
     {
-        let leadingValue: CGFloat = 10
+        let leadingValue: CGFloat = 16
         viewTest.isHidden =  scrollYPosition > 0 ? false : true
         viewTest.subviews.forEach { temp in
             temp.removeFromSuperview()
@@ -124,7 +124,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewTest.frame = CGRect(x: 16, y: 0, width: view.frame.width - 16, height: 60)
+        viewTest.frame = CGRect(x: 0, y: 0, width: view.frame.width - 16, height: 60)
         viewTest.backgroundColor = .colorGhostWhite
         viewTest.layer.masksToBounds = false
         viewTest.layer.shadowOffset = CGSize(width: -1, height: 1)
