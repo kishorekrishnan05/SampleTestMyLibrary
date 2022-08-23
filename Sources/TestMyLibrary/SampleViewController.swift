@@ -347,7 +347,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     func setupSeat(){
         
         mScrollView.translatesAutoresizingMaskIntoConstraints = false
-        if let cabinValue = self.ModelSeat?.crmSeatMapResponse?.seatMap?.cabins {
+        if let cabinValue = self.modelSeat?.crmSeatMapResponse?.seatMap?.cabins {
             button = UIButton()
             
             //print(value.count)
