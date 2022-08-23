@@ -7,10 +7,7 @@
 
 import UIKit
 import Foundation
-public struct fontDetails {
-   public var mediumFont : UIFont?
-    public var colorBlue : UIColor?
-}
+
 enum SeatsColor: String, Codable {
     case occuipedSeats = "X"
     case OpenSeats = "O"
@@ -46,16 +43,8 @@ public struct  TestDataForHeight{
     var configuration : String?
     var seatSize : CGFloat?
 }
-class TestDataArray: NSObject {
-    var testDataForHeight: [TestDataForHeight]?
-}
 
-class MyButton: UIButton{
-    
-    var myParam1: Seats?
-    var myParam2: String?
-    
-}
+
 public class SampleViewController: UIViewController, UIScrollViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView){
         setupScrollHeader(scrollYPosition: scrollView.contentOffset.y)
@@ -127,29 +116,17 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     var label: UILabel = UILabel()
     
     @IBOutlet weak var mScrollView: UIScrollView!
-    var seatsVMData : NSMutableDictionary?
-    var yPosition : CGFloat = 0
     // let label = UILabel()
     public var test : ModelSeatMap?
     var header = [TestDataForHeight]()
-    var seatIconBtnsIndex: Int = 0
-    var cabinAvgSeatHeightData : NSMutableArray?
-    var testArray: [CGFloat] = []
-    var imgSeat = UIButton()
-    var isFirstRowInCabin: Bool?
     var height:CGFloat = 16
     var button = UIButton()
-    public var fontStyle : fontDetails!
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var labelHeader: UILabel!
     
     var ynewOffset:CGFloat = 8
     var xnewOffset:CGFloat = 16
-    var seatSize: CGFloat = 0
     var imageView = UIImageView()
-    var imageView1 = UIImageView()
-    public var fontGiven = UIFont()
-    public var fontGivenColor = UIColor()
     @objc func tapped(sender : MyTapGesture) {
             print(sender.data)
         if let seats = sender.data {
@@ -395,7 +372,6 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             }
             
             let widthHeightButton  = buttonWidthrowWise(index: row[0].seats?.count ?? 0) - CGFloat(8)
-            seatSize = buttonWidthrowWise(index: row[0].seats?.count ?? 0) - CGFloat(8)
             if headerBool == 0 {
                 headerBool += 1
                 setupConfiguration(configuration: configuration, SeatWidthHeight: widthHeightButton, configurationHeader: configutationHeader)
