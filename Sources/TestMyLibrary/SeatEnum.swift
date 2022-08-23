@@ -26,7 +26,7 @@ enum SeatsColor: String, Codable {
             case .occuipedSeats ,.OpenSeats :
                 return .colorFordGray
             case .OpenEconomyPlusSeats:
-                return .colorBlue
+                return .blue
         }
     }
 }
