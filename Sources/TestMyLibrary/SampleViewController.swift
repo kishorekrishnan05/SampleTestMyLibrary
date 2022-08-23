@@ -227,19 +227,18 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             mScrollView.addSubview(button)
             //}
             if abcd  == (configuration.count ) - 1{
-                height = ynewOffset + seatSize + 8 + 10 //yaxis padding
+                height = ynewOffset + seatSize + 8 //yaxis padding
             }
         }
     }
     func setupISExit(seat: [Seats],index: Int,seatSize : CGFloat) {
         if seat[index].exit == true {
             button = UIButton()
-            button.backgroundColor = UIColor.red
+            button.backgroundColor = .colorPinkRed
             button.frame = CGRect(x: 4, y: CGFloat(ynewOffset), width: 5, height: seatSize)
             mScrollView.addSubview(button)
             if index  == (seat.count ) - 1{
                 button = UIButton()
-                button.backgroundColor = UIColor.red
                 button.frame = CGRect(x: xnewOffset + seatSize + 10 , y: CGFloat(ynewOffset), width: 5, height: seatSize)
                 mScrollView.addSubview(button)
             }
