@@ -127,7 +127,7 @@ public class SampleViewController: UIViewController{
             xOffset = xOffset  + CGFloat(8) + seatSize
             seatScrollView.addSubview(button)
             if configurationIndex  == (configuration.count ) - 1{
-                height = yOffset + seatSize + 8  + 10//yaxis padding
+                height = yOffset + seatSize + 8  //+ 10//yaxis padding
             }
         }
     }
