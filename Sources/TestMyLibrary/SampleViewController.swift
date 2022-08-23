@@ -172,7 +172,7 @@ public class SampleViewController: UIViewController{
             button = UIButton()
             button.backgroundColor = UIColor.clear
             button.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 12)
-            if seat.number != ""{
+            if seat.number == ""{
             button.setTitle(rowNumber, for: .normal)
             button.setTitleColor(.colorGray, for: .normal)
             }
