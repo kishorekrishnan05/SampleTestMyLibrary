@@ -12,10 +12,10 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct Rows : Codable {
-	let seats : [Seats]?
-	let number : String?
-	let wing : Bool?
+public struct Rows : Codable {
+    public let seats : [Seats]?
+    public let number : String?
+    public let wing : Bool?
 
 	enum CodingKeys: String, CodingKey {
 

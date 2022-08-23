@@ -12,20 +12,20 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct SeatMap : Codable {
-	let flightNumber : Int?
-	let flightDateTime : String?
-	let departure : String?
-	let arrival : String?
-	let codeshareFlightNumber : String?
-	let seatLegendId : String?
-	let cabins : [Cabins]?
-	let legId : String?
-	let fleetType : String?
-	let seatMapAvailabe : Bool?
-	let keyInsightsOrderingList : [KeyInsightsOrderingList]?
-	let keyInsightsActionsOrderingList : [KeyInsightsActionsOrderingList]?
-	let actionFeedbackQuestionList : [ActionFeedbackQuestionList]?
+public struct SeatMap : Codable {
+    public let flightNumber : Int?
+    public let flightDateTime : String?
+    public let departure : String?
+    public let arrival : String?
+    public let codeshareFlightNumber : String?
+    public let seatLegendId : String?
+    public let cabins : [Cabins]?
+    public let legId : String?
+    public let fleetType : String?
+    public let seatMapAvailabe : Bool?
+    public let keyInsightsOrderingList : [KeyInsightsOrderingList]?
+    public let keyInsightsActionsOrderingList : [KeyInsightsActionsOrderingList]?
+    public let actionFeedbackQuestionList : [ActionFeedbackQuestionList]?
 
 	enum CodingKeys: String, CodingKey {
 

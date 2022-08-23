@@ -130,7 +130,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     var seatsVMData : NSMutableDictionary?
     var yPosition : CGFloat = 0
     // let label = UILabel()
-    var test : ModelSeatMap?
+    public var test : ModelSeatMap?
     var header = [TestDataForHeight]()
     var seatIconBtnsIndex: Int = 0
     var cabinAvgSeatHeightData : NSMutableArray?
@@ -173,7 +173,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         self.view.addSubview(viewTest)
         self.view.bringSubviewToFront(viewTest)
         self.viewTest.isHidden = true
-        testJson()
+        //testJson()
         // UALSeatVMCRM.buildDataObjects((self.test?.crmSeatMapResponse?.seatMap)!)
         // seatsVMData = UALSeatVMCRM.getSeatsData()
         //LabelUI()

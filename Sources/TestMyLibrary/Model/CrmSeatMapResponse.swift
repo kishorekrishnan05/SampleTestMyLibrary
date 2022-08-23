@@ -12,22 +12,22 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct CrmSeatMapResponse : Codable {
-	let marketingCarrierCode : String?
-	let operatingCarrierCode : String?
-	let flightNumber : String?
-	let flightDate : String?
-	let departureAirportCode : String?
-	let arrivalAirportCode : String?
-	let seatMap : SeatMap?
-	let arrivalDate : String?
-	let transactionId : String?
-	let languageCode : String?
-	let machineName : String?
-	let callDuration : Int?
-	let externalcallDuration : Int?
-	let internalcallDuration : Int?
-	let exception : String?
+public struct CrmSeatMapResponse : Codable {
+    public let marketingCarrierCode : String?
+    public let operatingCarrierCode : String?
+    public let flightNumber : String?
+    public let flightDate : String?
+    public let departureAirportCode : String?
+    public let arrivalAirportCode : String?
+    public let seatMap : SeatMap?
+    public let arrivalDate : String?
+    public let transactionId : String?
+    public let languageCode : String?
+    public let machineName : String?
+    public let callDuration : Int?
+    public let externalcallDuration : Int?
+    public let internalcallDuration : Int?
+    public let exception : String?
 
 	enum CodingKeys: String, CodingKey {
 
