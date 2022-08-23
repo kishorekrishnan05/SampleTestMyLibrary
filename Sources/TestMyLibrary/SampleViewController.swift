@@ -183,8 +183,8 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         //delegate?.lastIndex(flightInfo: "Kishore", selecetdIndexDate: "Kishore")
     }
     
-    func setupHeader(tilte: String,configuration: String) {
-        let button = UIButton()
+    func setupHeader(title: String,configuration: String) {
+        label = UILabel()
         label.textColor = UIColor.colorDarkblue
         label.font = UIFont(name: "OpenSans-SemiBold", size: 16)
             label.text = title
@@ -357,7 +357,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             
             //print(value.count)
             for cabinIndex in 0..<cabinValue.count {
-                setupHeader( tilte: "\(cabinValue[cabinIndex].cos ?? "")", configuration: cabinValue[cabinIndex].configuration ?? "")
+                setupHeader(title: "\(cabinValue[cabinIndex].cos ?? "")", configuration: cabinValue[cabinIndex].configuration ?? "")
                 if let rowValue = cabinValue[cabinIndex].rows {
                 setupRows(row: rowValue, cabinIndex: cabinIndex, configuration: cabinValue[cabinIndex].configuration ?? "", configutationHeader: "\(cabinValue[cabinIndex].cos ?? "")")
                 }
