@@ -162,7 +162,12 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         
         viewTest.frame = CGRect(x: 16, y: 60, width: view.frame.width - 16, height: 60)
         viewTest.backgroundColor = .lightText
-        
+        for family in UIFont.familyNames {
+            print("family:", family)
+            for font in UIFont.fontNames(forFamilyName: family) {
+                print("font:", font)
+            }
+        }
         
         
         self.view.addSubview(viewTest)
