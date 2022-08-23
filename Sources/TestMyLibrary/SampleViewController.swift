@@ -492,116 +492,116 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     
 }
 
-import UIKit
-
-extension UIColor {
-
-    func aspectRatioImage() -> UIImage {
-        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
-        let ctx = UIGraphicsGetCurrentContext()
-        self.setFill()
-        ctx!.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
-        let image = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
-        UIGraphicsEndImageContext()
-        return image
-    }
-    open class var strokeColor: UIColor {
-        return self.init(red: 128/255, green: 128/255, blue: 128/255, alpha: 1.0)
-    }
-
-    open class var emailLineColor: UIColor {
-        return self.init(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
-    }
-    open class var appGrayColor: UIColor {
-        return self.init(red: 168/255, green: 168/255, blue: 168/255, alpha: 1.0)
-    }
-
-    open class var grayColor: UIColor {
-        return self.init(red: 92/255, green: 92/255, blue: 92/255, alpha: 1.0)
-    }
-
-    open class var lightGray: UIColor {
-        return self.init(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
-    }
-
-    open class var extralightGray: UIColor {
-        return self.init(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.5)
-    }
-
-    open class var extralightGrayAlpha3: UIColor {
-        return self.init(red: 0, green: 0, blue: 0, alpha: 0.3)
-    }
-
-    open class var navigationColor: UIColor {
-        return self.init(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
-    }
-
-    open class var seperatorColor: UIColor {
-        return self.init(red: 0.88, green: 0.88, blue: 0.88, alpha: 1.0)
-    }
-
-    open class var viewBackgroundColor: UIColor {
-        return self.init(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.0)
-    }
-
-    open class var headerTitleColor: UIColor {
-        return "#030F09".hexStringToUIColor()
-    }
-
-    open class var grayColorSecondary: UIColor {
-        return "#606060".hexStringToUIColor()
-    }
-
-    open class var colorPinkRed: UIColor {
-        return "#D50032".hexStringToUIColor()
-    }
-
-    open class var textFieldBorderColor: UIColor {
-        return "#333333".hexStringToUIColor()
-    }
-
-    open class var buttonEnabledColor: UIColor {
-        return "#6244BB".hexStringToUIColor()
-    }
-
-    open class var buttonDisabledColor: UIColor {
-        return "#E6E6E6".hexStringToUIColor()
-    }
-
-    open class var buttonDisabledTextColor: UIColor {
-        return "#666666".hexStringToUIColor()
-    }
-
-    open class var shadowBottomColor: UIColor {
-        return self.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3)
-    }
-
-    open class var shadowColor: UIColor {
-        return self.init(red: 0.05, green: 0.2, blue: 0.13, alpha: 0.4)
-    }
-}
-
-extension String {
-    func hexStringToUIColor() -> UIColor {
-        var cString: String = self.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-
-        if cString.hasPrefix("#") {
-            cString.remove(at: cString.startIndex)
-        }
-
-        if (cString.count) != 6 {
-            return UIColor.gray
-        }
-
-        var rgbValue: UInt64 = 0
-        Scanner(string: cString).scanHexInt64(&rgbValue)
-
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
-
-}
+//import UIKit
+//
+//extension UIColor {
+//
+//    func aspectRatioImage() -> UIImage {
+//        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
+//        let ctx = UIGraphicsGetCurrentContext()
+//        self.setFill()
+//        ctx!.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
+//        let image = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
+//        UIGraphicsEndImageContext()
+//        return image
+//    }
+//    open class var strokeColor: UIColor {
+//        return self.init(red: 128/255, green: 128/255, blue: 128/255, alpha: 1.0)
+//    }
+//
+//    open class var emailLineColor: UIColor {
+//        return self.init(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
+//    }
+//    open class var appGrayColor: UIColor {
+//        return self.init(red: 168/255, green: 168/255, blue: 168/255, alpha: 1.0)
+//    }
+//
+//    open class var grayColor: UIColor {
+//        return self.init(red: 92/255, green: 92/255, blue: 92/255, alpha: 1.0)
+//    }
+//
+//    open class var lightGray: UIColor {
+//        return self.init(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
+//    }
+//
+//    open class var extralightGray: UIColor {
+//        return self.init(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.5)
+//    }
+//
+//    open class var extralightGrayAlpha3: UIColor {
+//        return self.init(red: 0, green: 0, blue: 0, alpha: 0.3)
+//    }
+//
+//    open class var navigationColor: UIColor {
+//        return self.init(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
+//    }
+//
+//    open class var seperatorColor: UIColor {
+//        return self.init(red: 0.88, green: 0.88, blue: 0.88, alpha: 1.0)
+//    }
+//
+//    open class var viewBackgroundColor: UIColor {
+//        return self.init(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.0)
+//    }
+//
+//    open class var headerTitleColor: UIColor {
+//        return "#030F09".hexStringToUIColor()
+//    }
+//
+//    open class var grayColorSecondary: UIColor {
+//        return "#606060".hexStringToUIColor()
+//    }
+//
+//    open class var colorPinkRed: UIColor {
+//        return "#D50032".hexStringToUIColor()
+//    }
+//
+//    open class var textFieldBorderColor: UIColor {
+//        return "#333333".hexStringToUIColor()
+//    }
+//
+//    open class var buttonEnabledColor: UIColor {
+//        return "#6244BB".hexStringToUIColor()
+//    }
+//
+//    open class var buttonDisabledColor: UIColor {
+//        return "#E6E6E6".hexStringToUIColor()
+//    }
+//
+//    open class var buttonDisabledTextColor: UIColor {
+//        return "#666666".hexStringToUIColor()
+//    }
+//
+//    open class var shadowBottomColor: UIColor {
+//        return self.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3)
+//    }
+//
+//    open class var shadowColor: UIColor {
+//        return self.init(red: 0.05, green: 0.2, blue: 0.13, alpha: 0.4)
+//    }
+//}
+//
+//extension String {
+//    func hexStringToUIColor() -> UIColor {
+//        var cString: String = self.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+//
+//        if cString.hasPrefix("#") {
+//            cString.remove(at: cString.startIndex)
+//        }
+//
+//        if (cString.count) != 6 {
+//            return UIColor.gray
+//        }
+//
+//        var rgbValue: UInt64 = 0
+//        Scanner(string: cString).scanHexInt64(&rgbValue)
+//
+//        return UIColor(
+//            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+//            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+//            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+//            alpha: CGFloat(1.0)
+//        )
+//    }
+//
+//}
