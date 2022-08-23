@@ -184,17 +184,12 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupHeader(title: String,configuration: String) {
-        var labelView = UILabel()
+        let labelView = UILabel()
         labelView.textColor = UIColor.colorDarkblue
         labelView.font = UIFont(name: "OpenSans-SemiBold", size: 16)
         labelView.text = title
         labelView.frame = CGRect(x: 0, y: CGFloat(height), width: view.frame.width, height: 24)
         labelView.textAlignment = .center
-       /* button.frame = CGRect(x: 100, y: CGFloat(height), width: 200, height: 40)
-        //mScrollView.addSubview(button)
-        button.titleLabel?.font = UIFont(name: "OpenSans-SemiBold", size: 16)//UIFont.boldSystemFont(ofSize: 16)//fontStyle?.mediumFont
-        button.setTitle(tilte, for: .normal)
-        button.setTitleColor(UIColor.colorDarkblue, for: .normal)//fontStyle?.colorBlue*/
         setupWingHeader(LeftWing: true)
         setupWingHeader(LeftWing: false)
         height += 36
@@ -202,7 +197,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
        // mScrollView.addSubview(imageView)
     }
     func setupWingHeader(LeftWing : Bool){
-        var imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.frame = CGRect(x:LeftWing ? view.frame.width - 120 : 8, y: height + 5, width: 100, height: 24)
         imageView.contentMode = .scaleAspectFit
         imageView.image = LeftWing ? UIImage(named:"leftUE") : UIImage(named:"RightUE")
@@ -221,9 +216,9 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             button = UIButton()
             button.backgroundColor = UIColor.clear
             if configuration[index] != "-" {
+                button.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 12)
+                button.setTitleColor(UIColor.colorGray, for: .normal)
                 button.setTitle("\(configuration[index])", for: .normal)
-                button.titleLabel?.font = UIFont(name: "OpenSans-ExtraBold", size: 16)
-                button.setTitleColor(UIColor.colorPinkRed, for: .normal)
             }
             
             button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: seatSize, height: seatSize)
