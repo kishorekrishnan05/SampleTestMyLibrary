@@ -248,7 +248,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         //mScrollView.addSubview(button)
         button.titleLabel?.font = UIFont(name: "OpenSans-ExtraBold", size: 16)//UIFont.boldSystemFont(ofSize: 16)//fontStyle?.mediumFont
         button.setTitle(tilte, for: .normal)
-        button.setTitleColor(UIColor.colorPinkRed, for: .normal)//fontStyle?.colorBlue
+        button.setTitleColor(fontGivenColor, for: .normal)//fontStyle?.colorBlue
         setupWingHeader(LeftWing: true)
         setupWingHeader(LeftWing: false)
         height += 50
@@ -277,7 +277,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             if configuration[index] != "-" {
                 button.setTitle("\(configuration[index])", for: .normal)
                 button.titleLabel?.font = UIFont(name: "OpenSans-ExtraBold", size: 16)
-                button.setTitleColor(UIColor.colorPinkRed, for: .normal)
+                button.setTitleColor(fontGivenColor, for: .normal)
             }
             
             button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: SeatWidthHeight, height: SeatWidthHeight)
@@ -349,7 +349,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             xnewOffset = xnewOffset  + CGFloat(8) + SeatWidthHeight
             var iconbutton = UIButton()
             iconbutton.setImage(UIImage(named: "action"), for: .normal)
-            iconbutton.backgroundColor = UIColor.colorPinkRed//fontStyle?.colorBlue//UIColor.green
+            iconbutton.backgroundColor = fontGivenColor//fontStyle?.colorBlue//UIColor.green
             iconbutton.imageView?.contentMode = .scaleAspectFill
             iconbutton.frame = CGRect(x: xnewOffset - 18, y: CGFloat(ynewOffset - 8), width: 16, height: 16)
             iconbutton.layer.cornerRadius = 0.5 * iconbutton.bounds.size.width
