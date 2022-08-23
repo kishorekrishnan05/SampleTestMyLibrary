@@ -107,7 +107,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     // let label = UILabel()
     public var modelSeat : ModelSeatMap?
     var headerValue = [ModelHeader]()
-    var height:CGFloat = 16
+    var height:CGFloat = 0
     var button = UIButton()
     @IBOutlet weak var labelHeader: UILabel!
     
@@ -183,13 +183,13 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         //delegate?.lastIndex(flightInfo: "Kishore", selecetdIndexDate: "Kishore")
     }
     
-    func setupHeader(title: String,configuration: String) {
-        height += 27
+    func setupHeader(title: String,configuration: String,headerIndex:Int) {
+        height = headerIndex == 0 ? height : height + 27
         let labelView = UILabel()
         labelView.textColor = UIColor.colorDarkblue
         labelView.font = UIFont(name: "OpenSans-SemiBold", size: 16)
         labelView.text = title
-        labelView.frame = CGRect(x: 0, y: CGFloat(height), width: view.frame.width, height: 24)
+        labelView.frame = CGRect(x: 0, y: height, width: view.frame.width, height: 24)
         labelView.textAlignment = .center
         setupWingHeader(LeftWing: true)
         setupWingHeader(LeftWing: false)
@@ -353,7 +353,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             
             //print(value.count)
             for cabinIndex in 0..<cabinValue.count {
-                setupHeader(title: "\(cabinValue[cabinIndex].cos ?? "")", configuration: cabinValue[cabinIndex].configuration ?? "")
+                setupHeader(title: "\(cabinValue[cabinIndex].cos ?? "")", configuration: cabinValue[cabinIndex].configuration ?? "", headerIndex: cabinIndex)
                 if let rowValue = cabinValue[cabinIndex].rows {
                 setupRows(row: rowValue, cabinIndex: cabinIndex, configuration: cabinValue[cabinIndex].configuration ?? "", configutationHeader: "\(cabinValue[cabinIndex].cos ?? "")")
                 }
