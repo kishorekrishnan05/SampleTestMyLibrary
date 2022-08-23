@@ -173,14 +173,14 @@ public class SampleViewController: UIViewController{
             button.backgroundColor = UIColor.clear
             button.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 12)
             if seat.number == ""{
-            button.setTitle(rowNumber, for: .normal)
-            button.setTitleColor(.colorGray, for: .normal)
+                button.setTitle(rowNumber, for: .normal)
+                button.setTitleColor(.colorGray, for: .normal)
             }
             button.frame = CGRect(x: xOffset, y: CGFloat(yOffset), width: seatSize, height: seatSize)
             xOffset = xOffset  + CGFloat(8) + seatSize
             seatScrollView.addSubview(button)
         }else{
-            setupSeatColor(seatValue: seat.seatvalue!)
+            setupSeatColor(seatValue: seat.seatvalue ?? "")
             let seatValue = seatDetails(target: self, action: #selector(setupSeatValue(sender:)))
             button.addGestureRecognizer(seatValue)
             seatValue.data = seat
@@ -192,7 +192,7 @@ public class SampleViewController: UIViewController{
             //seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: "Icons_24px_Travel_"))
             //Recognition Function need to confirm the key
             if seat.crmInfo?.crmProfile?.actionIndicator ?? false{
-             seatScrollView.addSubview(setupbadge(imageNameString: "action", backgroundColor: .colorPinkRed))
+                seatScrollView.addSubview(setupbadge(imageNameString: "action", backgroundColor: .colorPinkRed))
             }
             
         }
@@ -296,7 +296,7 @@ extension SampleViewController{
         viewHeader.layoutSubviews()
         for (itemIndex,itemValue) in headerValue.enumerated() {
             if itemIndex != headerValue.count - 1 {
-                if scrollYPosition + 30 < headerValue[itemIndex + 1].height!  {
+                if scrollYPosition + 30 < headerValue[itemIndex + 1].height ?? 0  {
                     setupScrollHeaderValue(Index: itemIndex, value: itemValue, xAxis: leadingValue)
                     break
                 }
@@ -315,13 +315,15 @@ extension SampleViewController{
         label.textAlignment = .center
         viewHeader.addSubview(label)
         for configurationValue in 0..<(value.configuration?.count ?? -1){
-            let index1 = String.Index(encodedOffset: configurationValue)
+            let index = String.Index(encodedOffset: configurationValue)
             button = UIButton()
             button.backgroundColor = UIColor.clear
-            if value.configuration![index1] != "-" {
-                button.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 12)
-                button.setTitle("\(value.configuration![index1])", for: .normal)
-                button.setTitleColor(UIColor.colorGray, for: .normal)
+            if let congifuration = value.configuration?[index]{
+                if congifuration != "-" {
+                    button.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 12)
+                    button.setTitle("\(congifuration)", for: .normal)
+                    button.setTitleColor(UIColor.colorGray, for: .normal)
+                }
             }
             
             button.frame = CGRect(x: leadingValue, y: CGFloat(36), width: value.seatSize ?? 0, height: 16)
