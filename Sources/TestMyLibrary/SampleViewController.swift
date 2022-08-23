@@ -188,7 +188,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         label.textColor = UIColor.colorDarkblue
         label.font = UIFont(name: "OpenSans-SemiBold", size: 16)
             label.text = title
-            label.frame = CGRect(x: 0, y: CGFloat(height), width: 200, height: 24)
+        label.frame = CGRect(x: 0, y: CGFloat(height), width: view.frame.width, height: 24)
             label.textAlignment = .center
        /* button.frame = CGRect(x: 100, y: CGFloat(height), width: 200, height: 40)
         //mScrollView.addSubview(button)
