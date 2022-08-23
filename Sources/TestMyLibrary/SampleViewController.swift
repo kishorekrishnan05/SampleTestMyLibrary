@@ -76,7 +76,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         label.font = UIFont(name: "OpenSans-SemiBold", size: 16)
         var leadingValue = xAxis
             label.text = value.name
-            label.frame = CGRect(x: 0, y: 0, width: viewTest.frame.width, height: 20)
+            label.frame = CGRect(x: 0, y: 0, width: viewTest.frame.width, height: 24)
             label.textAlignment = .center
             viewTest.addSubview(label)
             for abcd in 0..<(value.configuration?.count ?? -1){
@@ -90,7 +90,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
                     button.setTitleColor(UIColor.colorGray, for: .normal)
                 }
                 
-                button.frame = CGRect(x: leadingValue, y: CGFloat(20), width: value.seatSize ?? 0, height: 16)
+                button.frame = CGRect(x: leadingValue, y: CGFloat(30), width: value.seatSize ?? 0, height: 16)
                 
                 leadingValue = leadingValue  + CGFloat(8) + (value.seatSize ?? 0)
                 viewTest.addSubview(button)
@@ -125,7 +125,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewTest.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 60)
+        viewTest.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 65)
         viewTest.backgroundColor = .colorGhostWhite
         viewTest.layer.masksToBounds = false
         viewTest.layer.shadowOffset = CGSize(width: -1, height: 1)
