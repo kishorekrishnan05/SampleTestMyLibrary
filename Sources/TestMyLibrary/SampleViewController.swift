@@ -105,7 +105,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var mScrollView: UIScrollView!
     // let label = UILabel()
-    public var test : ModelSeatMap?
+    public var ModelSeat : ModelSeatMap?
     var headerValue = [ModelHeader]()
     var height:CGFloat = 16
     var button = UIButton()
@@ -136,7 +136,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         //LabelUI()
         //newFuncRowWise()
         //newFuncEqualSpacing()
-        newFunc()
+        setupSeat()
         //newFuncWorkingFine()
         mScrollView.delegate = self
         //newFuncwith4Padding()
@@ -176,7 +176,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         do {
             let decoder = JSONDecoder()
             let messages = try decoder.decode(ModelSeatMap.self, from: readLocalFile(forName: "2325Flight")!)
-            test = messages
+            ModelSeat = messages
         } catch DecodingError.dataCorrupted(let context) {
             print(context)
         } catch DecodingError.keyNotFound(let key, let context) {
@@ -193,7 +193,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         }
         
         let responseModel = try? jsonDecoder.decode(ModelSeatMap.self, from: readLocalFile(forName: "201Update")!)
-        self.test = responseModel
+        self.ModelSeat = responseModel
         // dynamicButtonCreationNew()
     }
     @objc func pressed() {
@@ -202,9 +202,9 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     @objc func pressedd(sender: UIButton) {
         print("\(sender.tag)")
         print("Kishore")
-        if let value = self.test?.crmSeatMapResponse?.seatMap?.cabins {
+        /*if let value = self.test?.crmSeatMapResponse?.seatMap?.cabins {
             print(value[0].rows?[0].seats?[sender.tag])
-        }
+        }*/
         //delegate?.lastIndex(flightInfo: "Kishore", selecetdIndexDate: "Kishore")
     }
     
@@ -229,12 +229,12 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         imageView.backgroundColor = UIColor.clear
         mScrollView.addSubview(imageView)
     }
-    func setupConfiguration(configuration: String,SeatWidthHeight: CGFloat,configurationHeader : String){
+    func setupConfiguration(configuration: String,seatSize: CGFloat,configurationHeader : String){
         var header = ModelHeader()
         header.height = height
         header.name = configurationHeader
         header.configuration = configuration
-        header.seatSize = SeatWidthHeight
+        header.seatSize = seatSize
         headerValue.append(header)
         for abcd in 0..<configuration.count{
             let index = String.Index(encodedOffset: abcd)
@@ -246,25 +246,25 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
                 button.setTitleColor(UIColor.colorPinkRed, for: .normal)
             }
             
-            button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: SeatWidthHeight, height: SeatWidthHeight)
-            xnewOffset = xnewOffset  + CGFloat(8) + SeatWidthHeight
+            button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: seatSize, height: seatSize)
+            xnewOffset = xnewOffset  + CGFloat(8) + seatSize
             mScrollView.addSubview(button)
             //}
             if abcd  == (configuration.count ) - 1{
-                height = ynewOffset + SeatWidthHeight + 8 + 10 //yaxis padding
+                height = ynewOffset + seatSize + 8 + 10 //yaxis padding
             }
         }
     }
-    func setupISExit(seat: [Seats],index: Int,SeatWidthHeight : CGFloat) {
+    func setupISExit(seat: [Seats],index: Int,seatSize : CGFloat) {
         if seat[index].exit == true {
             button = UIButton()
             button.backgroundColor = UIColor.red
-            button.frame = CGRect(x: 4, y: CGFloat(ynewOffset), width: 5, height: SeatWidthHeight)
+            button.frame = CGRect(x: 4, y: CGFloat(ynewOffset), width: 5, height: seatSize)
             mScrollView.addSubview(button)
-            if index  == (seat.count ?? 0) - 1{
+            if index  == (seat.count ) - 1{
                 button = UIButton()
                 button.backgroundColor = UIColor.red
-                button.frame = CGRect(x: xnewOffset + SeatWidthHeight + 10 , y: CGFloat(ynewOffset), width: 5, height: SeatWidthHeight)
+                button.frame = CGRect(x: xnewOffset + seatSize + 10 , y: CGFloat(ynewOffset), width: 5, height: seatSize)
                 mScrollView.addSubview(button)
             }
         }
@@ -289,7 +289,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    func setupSeatRowNumber(seat: Seats, rowNumber: String,SeatWidthHeight: CGFloat,index: Int,cabinindex: Int) {
+    func setupSeatRowNumber(seat: Seats, rowNumber: String,seatSize: CGFloat,index: Int,cabinindex: Int) {
         //Button Tag Kishore
         var imageView = UIImageView()
         //0 0 6
@@ -300,8 +300,8 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             button.titleLabel?.font = UIFont(name: "OpenSans-ExtraBold", size: 16)//UIFont.boldSystemFont(ofSize: 16)//fontGiven//fontStyle?.mediumFont
             button.setTitle(rowNumber, for: .normal)
             button.setTitleColor(UIColor.gray, for: .normal)
-            button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: SeatWidthHeight, height: SeatWidthHeight)
-            xnewOffset = xnewOffset  + CGFloat(8) + SeatWidthHeight
+            button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: seatSize, height: seatSize)
+            xnewOffset = xnewOffset  + CGFloat(8) + seatSize
             mScrollView.addSubview(button)
         }else{
             let imageSize:CGSize = CGSize(width: 20, height: 20)
@@ -311,8 +311,8 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
                     tappy.data = seat
             //button.addTarget(self, action: #selector(pressedd), for: .touchUpInside)
             button.imageView?.contentMode = .scaleAspectFit
-            button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: SeatWidthHeight, height: SeatWidthHeight)
-            xnewOffset = xnewOffset  + CGFloat(8) + SeatWidthHeight
+            button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: seatSize, height: seatSize)
+            xnewOffset = xnewOffset  + CGFloat(8) + seatSize
             var iconbutton = UIButton()
             iconbutton.setImage(UIImage(named: "action"), for: .normal)
             iconbutton.backgroundColor = UIColor.colorPinkRed//fontStyle?.colorBlue//UIColor.green
@@ -320,7 +320,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             iconbutton.frame = CGRect(x: xnewOffset - 18, y: CGFloat(ynewOffset - 8), width: 16, height: 16)
             iconbutton.layer.cornerRadius = 0.5 * iconbutton.bounds.size.width
             iconbutton.clipsToBounds = true
-            var testvalue = CGFloat(SeatWidthHeight * 0.6)
+            var testvalue = CGFloat(seatSize * 0.6)
             imageView.frame = CGRect(x:button.center.x - (testvalue / 2) , y: button.center.y - (testvalue / 2), width: testvalue, height: testvalue)
             imageView.contentMode = .scaleAspectFit
             imageView.image = UIImage(named:"Icons_24px_Travel_")
@@ -331,102 +331,63 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             mScrollView.addSubview(iconbutton)
         }
     }
-    func setupSeat(SeatWidthHeight: CGFloat,row :Rows,rowindex: Int,Cabinindex:Int){
+    func setupSeat(seatSize: CGFloat,row :Rows,rowindex: Int,cabinindex:Int){
         for seattry in 0..<(row.seats?.count ?? -1){
             if let seats = row.seats {
-                setupISExit(seat: seats, index: seattry, SeatWidthHeight: SeatWidthHeight)
+                setupISExit(seat: seats, index: seattry, seatSize: seatSize)
             }
             if let seatsNumber = row.seats?[seattry] {
-                setupSeatRowNumber(seat: seatsNumber, rowNumber: row.number ?? "", SeatWidthHeight: SeatWidthHeight,index : seattry, cabinindex: Cabinindex )
+                setupSeatRowNumber(seat: seatsNumber, rowNumber: row.number ?? "", seatSize: seatSize,index : seattry, cabinindex: cabinindex )
             }
             if seattry  == (row.seats?.count ?? 0) - 1{
-                height = ynewOffset + SeatWidthHeight + 8//yaxis padding
+                height = ynewOffset + seatSize + 8//yaxis padding
             }
         }
     }
-    func setupRows(row : [Rows],j: Int,configuration:String,configutationHeader : String)
+    func setupRows(row : [Rows],cabinIndex: Int,configuration:String,configutationHeader : String)
     {
-        //  var ynewOffset:CGFloat = 8
-        // var xnewOffset:CGFloat = 16
-        button = UIButton()
-        let rowIndexAddABCD = (row.count) + 1
+        let rowCount = (row.count) + 1
         var headerBool = 0
-        for rowtry in 0..<rowIndexAddABCD{
-            if j == 0 && headerBool == 0{
+        for rowIndex in 0..<rowCount{
+            if cabinIndex == 0 && headerBool == 0{
                 ynewOffset = height
                 xnewOffset = 16
             } else {
                 xnewOffset = 16
-                ynewOffset = height //yaxis padding
+                ynewOffset = height
             }
             
-            let widthHeightButton  = buttonWidthrowWise(index: row[0].seats?.count ?? 0) - CGFloat(8)
+            let seatSize  = setupSeatSize(index: row[0].seats?.count ?? 0) - CGFloat(8)
             if headerBool == 0 {
                 headerBool += 1
-                setupConfiguration(configuration: configuration, SeatWidthHeight: widthHeightButton, configurationHeader: configutationHeader)
+                setupConfiguration(configuration: configuration, seatSize: seatSize, configurationHeader: configutationHeader)
             }
             else {
                 headerBool += 1
-                setupSeat(SeatWidthHeight: widthHeightButton, row: row[rowtry - 1], rowindex: rowtry, Cabinindex: j)
+                setupSeat(seatSize: seatSize, row: row[rowIndex - 1], rowindex: rowIndex, cabinindex: cabinIndex)
                 
             }
         }
     }
-    func newFunc(){
+    func setupSeat(){
         
-        // var height:CGFloat = 0
-        
-        // var ynewOffset:CGFloat = 8
-        //  var xnewOffset:CGFloat = 16
-        //mScrollView = UIScrollView(frame: CGRect(x: 0, y: 120, width: view.bounds.width, height: 50))
-        
-        
-        //mScrollView.backgroundColor = UIColor.blue
         mScrollView.translatesAutoresizingMaskIntoConstraints = false
-        if let value = self.test?.crmSeatMapResponse?.seatMap?.cabins {
+        if let cabinValue = self.ModelSeat?.crmSeatMapResponse?.seatMap?.cabins {
             button = UIButton()
-            var imageView = UIImageView()
             
             //print(value.count)
-            for j in 0..<value.count {
-                setupHeader( tilte: "\(value[j].cos!)", configuration: value[j].configuration ?? "")
-                /* var header1 = TestDataForHeight()
-                 let button = UIButton()
-                 button.frame = CGRect(x: 100, y: CGFloat(height), width: 200, height: 40)
-                 //mScrollView.addSubview(button)
-                 button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-                 button.setTitle("\(value[j].cos!)", for: .normal)
-                 button.setTitleColor(UIColor.gray, for: .normal)
-                 // button.translatesAutoresizingMaskIntoConstraints = false
-                 testArray.append(height)
-                 header1.height = height
-                 header1.name = "\(value[j].cos!)"
-                 header1.configuration = value[j].configuration ?? ""
-                 header.append(header1)
-                 height += 50
-                 mScrollView.addSubview(button)*/
-                
-                setupRows(row: value[j].rows!, j: j, configuration: value[j].configuration ?? "", configutationHeader: "\(value[j].cos!)")
-                
-                
-                /* var imageView : UIImageView
-                 imageView  = UIImageView(frame:CGRect(x: 10, y: CGFloat(height ), width: 100, height: 40));
-                 imageView.image = UIImage(named:"left")
-                 self.mScrollView.addSubview(imageView)
-                 var leftimageView : UIImageView
-                 leftimageView  = UIImageView(frame:CGRect(x: 300, y: CGFloat(height ), width: 100, height: 40));
-                 leftimageView.image = UIImage(named:"right")
-                 self.mScrollView.addSubview(leftimageView)*/
-                //height = ynewOffset + 130
+            for cabinIndex in 0..<cabinValue.count {
+                setupHeader( tilte: "\(cabinValue[cabinIndex].cos ?? "")", configuration: cabinValue[cabinIndex].configuration ?? "")
+                if let rowValue = cabinValue[cabinIndex].rows {
+                setupRows(row: rowValue, cabinIndex: cabinIndex, configuration: cabinValue[cabinIndex].configuration ?? "", configutationHeader: "\(cabinValue[cabinIndex].cos ?? "")")
+                }
                 
                 
             }
         }
-        
-        print(height)
         mScrollView.contentSize = CGSize(width: 0, height: height)
     }
-    func buttonWidthrowWise(index: Int) -> CGFloat{
+    func setupSeatSize(index: Int) -> CGFloat{
         return (view.frame.width - 40) / CGFloat(index)
     }
     
