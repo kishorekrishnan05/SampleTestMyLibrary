@@ -149,7 +149,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     var imageView = UIImageView()
     var imageView1 = UIImageView()
     public var fontGiven = UIFont()
-    //public var fontGivenColor = UIColor()
+    public var fontGivenColor = UIColor()
     @objc func tapped(sender : MyTapGesture) {
             print(sender.data)
         if let seats = sender.data {
@@ -241,9 +241,9 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         let button = UIButton()
         button.frame = CGRect(x: 100, y: CGFloat(height), width: 200, height: 40)
         //mScrollView.addSubview(button)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)//fontGiven//fontStyle?.mediumFont
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)//fontStyle?.mediumFont
         button.setTitle(tilte, for: .normal)
-       // button.setTitleColor(UIColor.green, for: .normal)//fontStyle?.colorBlue
+        button.setTitleColor(UIColor.colorPinkRed, for: .normal)//fontStyle?.colorBlue
         setupWingHeader(LeftWing: true)
         setupWingHeader(LeftWing: false)
         height += 50
@@ -255,7 +255,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         imageView.frame = CGRect(x:LeftWing ? viewTest.frame.width - 120 : 8, y: height + 5, width: 100, height: 40)
         imageView.contentMode = .scaleAspectFit
         imageView.image = LeftWing ? UIImage(named:"leftUE") : UIImage(named:"RightUE")
-       // imageView.backgroundColor = UIColor.clear
+        imageView.backgroundColor = UIColor.clear
         mScrollView.addSubview(imageView)
     }
     func setupConfiguration(configuration: String,SeatWidthHeight: CGFloat,configurationHeader : String){
@@ -268,10 +268,10 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         for abcd in 0..<configuration.count{
             let index = String.Index(encodedOffset: abcd)
             button = UIButton()
-            //button.backgroundColor = UIColor.clear
+            button.backgroundColor = UIColor.clear
             if configuration[index] != "-" {
                 button.setTitle("\(configuration[index])", for: .normal)
-                //button.setTitleColor(UIColor.gray, for: .normal)
+                button.setTitleColor(UIColor.gray, for: .normal)
             }
             
             button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: SeatWidthHeight, height: SeatWidthHeight)
@@ -286,12 +286,12 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     func setupISExit(seat: [Seats],index: Int,SeatWidthHeight : CGFloat) {
         if seat[index].exit == true {
             button = UIButton()
-            //button.backgroundColor = UIColor.red
+            button.backgroundColor = UIColor.red
             button.frame = CGRect(x: 4, y: CGFloat(ynewOffset), width: 5, height: SeatWidthHeight)
             mScrollView.addSubview(button)
             if index  == (seat.count ?? 0) - 1{
                 button = UIButton()
-                //button.backgroundColor = UIColor.red
+                button.backgroundColor = UIColor.red
                 button.frame = CGRect(x: xnewOffset + SeatWidthHeight + 10 , y: CGFloat(ynewOffset), width: 5, height: SeatWidthHeight)
                 mScrollView.addSubview(button)
             }
@@ -324,10 +324,10 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         button.tag = index
         if seat.seatvalue == "-"  {
             button = UIButton()
-            //button.backgroundColor = UIColor.clear
+            button.backgroundColor = UIColor.clear
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)//fontGiven//fontStyle?.mediumFont
             button.setTitle(rowNumber, for: .normal)
-          //  button.setTitleColor(UIColor.gray, for: .normal)
+            button.setTitleColor(UIColor.gray, for: .normal)
             button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: SeatWidthHeight, height: SeatWidthHeight)
             xnewOffset = xnewOffset  + CGFloat(8) + SeatWidthHeight
             mScrollView.addSubview(button)
@@ -343,7 +343,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             xnewOffset = xnewOffset  + CGFloat(8) + SeatWidthHeight
             var iconbutton = UIButton()
             iconbutton.setImage(UIImage(named: "action"), for: .normal)
-            //iconbutton.backgroundColor = fontGivenColor//fontStyle?.colorBlue//UIColor.green
+            iconbutton.backgroundColor = UIColor.colorPinkRed//fontStyle?.colorBlue//UIColor.green
             iconbutton.imageView?.contentMode = .scaleAspectFill
             iconbutton.frame = CGRect(x: xnewOffset - 18, y: CGFloat(ynewOffset - 8), width: 16, height: 16)
             iconbutton.layer.cornerRadius = 0.5 * iconbutton.bounds.size.width
@@ -352,7 +352,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             imageView.frame = CGRect(x:button.center.x - (testvalue / 2) , y: button.center.y - (testvalue / 2), width: testvalue, height: testvalue)
             imageView.contentMode = .scaleAspectFit
             imageView.image = UIImage(named:"Icons_24px_Travel_")
-            //imageView.backgroundColor = UIColor.clear
+            imageView.backgroundColor = UIColor.clear
             
             mScrollView.addSubview(button)
             mScrollView.addSubview(imageView)
@@ -486,116 +486,116 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     
 }
 
-//import UIKit
-//
-//extension UIColor {
-//
-//    func aspectRatioImage() -> UIImage {
-//        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
-//        let ctx = UIGraphicsGetCurrentContext()
-//        self.setFill()
-//        ctx!.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
-//        let image = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
-//        UIGraphicsEndImageContext()
-//        return image
-//    }
-//    open class var strokeColor: UIColor {
-//        return self.init(red: 128/255, green: 128/255, blue: 128/255, alpha: 1.0)
-//    }
-//
-//    open class var emailLineColor: UIColor {
-//        return self.init(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
-//    }
-//    open class var appGrayColor: UIColor {
-//        return self.init(red: 168/255, green: 168/255, blue: 168/255, alpha: 1.0)
-//    }
-//
-//    open class var grayColor: UIColor {
-//        return self.init(red: 92/255, green: 92/255, blue: 92/255, alpha: 1.0)
-//    }
-//
-//    open class var lightGray: UIColor {
-//        return self.init(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
-//    }
-//
-//    open class var extralightGray: UIColor {
-//        return self.init(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.5)
-//    }
-//
-//    open class var extralightGrayAlpha3: UIColor {
-//        return self.init(red: 0, green: 0, blue: 0, alpha: 0.3)
-//    }
-//
-//    open class var navigationColor: UIColor {
-//        return self.init(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
-//    }
-//
-//    open class var seperatorColor: UIColor {
-//        return self.init(red: 0.88, green: 0.88, blue: 0.88, alpha: 1.0)
-//    }
-//
-//    open class var viewBackgroundColor: UIColor {
-//        return self.init(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.0)
-//    }
-//
-//    open class var headerTitleColor: UIColor {
-//        return "#030F09".hexStringToUIColor()
-//    }
-//
-//    open class var grayColorSecondary: UIColor {
-//        return "#606060".hexStringToUIColor()
-//    }
-//
-//    open class var colorPinkRed: UIColor {
-//        return "#D50032".hexStringToUIColor()
-//    }
-//
-//    open class var textFieldBorderColor: UIColor {
-//        return "#333333".hexStringToUIColor()
-//    }
-//
-//    open class var buttonEnabledColor: UIColor {
-//        return "#6244BB".hexStringToUIColor()
-//    }
-//
-//    open class var buttonDisabledColor: UIColor {
-//        return "#E6E6E6".hexStringToUIColor()
-//    }
-//
-//    open class var buttonDisabledTextColor: UIColor {
-//        return "#666666".hexStringToUIColor()
-//    }
-//
-//    open class var shadowBottomColor: UIColor {
-//        return self.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3)
-//    }
-//
-//    open class var shadowColor: UIColor {
-//        return self.init(red: 0.05, green: 0.2, blue: 0.13, alpha: 0.4)
-//    }
-//}
-//
-//extension String {
-//    func hexStringToUIColor() -> UIColor {
-//        var cString: String = self.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-//
-//        if cString.hasPrefix("#") {
-//            cString.remove(at: cString.startIndex)
-//        }
-//
-//        if (cString.count) != 6 {
-//            return UIColor.gray
-//        }
-//
-//        var rgbValue: UInt64 = 0
-//        Scanner(string: cString).scanHexInt64(&rgbValue)
-//
-//        return UIColor(
-//            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-//            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-//            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-//            alpha: CGFloat(1.0)
-//        )
-//    }
-//
-//}
+import UIKit
+
+extension UIColor {
+
+    func aspectRatioImage() -> UIImage {
+        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
+        let ctx = UIGraphicsGetCurrentContext()
+        self.setFill()
+        ctx!.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
+        let image = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    open class var strokeColor: UIColor {
+        return self.init(red: 128/255, green: 128/255, blue: 128/255, alpha: 1.0)
+    }
+
+    open class var emailLineColor: UIColor {
+        return self.init(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
+    }
+    open class var appGrayColor: UIColor {
+        return self.init(red: 168/255, green: 168/255, blue: 168/255, alpha: 1.0)
+    }
+
+    open class var grayColor: UIColor {
+        return self.init(red: 92/255, green: 92/255, blue: 92/255, alpha: 1.0)
+    }
+
+    open class var lightGray: UIColor {
+        return self.init(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
+    }
+
+    open class var extralightGray: UIColor {
+        return self.init(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.5)
+    }
+
+    open class var extralightGrayAlpha3: UIColor {
+        return self.init(red: 0, green: 0, blue: 0, alpha: 0.3)
+    }
+
+    open class var navigationColor: UIColor {
+        return self.init(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
+    }
+
+    open class var seperatorColor: UIColor {
+        return self.init(red: 0.88, green: 0.88, blue: 0.88, alpha: 1.0)
+    }
+
+    open class var viewBackgroundColor: UIColor {
+        return self.init(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.0)
+    }
+
+    open class var headerTitleColor: UIColor {
+        return "#030F09".hexStringToUIColor()
+    }
+
+    open class var grayColorSecondary: UIColor {
+        return "#606060".hexStringToUIColor()
+    }
+
+    open class var colorPinkRed: UIColor {
+        return "#D50032".hexStringToUIColor()
+    }
+
+    open class var textFieldBorderColor: UIColor {
+        return "#333333".hexStringToUIColor()
+    }
+
+    open class var buttonEnabledColor: UIColor {
+        return "#6244BB".hexStringToUIColor()
+    }
+
+    open class var buttonDisabledColor: UIColor {
+        return "#E6E6E6".hexStringToUIColor()
+    }
+
+    open class var buttonDisabledTextColor: UIColor {
+        return "#666666".hexStringToUIColor()
+    }
+
+    open class var shadowBottomColor: UIColor {
+        return self.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3)
+    }
+
+    open class var shadowColor: UIColor {
+        return self.init(red: 0.05, green: 0.2, blue: 0.13, alpha: 0.4)
+    }
+}
+
+extension String {
+    func hexStringToUIColor() -> UIColor {
+        var cString: String = self.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+        if cString.hasPrefix("#") {
+            cString.remove(at: cString.startIndex)
+        }
+
+        if (cString.count) != 6 {
+            return UIColor.gray
+        }
+
+        var rgbValue: UInt64 = 0
+        Scanner(string: cString).scanHexInt64(&rgbValue)
+
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
+
+}
