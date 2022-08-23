@@ -51,23 +51,23 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     }
     func setupScrollHeader(scrollYPosition: CGFloat)
     {
-        var newValue: CGFloat = 10
+        let leadingValue: CGFloat = 10
         //viewHeader.isHidden =  scrollView.contentOffset.y > 0 ? false : true
         viewTest.isHidden =  scrollYPosition > 0 ? false : true
         viewTest.subviews.forEach { temp in
             temp.removeFromSuperview()
         }
         viewTest.layoutSubviews()
-        for (index,i) in header.enumerated() {
+        for (itemIndex,itemValue) in header.enumerated() {
             //label = UILabel()
             //label.frame = CGRect(x: 10, y: 20, width: 200, height: 40)
-            if index != header.count - 1 {
-                if scrollYPosition + 30 < header[index + 1].height!  {
-                    setupScrollHeaderValue(Index: index, value: i, xAxis: newValue)
+            if itemIndex != header.count - 1 {
+                if scrollYPosition + 30 < header[itemIndex + 1].height!  {
+                    setupScrollHeaderValue(Index: itemIndex, value: itemValue, xAxis: leadingValue)
                     break
                 }
             }else{
-                setupScrollHeaderValue(Index: index, value: i, xAxis: newValue)
+                setupScrollHeaderValue(Index: itemIndex, value: itemValue, xAxis: leadingValue)
             }
         }
         
@@ -76,21 +76,11 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             // self.viewTest.isHidden = false
             // button.removeFromSuperview()
         label.textColor = UIColor.colorPinkRed
-        label.font = UIFont(name: "OpenSans-ExtraBold", size: 16)//UIFont.boldSystemFont(ofSize: 16)
-        var xAxisNew = xAxis
-            print("\(value.name) Kishore \(index)")
+        label.font = UIFont(name: "OpenSans-ExtraBold", size: 16)
+        var leadingValue = xAxis
             label.text = value.name
             label.frame = CGRect(x: 0, y: 0, width: viewTest.frame.width, height: 20)
             label.textAlignment = .center
-           // button.frame = CGRect(x: 10, y: 50, width: viewTest.frame.width, height: 40)
-       // setupWingHeader(LeftWing: true)
-        //setupWingHeader(LeftWing: false)
-        /*imageView1.frame = CGRect(x:0 , y: 0, width: 104, height: 40)
-        imageView1.contentMode = .scaleAspectFit
-        imageView1.image = UIImage(named:"leftUE")
-        imageView1.backgroundColor = UIColor.clear
-        viewTest.addSubview(imageView)
-        viewTest.addSubview(imageView1)*/
             viewTest.addSubview(label)
             for abcd in 0..<(value.configuration?.count ?? -1){
                 //button.setTitle(" ", for: .normal)
@@ -102,9 +92,9 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
                     button.setTitleColor(UIColor.gray, for: .normal)
                 }
                 
-                button.frame = CGRect(x: xAxisNew, y: CGFloat(20), width: value.seatSize ?? 0, height: 40)
+                button.frame = CGRect(x: leadingValue, y: CGFloat(20), width: value.seatSize ?? 0, height: 40)
                 
-                xAxisNew = xAxisNew  + CGFloat(8) + (value.seatSize ?? 0)
+                leadingValue = leadingValue  + CGFloat(8) + (value.seatSize ?? 0)
                 viewTest.addSubview(button)
             }
     }
@@ -481,7 +471,7 @@ extension UIColor {
         UIGraphicsEndImageContext()
         return image
     }
-    open class var strokeColor: UIColor {
+    /*open class var strokeColor: UIColor {
         return self.init(red: 128/255, green: 128/255, blue: 128/255, alpha: 1.0)
     }
 
@@ -518,7 +508,7 @@ extension UIColor {
 
     open class var viewBackgroundColor: UIColor {
         return self.init(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.0)
-    }
+    }*/
 
     open class var headerTitleColor: UIColor {
         return "#030F09".hexStringToUIColor()
