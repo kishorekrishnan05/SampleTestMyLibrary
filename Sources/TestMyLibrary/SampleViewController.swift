@@ -90,7 +90,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
                     button.setTitleColor(UIColor.colorGray, for: .normal)
                 }
                 
-                button.frame = CGRect(x: leadingValue, y: CGFloat(30), width: value.seatSize ?? 0, height: 16)
+                button.frame = CGRect(x: leadingValue, y: CGFloat(36), width: value.seatSize ?? 0, height: 16)
                 
                 leadingValue = leadingValue  + CGFloat(8) + (value.seatSize ?? 0)
                 viewTest.addSubview(button)
