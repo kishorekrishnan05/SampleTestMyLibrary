@@ -276,7 +276,8 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             button.backgroundColor = UIColor.clear
             if configuration[index] != "-" {
                 button.setTitle("\(configuration[index])", for: .normal)
-                button.setTitleColor(UIColor.gray, for: .normal)
+                button.titleLabel?.font = UIFont(name: "OpenSans-ExtraBold", size: 16)
+                button.setTitleColor(UIColor.colorPinkRed, for: .normal)
             }
             
             button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: SeatWidthHeight, height: SeatWidthHeight)
