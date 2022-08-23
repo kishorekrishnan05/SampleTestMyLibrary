@@ -51,7 +51,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     }
     func setupScrollHeader(scrollYPosition: CGFloat)
     {
-        let leadingValue: CGFloat = 20
+        let leadingValue: CGFloat = 24
         viewTest.isHidden =  scrollYPosition > 0 ? false : true
         viewTest.subviews.forEach { temp in
             temp.removeFromSuperview()
