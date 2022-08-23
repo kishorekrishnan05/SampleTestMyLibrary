@@ -212,8 +212,8 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         header.configuration = configuration
         header.seatSize = seatSize
         headerValue.append(header)
-        for abcd in 0..<configuration.count{
-            let index = String.Index(encodedOffset: abcd)
+        for configurationIndex in 0..<configuration.count{
+            let index = String.Index(encodedOffset: configurationIndex)
             button = UIButton()
             button.backgroundColor = UIColor.clear
             if configuration[index] != "-" {
@@ -226,8 +226,8 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             xnewOffset = xnewOffset  + CGFloat(8) + seatSize
             mScrollView.addSubview(button)
             //}
-            if abcd  == (configuration.count ) - 1{
-                height = ynewOffset + seatSize + 8 //yaxis padding
+            if configurationIndex  == (configuration.count ) - 1{
+                height = ynewOffset + seatSize + 8  + 10//yaxis padding
             }
         }
     }
@@ -298,10 +298,10 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             imageView.contentMode = .scaleAspectFit
             imageView.image = UIImage(named:"Icons_24px_Travel_")
             imageView.backgroundColor = UIColor.clear
-            
-            mScrollView.addSubview(button)
             mScrollView.addSubview(imageView)
             mScrollView.addSubview(iconbutton)
+            mScrollView.addSubview(button)
+            
         }
     }
     func setupSeat(seatSize: CGFloat,row :Rows,rowindex: Int,cabinindex:Int){
