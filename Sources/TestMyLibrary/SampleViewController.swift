@@ -184,6 +184,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupHeader(title: String,configuration: String) {
+        height += 16
         let labelView = UILabel()
         labelView.textColor = UIColor.colorDarkblue
         labelView.font = UIFont(name: "OpenSans-SemiBold", size: 16)
@@ -315,7 +316,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
                 setupSeatRowNumber(seat: seatsNumber, rowNumber: row.number ?? "", seatSize: seatSize,index : seattry, cabinindex: cabinindex )
             }
             if seattry  == (row.seats?.count ?? 0) - 1{
-                height = ynewOffset + seatSize + 24//yaxis padding
+                height = ynewOffset + seatSize + 8//yaxis padding
             }
         }
     }
