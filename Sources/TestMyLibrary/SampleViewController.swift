@@ -285,7 +285,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             button.imageView?.contentMode = .scaleAspectFit
             button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: seatSize, height: seatSize)
             xnewOffset = xnewOffset  + CGFloat(8) + seatSize
-            setupbadge(imageString: "action", backgroundColor: .colorPinkRed)
+            setupbadge(imageNameString: "action", backgroundColor: .colorPinkRed)
             /*var iconbutton = UIButton()
             iconbutton.setImage(UIImage(named: "action"), for: .normal)
             iconbutton.backgroundColor = UIColor.colorPinkRed//fontStyle?.colorBlue//UIColor.green
@@ -293,28 +293,38 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             iconbutton.frame = CGRect(x: xnewOffset - 18, y: CGFloat(ynewOffset - 8), width: 16, height: 16)
             iconbutton.layer.cornerRadius = 0.5 * iconbutton.bounds.size.width
             iconbutton.clipsToBounds = true*/
-            var testvalue = CGFloat(seatSize * 0.6)
+            /*var testvalue = CGFloat(seatSize * 0.6)
             imageView.frame = CGRect(x:button.center.x - (testvalue / 2) , y: button.center.y - (testvalue / 2), width: testvalue, height: testvalue)
             imageView.contentMode = .scaleAspectFit
             imageView.image = UIImage(named:"Icons_24px_Travel_")
             imageView.backgroundColor = UIColor.clear
-            mScrollView.addSubview(imageView)
+            mScrollView.addSubview(imageView)*/
             ////mScrollView.addSubview(iconbutton)
             mScrollView.addSubview(button)
-            mScrollView.addSubview(setupbadge(imageString: "action", backgroundColor: .colorPinkRed))
+            mScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: "Icons_24px_Travel_"))
+            mScrollView.addSubview(setupbadge(imageNameString: "action", backgroundColor: .colorPinkRed))
             //mScrollView.bringSubviewToFront(iconbutton)
             
         }
     }
-    func setupbadge(imageString: String, backgroundColor: UIColor) -> UIButton{
+    func setupbadge(imageNameString: String, backgroundColor: UIColor) -> UIButton{
         let iconbutton = UIButton()
-        iconbutton.setImage(UIImage(named: imageString), for: .normal)
+        iconbutton.setImage(UIImage(named: imageNameString), for: .normal)
         iconbutton.backgroundColor = backgroundColor//fontStyle?.colorBlue//UIColor.green
         iconbutton.imageView?.contentMode = .scaleAspectFill
         iconbutton.frame = CGRect(x: xnewOffset - 18, y: CGFloat(ynewOffset - 8), width: 16, height: 16)
         iconbutton.layer.cornerRadius = 0.5 * iconbutton.bounds.size.width
         iconbutton.clipsToBounds = true
         return iconbutton
+    }
+    func setupImage(seatSize : CGFloat,imageNameString : String) -> UIImageView{
+        let imageView = UIImageView()
+        let imageValue = CGFloat(seatSize * 0.6)
+        imageView.frame = CGRect(x:button.center.x - (imageValue / 2) , y: button.center.y - (imageValue / 2), width: imageValue, height: imageValue)
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named:imageNameString)
+        imageView.backgroundColor = UIColor.clear
+        return imageView
     }
     func setupSeat(seatSize: CGFloat,row :Rows,rowindex: Int,cabinindex:Int){
         for seatIndex in 0..<(row.seats?.count ?? -1){
