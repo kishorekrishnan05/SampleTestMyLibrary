@@ -146,6 +146,8 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     var seatSize: CGFloat = 0
     var imageView = UIImageView()
     var imageView1 = UIImageView()
+    public var fontGiven = UIFont()
+    public var fontGivenColor = UIColor()
     @objc func tapped(sender : MyTapGesture) {
             print(sender.data)
         if let seats = sender.data {
@@ -237,9 +239,9 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         let button = UIButton()
         button.frame = CGRect(x: 100, y: CGFloat(height), width: 200, height: 40)
         //mScrollView.addSubview(button)
-        button.titleLabel?.font = fontStyle?.mediumFont
+        button.titleLabel?.font = fontGiven//fontStyle?.mediumFont
         button.setTitle(tilte, for: .normal)
-        button.setTitleColor(fontStyle?.colorBlue, for: .normal)
+        button.setTitleColor(fontGivenColor, for: .normal)//fontStyle?.colorBlue
         setupWingHeader(LeftWing: true)
         setupWingHeader(LeftWing: false)
         height += 50
@@ -339,7 +341,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             xnewOffset = xnewOffset  + CGFloat(8) + SeatWidthHeight
             var iconbutton = UIButton()
             iconbutton.setImage(UIImage(named: "action"), for: .normal)
-            iconbutton.backgroundColor = fontStyle?.colorBlue//UIColor.green
+            iconbutton.backgroundColor = fontGivenColor/fontStyle?.colorBlue//UIColor.green
             iconbutton.imageView?.contentMode = .scaleAspectFill
             iconbutton.frame = CGRect(x: xnewOffset - 18, y: CGFloat(ynewOffset - 8), width: 16, height: 16)
             iconbutton.layer.cornerRadius = 0.5 * iconbutton.bounds.size.width
