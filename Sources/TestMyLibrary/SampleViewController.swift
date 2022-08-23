@@ -192,7 +192,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         labelView.textAlignment = .center
         setupWingHeader(LeftWing: true)
         setupWingHeader(LeftWing: false)
-        height += 36
+        height += 30
         mScrollView.addSubview(labelView)
        // mScrollView.addSubview(imageView)
     }
@@ -315,7 +315,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
                 setupSeatRowNumber(seat: seatsNumber, rowNumber: row.number ?? "", seatSize: seatSize,index : seattry, cabinindex: cabinindex )
             }
             if seattry  == (row.seats?.count ?? 0) - 1{
-                height = ynewOffset + seatSize + 8//yaxis padding
+                height = ynewOffset + seatSize + 16//yaxis padding
             }
         }
     }
