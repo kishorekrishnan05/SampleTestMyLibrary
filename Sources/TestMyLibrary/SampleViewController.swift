@@ -149,7 +149,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     var imageView = UIImageView()
     var imageView1 = UIImageView()
     public var fontGiven = UIFont()
-    public var fontGivenColor = UIColor()
+    //public var fontGivenColor = UIColor()
     @objc func tapped(sender : MyTapGesture) {
             print(sender.data)
         if let seats = sender.data {
@@ -243,7 +243,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         //mScrollView.addSubview(button)
         button.titleLabel?.font = fontGiven//fontStyle?.mediumFont
         button.setTitle(tilte, for: .normal)
-        button.setTitleColor(UIColor.green, for: .normal)//fontStyle?.colorBlue
+       // button.setTitleColor(UIColor.green, for: .normal)//fontStyle?.colorBlue
         setupWingHeader(LeftWing: true)
         setupWingHeader(LeftWing: false)
         height += 50
@@ -255,7 +255,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         imageView.frame = CGRect(x:LeftWing ? viewTest.frame.width - 120 : 8, y: height + 5, width: 100, height: 40)
         imageView.contentMode = .scaleAspectFit
         imageView.image = LeftWing ? UIImage(named:"leftUE") : UIImage(named:"RightUE")
-        imageView.backgroundColor = UIColor.clear
+       // imageView.backgroundColor = UIColor.clear
         mScrollView.addSubview(imageView)
     }
     func setupConfiguration(configuration: String,SeatWidthHeight: CGFloat,configurationHeader : String){
@@ -268,10 +268,10 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         for abcd in 0..<configuration.count{
             let index = String.Index(encodedOffset: abcd)
             button = UIButton()
-            button.backgroundColor = UIColor.clear
+            //button.backgroundColor = UIColor.clear
             if configuration[index] != "-" {
                 button.setTitle("\(configuration[index])", for: .normal)
-                button.setTitleColor(UIColor.gray, for: .normal)
+                //button.setTitleColor(UIColor.gray, for: .normal)
             }
             
             button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: SeatWidthHeight, height: SeatWidthHeight)
@@ -286,12 +286,12 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     func setupISExit(seat: [Seats],index: Int,SeatWidthHeight : CGFloat) {
         if seat[index].exit == true {
             button = UIButton()
-            button.backgroundColor = UIColor.red
+            //button.backgroundColor = UIColor.red
             button.frame = CGRect(x: 4, y: CGFloat(ynewOffset), width: 5, height: SeatWidthHeight)
             mScrollView.addSubview(button)
             if index  == (seat.count ?? 0) - 1{
                 button = UIButton()
-                button.backgroundColor = UIColor.red
+                //button.backgroundColor = UIColor.red
                 button.frame = CGRect(x: xnewOffset + SeatWidthHeight + 10 , y: CGFloat(ynewOffset), width: 5, height: SeatWidthHeight)
                 mScrollView.addSubview(button)
             }
@@ -324,10 +324,10 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         button.tag = index
         if seat.seatvalue == "-"  {
             button = UIButton()
-            button.backgroundColor = UIColor.clear
+            //button.backgroundColor = UIColor.clear
             button.titleLabel?.font = fontGiven//fontStyle?.mediumFont
             button.setTitle(rowNumber, for: .normal)
-            button.setTitleColor(UIColor.gray, for: .normal)
+          //  button.setTitleColor(UIColor.gray, for: .normal)
             button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: SeatWidthHeight, height: SeatWidthHeight)
             xnewOffset = xnewOffset  + CGFloat(8) + SeatWidthHeight
             mScrollView.addSubview(button)
@@ -343,7 +343,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             xnewOffset = xnewOffset  + CGFloat(8) + SeatWidthHeight
             var iconbutton = UIButton()
             iconbutton.setImage(UIImage(named: "action"), for: .normal)
-            iconbutton.backgroundColor = fontGivenColor//fontStyle?.colorBlue//UIColor.green
+            //iconbutton.backgroundColor = fontGivenColor//fontStyle?.colorBlue//UIColor.green
             iconbutton.imageView?.contentMode = .scaleAspectFill
             iconbutton.frame = CGRect(x: xnewOffset - 18, y: CGFloat(ynewOffset - 8), width: 16, height: 16)
             iconbutton.layer.cornerRadius = 0.5 * iconbutton.bounds.size.width
@@ -352,7 +352,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             imageView.frame = CGRect(x:button.center.x - (testvalue / 2) , y: button.center.y - (testvalue / 2), width: testvalue, height: testvalue)
             imageView.contentMode = .scaleAspectFit
             imageView.image = UIImage(named:"Icons_24px_Travel_")
-            imageView.backgroundColor = UIColor.clear
+            //imageView.backgroundColor = UIColor.clear
             
             mScrollView.addSubview(button)
             mScrollView.addSubview(imageView)
