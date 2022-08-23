@@ -315,7 +315,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
                 setupSeatRowNumber(seat: seatsNumber, rowNumber: row.number ?? "", seatSize: seatSize,index : seattry, cabinindex: cabinindex )
             }
             if seattry  == (row.seats?.count ?? 0) - 1{
-                height = ynewOffset + seatSize + 16//yaxis padding
+                height = ynewOffset + seatSize + 24//yaxis padding
             }
         }
     }
