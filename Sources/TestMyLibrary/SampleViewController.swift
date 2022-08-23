@@ -87,7 +87,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             // self.viewTest.isHidden = false
             // button.removeFromSuperview()
         label.textColor = UIColor.black
-        label.font = fontGiven
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         var xAxisNew = xAxis
             print("\(value.name) Kishore \(index)")
             label.text = value.name
@@ -241,7 +241,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         let button = UIButton()
         button.frame = CGRect(x: 100, y: CGFloat(height), width: 200, height: 40)
         //mScrollView.addSubview(button)
-        button.titleLabel?.font = fontGiven//fontStyle?.mediumFont
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)//fontGiven//fontStyle?.mediumFont
         button.setTitle(tilte, for: .normal)
        // button.setTitleColor(UIColor.green, for: .normal)//fontStyle?.colorBlue
         setupWingHeader(LeftWing: true)
@@ -325,7 +325,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         if seat.seatvalue == "-"  {
             button = UIButton()
             //button.backgroundColor = UIColor.clear
-            button.titleLabel?.font = fontGiven//fontStyle?.mediumFont
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)//fontGiven//fontStyle?.mediumFont
             button.setTitle(rowNumber, for: .normal)
           //  button.setTitleColor(UIColor.gray, for: .normal)
             button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: SeatWidthHeight, height: SeatWidthHeight)
