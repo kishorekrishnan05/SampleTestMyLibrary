@@ -77,7 +77,7 @@ public class SampleViewController: UIViewController{
         labelView.textAlignment = .center
         setupWingHeader(LeftWing: true)
         setupWingHeader(LeftWing: false)
-        height += 30
+        height += 24
         seatScrollView.addSubview(labelView)
     }
     func setupRows(row : [Rows],cabinIndex: Int,configuration:String,configutationHeader : String)
