@@ -185,15 +185,20 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     
     func setupHeader(tilte: String,configuration: String) {
         let button = UIButton()
-        button.frame = CGRect(x: 100, y: CGFloat(height), width: 200, height: 40)
+        label.textColor = UIColor.colorDarkblue
+        label.font = UIFont(name: "OpenSans-SemiBold", size: 16)
+            label.text = title
+            label.frame = CGRect(x: 0, y: CGFloat(height), width: 200, height: 24)
+            label.textAlignment = .center
+       /* button.frame = CGRect(x: 100, y: CGFloat(height), width: 200, height: 40)
         //mScrollView.addSubview(button)
-        button.titleLabel?.font = UIFont(name: "OpenSans-ExtraBold", size: 16)//UIFont.boldSystemFont(ofSize: 16)//fontStyle?.mediumFont
+        button.titleLabel?.font = UIFont(name: "OpenSans-SemiBold", size: 16)//UIFont.boldSystemFont(ofSize: 16)//fontStyle?.mediumFont
         button.setTitle(tilte, for: .normal)
-        button.setTitleColor(UIColor.colorPinkRed, for: .normal)//fontStyle?.colorBlue
+        button.setTitleColor(UIColor.colorDarkblue, for: .normal)//fontStyle?.colorBlue*/
         setupWingHeader(LeftWing: true)
         setupWingHeader(LeftWing: false)
-        height += 50
-        mScrollView.addSubview(button)
+        height += 25
+        label.addSubview(button)
        // mScrollView.addSubview(imageView)
     }
     func setupWingHeader(LeftWing : Bool){
