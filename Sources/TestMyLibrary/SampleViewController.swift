@@ -52,15 +52,12 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     func setupScrollHeader(scrollYPosition: CGFloat)
     {
         let leadingValue: CGFloat = 10
-        //viewHeader.isHidden =  scrollView.contentOffset.y > 0 ? false : true
         viewTest.isHidden =  scrollYPosition > 0 ? false : true
         viewTest.subviews.forEach { temp in
             temp.removeFromSuperview()
         }
         viewTest.layoutSubviews()
         for (itemIndex,itemValue) in header.enumerated() {
-            //label = UILabel()
-            //label.frame = CGRect(x: 10, y: 20, width: 200, height: 40)
             if itemIndex != header.count - 1 {
                 if scrollYPosition + 30 < header[itemIndex + 1].height!  {
                     setupScrollHeaderValue(Index: itemIndex, value: itemValue, xAxis: leadingValue)
@@ -75,8 +72,8 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     func setupScrollHeaderValue(Index : Int, value:TestDataForHeight ,xAxis: CGFloat){
             // self.viewTest.isHidden = false
             // button.removeFromSuperview()
-        label.textColor = UIColor.colorPinkRed
-        label.font = UIFont(name: "OpenSans-ExtraBold", size: 16)
+        label.textColor = UIColor.colorDarkblue
+        label.font = UIFont(name: "OpenSans-SemiBold", size: 16)
         var leadingValue = xAxis
             label.text = value.name
             label.frame = CGRect(x: 0, y: 0, width: viewTest.frame.width, height: 20)
@@ -89,7 +86,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
                 button.backgroundColor = UIColor.clear
                 if value.configuration![index1] != "-" {
                     button.setTitle("\(value.configuration![index1])", for: .normal)
-                    button.setTitleColor(UIColor.gray, for: .normal)
+                    button.setTitleColor(UIColor.colorGray, for: .normal)
                 }
                 
                 button.frame = CGRect(x: leadingValue, y: CGFloat(20), width: value.seatSize ?? 0, height: 40)
@@ -128,7 +125,11 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         viewTest.frame = CGRect(x: 16, y: 0, width: view.frame.width - 16, height: 60)
-        viewTest.backgroundColor = .lightText
+        viewTest.backgroundColor = .colorGhostWhite
+        viewTest.layer.masksToBounds = false
+        viewTest.layer.shadowOffset = CGSize(width: -1, height: 1)
+        viewTest.layer.shadowRadius = 1
+        viewTest.layer.shadowOpacity = 0.5
         for family in UIFont.familyNames {
             print("family:", family)
             for font in UIFont.fontNames(forFamilyName: family) {
@@ -471,51 +472,16 @@ extension UIColor {
         UIGraphicsEndImageContext()
         return image
     }
-    /*open class var strokeColor: UIColor {
-        return self.init(red: 128/255, green: 128/255, blue: 128/255, alpha: 1.0)
-    }
 
-    open class var emailLineColor: UIColor {
-        return self.init(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
+    open class var colorDarkblue: UIColor {
+        return "#0c2340".hexStringToUIColor()
     }
-    open class var appGrayColor: UIColor {
-        return self.init(red: 168/255, green: 168/255, blue: 168/255, alpha: 1.0)
+    open class var colorGray: UIColor {
+        return "#666666".hexStringToUIColor()
     }
-
-    open class var grayColor: UIColor {
-        return self.init(red: 92/255, green: 92/255, blue: 92/255, alpha: 1.0)
-    }
-
-    open class var lightGray: UIColor {
-        return self.init(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
-    }
-
-    open class var extralightGray: UIColor {
-        return self.init(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.5)
-    }
-
-    open class var extralightGrayAlpha3: UIColor {
-        return self.init(red: 0, green: 0, blue: 0, alpha: 0.3)
-    }
-
-    open class var navigationColor: UIColor {
-        return self.init(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
-    }
-
-    open class var seperatorColor: UIColor {
-        return self.init(red: 0.88, green: 0.88, blue: 0.88, alpha: 1.0)
-    }
-
-    open class var viewBackgroundColor: UIColor {
-        return self.init(red: 0.90, green: 0.90, blue: 0.90, alpha: 1.0)
-    }*/
-
-    open class var headerTitleColor: UIColor {
-        return "#030F09".hexStringToUIColor()
-    }
-
-    open class var grayColorSecondary: UIColor {
-        return "#606060".hexStringToUIColor()
+    
+    open class var colorGhostWhite: UIColor {
+        return "#f9f9f9".hexStringToUIColor()
     }
 
     open class var colorPinkRed: UIColor {
@@ -534,9 +500,7 @@ extension UIColor {
         return "#E6E6E6".hexStringToUIColor()
     }
 
-    open class var buttonDisabledTextColor: UIColor {
-        return "#666666".hexStringToUIColor()
-    }
+    
 
     open class var shadowBottomColor: UIColor {
         return self.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.3)
