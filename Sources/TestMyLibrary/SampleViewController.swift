@@ -184,7 +184,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupHeader(title: String,configuration: String) {
-        height += 16
+        height += 27
         let labelView = UILabel()
         labelView.textColor = UIColor.colorDarkblue
         labelView.font = UIFont(name: "OpenSans-SemiBold", size: 16)
