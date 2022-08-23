@@ -301,6 +301,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
             mScrollView.addSubview(imageView)
             mScrollView.addSubview(iconbutton)
             mScrollView.addSubview(button)
+            self.mScrollView.bringSubviewToFront(iconbutton)
             
         }
     }
