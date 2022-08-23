@@ -189,7 +189,9 @@ public class SampleViewController: UIViewController{
             //Quick View Image function
             //seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: "Icons_24px_Travel_"))
             //Recognition Function
-            // seatScrollView.addSubview(setupbadge(imageNameString: "action", backgroundColor: .colorPinkRed))
+            if seat.crmInfo?.crmProfile?.actionIndicator ?? false{
+             seatScrollView.addSubview(setupbadge(imageNameString: "action", backgroundColor: .colorPinkRed))
+            }
             
         }
     }
