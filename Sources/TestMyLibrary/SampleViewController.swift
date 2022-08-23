@@ -11,7 +11,7 @@ public struct fontDetails {
    public var mediumFont : UIFont?
     public var colorBlue : UIColor?
 }
-enum SeatsColor: String, Codable {
+public enum SeatsColor: String, Codable {
     case occuipedSeats = "X"
     case OpenSeats = "O"
     case OpenEconomyPlusSeats = "S"
@@ -86,7 +86,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     func setupScrollHeaderValue(Index : Int, value:TestDataForHeight ,xAxis: CGFloat){
             // self.viewTest.isHidden = false
             // button.removeFromSuperview()
-        label.textColor = UIColor.colorPinkRed
+        label.textColor = fontGivenColor//UIColor.colorPinkRed
         label.font = UIFont(name: "OpenSans-ExtraBold", size: 16)//UIFont.boldSystemFont(ofSize: 16)
         var xAxisNew = xAxis
             print("\(value.name) Kishore \(index)")
