@@ -53,7 +53,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     {
         var newValue: CGFloat = 10
         //viewHeader.isHidden =  scrollView.contentOffset.y > 0 ? false : true
-        viewTest.isHidden =  scrollYPosition > 0 ? false : true
+        viewTest.isHidden =  scrollYPosition > 30 ? false : true
         viewTest.subviews.forEach { temp in
             temp.removeFromSuperview()
         }
