@@ -85,11 +85,12 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
                 button = UIButton()
                 button.backgroundColor = UIColor.clear
                 if value.configuration![index1] != "-" {
+                    button.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 12)
                     button.setTitle("\(value.configuration![index1])", for: .normal)
                     button.setTitleColor(UIColor.colorGray, for: .normal)
                 }
                 
-                button.frame = CGRect(x: leadingValue, y: CGFloat(20), width: value.seatSize ?? 0, height: 40)
+                button.frame = CGRect(x: leadingValue, y: CGFloat(20), width: value.seatSize ?? 0, height: 16)
                 
                 leadingValue = leadingValue  + CGFloat(8) + (value.seatSize ?? 0)
                 viewTest.addSubview(button)
