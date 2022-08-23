@@ -266,16 +266,13 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupSeatRowNumber(seat: Seats, rowNumber: String,seatSize: CGFloat,index: Int,cabinindex: Int) {
-        //Button Tag Kishore
-        var imageView = UIImageView()
-        //0 0 6
-        button.tag = index
+        let imageView = UIImageView()
         if seat.seatvalue == "-"  {
             button = UIButton()
             button.backgroundColor = UIColor.clear
-            button.titleLabel?.font = UIFont(name: "OpenSans-ExtraBold", size: 16)//UIFont.boldSystemFont(ofSize: 16)//fontGiven//fontStyle?.mediumFont
+            button.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 12)
             button.setTitle(rowNumber, for: .normal)
-            button.setTitleColor(UIColor.gray, for: .normal)
+            button.setTitleColor(.colorGray, for: .normal)
             button.frame = CGRect(x: xnewOffset, y: CGFloat(ynewOffset), width: seatSize, height: seatSize)
             xnewOffset = xnewOffset  + CGFloat(8) + seatSize
             mScrollView.addSubview(button)
