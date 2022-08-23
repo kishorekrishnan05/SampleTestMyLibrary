@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 public struct fontDetails {
    public var mediumFont : UIFont?
     public var colorBlue : UIColor?
