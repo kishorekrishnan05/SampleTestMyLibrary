@@ -37,7 +37,7 @@ public class MyTapGesture: UITapGestureRecognizer {
 public protocol scrollviewDelegete: AnyObject {
     func deatilsSeats(seats :Seats)
 }
-public struct  TestDataForHeight{
+public struct  ModelHeader{
     var height: CGFloat?
     var name: String?
     var configuration : String?
@@ -52,14 +52,14 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     func setupScrollHeader(scrollYPosition: CGFloat)
     {
         let leadingValue: CGFloat = 24
-        viewTest.isHidden =  scrollYPosition > 0 ? false : true
-        viewTest.subviews.forEach { temp in
+        viewHeader.isHidden =  scrollYPosition > 0 ? false : true
+        viewHeader.subviews.forEach { temp in
             temp.removeFromSuperview()
         }
-        viewTest.layoutSubviews()
-        for (itemIndex,itemValue) in header.enumerated() {
-            if itemIndex != header.count - 1 {
-                if scrollYPosition + 30 < header[itemIndex + 1].height!  {
+        viewHeader.layoutSubviews()
+        for (itemIndex,itemValue) in headerValue.enumerated() {
+            if itemIndex != headerValue.count - 1 {
+                if scrollYPosition + 30 < headerValue[itemIndex + 1].height!  {
                     setupScrollHeaderValue(Index: itemIndex, value: itemValue, xAxis: leadingValue)
                     break
                 }
@@ -69,19 +69,19 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         }
         
     }
-    func setupScrollHeaderValue(Index : Int, value:TestDataForHeight ,xAxis: CGFloat){
+    func setupScrollHeaderValue(Index : Int, value:ModelHeader ,xAxis: CGFloat){
             // self.viewTest.isHidden = false
             // button.removeFromSuperview()
         label.textColor = UIColor.colorDarkblue
         label.font = UIFont(name: "OpenSans-SemiBold", size: 16)
         var leadingValue = xAxis
             label.text = value.name
-            label.frame = CGRect(x: 0, y: 0, width: viewTest.frame.width, height: 24)
+            label.frame = CGRect(x: 0, y: 4, width: viewHeader.frame.width, height: 24)
             label.textAlignment = .center
-            viewTest.addSubview(label)
-            for abcd in 0..<(value.configuration?.count ?? -1){
+        viewHeader.addSubview(label)
+            for configurationValue in 0..<(value.configuration?.count ?? -1){
                 //button.setTitle(" ", for: .normal)
-                let index1 = String.Index(encodedOffset: abcd)
+                let index1 = String.Index(encodedOffset: configurationValue)
                 button = UIButton()
                 button.backgroundColor = UIColor.clear
                 if value.configuration![index1] != "-" {
@@ -93,23 +93,22 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
                 button.frame = CGRect(x: leadingValue, y: CGFloat(36), width: value.seatSize ?? 0, height: 16)
                 
                 leadingValue = leadingValue  + CGFloat(8) + (value.seatSize ?? 0)
-                viewTest.addSubview(button)
+                viewHeader.addSubview(button)
             }
     }
     
     
     //SE 13 13 pro max  ipad  8 plus
    public var delegate : scrollviewDelegete?
-    var viewTest = UIView()
+    var viewHeader = UIView()
     var label: UILabel = UILabel()
     
     @IBOutlet weak var mScrollView: UIScrollView!
     // let label = UILabel()
     public var test : ModelSeatMap?
-    var header = [TestDataForHeight]()
+    var headerValue = [ModelHeader]()
     var height:CGFloat = 16
     var button = UIButton()
-    @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var labelHeader: UILabel!
     
     var ynewOffset:CGFloat = 8
@@ -125,23 +124,12 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewTest.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 65)
-        viewTest.backgroundColor = .colorGhostWhite
-        viewTest.layer.masksToBounds = false
-        viewTest.layer.shadowOffset = CGSize(width: -1, height: 1)
-        viewTest.layer.shadowRadius = 1
-        viewTest.layer.shadowOpacity = 0.5
         for family in UIFont.familyNames {
             print("family:", family)
             for font in UIFont.fontNames(forFamilyName: family) {
                 print("font:", font)
             }
         }
-        
-        
-        self.view.addSubview(viewTest)
-        self.view.bringSubviewToFront(viewTest)
-        self.viewTest.isHidden = true
         //testJson()
         // UALSeatVMCRM.buildDataObjects((self.test?.crmSeatMapResponse?.seatMap)!)
         // seatsVMData = UALSeatVMCRM.getSeatsData()
@@ -155,6 +143,17 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         //newFuncclounmWise()
         // Do any additional setup after loading the view.
         
+    }
+    func setupScrollheaderView(){
+        viewHeader.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 65)
+        viewHeader.backgroundColor = .colorGhostWhite
+        viewHeader.layer.masksToBounds = false
+        viewHeader.layer.shadowOffset = CGSize(width: -1, height: 1)
+        viewHeader.layer.shadowRadius = 1
+        viewHeader.layer.shadowOpacity = 0.5
+        self.view.addSubview(viewHeader)
+        self.view.bringSubviewToFront(viewHeader)
+        self.viewHeader.isHidden = true
     }
     /*func tstdata(){
      var ButtonList = ["Button 1", "Button 2", "Button 3"]
@@ -210,8 +209,6 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupHeader(tilte: String,configuration: String) {
-        var imageView = UIImageView()
-        var header1 = TestDataForHeight()
         let button = UIButton()
         button.frame = CGRect(x: 100, y: CGFloat(height), width: 200, height: 40)
         //mScrollView.addSubview(button)
@@ -226,19 +223,19 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     }
     func setupWingHeader(LeftWing : Bool){
         var imageView = UIImageView()
-        imageView.frame = CGRect(x:LeftWing ? viewTest.frame.width - 120 : 8, y: height + 5, width: 100, height: 40)
+        imageView.frame = CGRect(x:LeftWing ? view.frame.width - 120 : 8, y: height + 5, width: 100, height: 40)
         imageView.contentMode = .scaleAspectFit
         imageView.image = LeftWing ? UIImage(named:"leftUE") : UIImage(named:"RightUE")
         imageView.backgroundColor = UIColor.clear
         mScrollView.addSubview(imageView)
     }
     func setupConfiguration(configuration: String,SeatWidthHeight: CGFloat,configurationHeader : String){
-        var header1 = TestDataForHeight()
-        header1.height = height
-        header1.name = configurationHeader
-        header1.configuration = configuration
-        header1.seatSize = SeatWidthHeight
-        header.append(header1)
+        var header = ModelHeader()
+        header.height = height
+        header.name = configurationHeader
+        header.configuration = configuration
+        header.seatSize = SeatWidthHeight
+        headerValue.append(header)
         for abcd in 0..<configuration.count{
             let index = String.Index(encodedOffset: abcd)
             button = UIButton()
