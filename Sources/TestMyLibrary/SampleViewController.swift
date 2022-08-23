@@ -197,8 +197,8 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
         button.setTitleColor(UIColor.colorDarkblue, for: .normal)//fontStyle?.colorBlue*/
         setupWingHeader(LeftWing: true)
         setupWingHeader(LeftWing: false)
-        height += 25
-        label.addSubview(button)
+        height += 36
+        mScrollView.addSubview(label)
        // mScrollView.addSubview(imageView)
     }
     func setupWingHeader(LeftWing : Bool){
