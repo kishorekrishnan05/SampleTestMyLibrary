@@ -124,7 +124,7 @@ public class SampleViewController: UIViewController, UIScrollViewDelegate {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewTest.frame = CGRect(x: 0, y: 0, width: view.frame.width - 16, height: 60)
+        viewTest.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 60)
         viewTest.backgroundColor = .colorGhostWhite
         viewTest.layer.masksToBounds = false
         viewTest.layer.shadowOffset = CGSize(width: -1, height: 1)
