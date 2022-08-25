@@ -190,7 +190,7 @@ public class SampleViewController: UIViewController{
             seatScrollView.addSubview(button)
             switch quickViewType {
             case .SSRs:
-                for item in seat.ssrs ?? [] {
+                for item in seat.crmInfo?.crmProfile?.ssrs ?? [] {
                     let ssrType : SSRsType = SSRsType(rawValue: item.code ?? "") ?? .Wheelchair
                     seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: ssrType.SSRs()))
                     print("\(item) Kishore ")
