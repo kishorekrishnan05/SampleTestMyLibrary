@@ -29,7 +29,7 @@ public class SampleViewController: UIViewController{
     var imageView = UIImageView()
     var button = UIButton()
     var height:CGFloat = 0
-    
+    var Quick = "SSRs"
     
     var yOffset:CGFloat = 8
     var xOffset:CGFloat = 16
@@ -189,7 +189,10 @@ public class SampleViewController: UIViewController{
             xOffset = xOffset  + CGFloat(8) + seatSize
             seatScrollView.addSubview(button)
             //Quick View Image function
-            //seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: "Icons_24px_Travel_"))
+            for i in seat.ssr {
+                print(i)
+            }
+         seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: "Icons_24px_Travel_"))
             //Recognition Function need to confirm the key
             if seat.crmInfo?.crmProfile?.actionIndicator ?? false{
                 seatScrollView.addSubview(setupbadge(imageNameString: "action", backgroundColor: .colorPinkRed))
