@@ -200,7 +200,7 @@ public class SampleViewController: UIViewController{
                 break
                 
             }
-         seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: "Icons_24px_Travel_"))
+        // seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: "Icons_24px_Travel_"))
             //Recognition Function need to confirm the key
             if seat.crmInfo?.crmProfile?.actionIndicator ?? false{
                 seatScrollView.addSubview(setupbadge(imageNameString: "action", backgroundColor: .colorPinkRed))
