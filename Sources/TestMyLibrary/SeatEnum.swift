@@ -19,7 +19,7 @@ enum SeatsColor: String, Codable {
         case .occuipedSeats:
             return .colorSeatGray
         case .openSeats , .openEconomyPlusSeats , .openPremiumPlus:
-            return .colorSeatGray//.white
+            return .white
         }
     }
     var borderColor: UIColor {
