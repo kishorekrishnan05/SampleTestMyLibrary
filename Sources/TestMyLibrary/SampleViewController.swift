@@ -250,6 +250,7 @@ public class SampleViewController: UIViewController{
     func setupImage(seatSize : CGFloat,imageNameString : String) -> UIImageView{
         let imageView = UIImageView()
         let imageValue = CGFloat(seatSize * 0.6)
+        imageView.tintColor = .white
         imageView.frame = CGRect(x:button.center.x - (imageValue / 2) , y: button.center.y - (imageValue / 2), width: imageValue, height: imageValue)
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named:imageNameString)
