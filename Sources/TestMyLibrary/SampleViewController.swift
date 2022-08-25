@@ -29,7 +29,7 @@ public class SampleViewController: UIViewController{
     var imageView = UIImageView()
     var button = UIButton()
     var height:CGFloat = 0
-    var Quick = "SSRs"
+    var quickViewType : QuickView = .SSRs
     
     var yOffset:CGFloat = 8
     var xOffset:CGFloat = 16
@@ -188,9 +188,17 @@ public class SampleViewController: UIViewController{
             button.frame = CGRect(x: xOffset, y: CGFloat(yOffset), width: seatSize, height: seatSize)
             xOffset = xOffset  + CGFloat(8) + seatSize
             seatScrollView.addSubview(button)
-            //Quick View Image function
-            for i in seat.ssr {
-                print(i)
+            switch quickViewType {
+            case .SSRs:
+                for item in seat.ssrs ?? [] {
+                    let ssrType : SSRsType = SSRsType(rawValue: item.code ?? "") ?? .Wheelchair
+                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: ssrType.SSRs()))
+                    print("\(item) Kishore ")
+                }
+            case .Status:
+                print("Kishore")
+                break
+                
             }
          seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: "Icons_24px_Travel_"))
             //Recognition Function need to confirm the key

@@ -43,35 +43,69 @@ enum QuickView: String, Codable {
 
 enum SSRsType : String{
     case Wheelchair = "WCHR"
-    case DisabledPassengerDPNA = "Kih"
-    case Lapchild = "Kis"
-    case PetinCabin = "ksi"
+    case DisabledPassengerDPNA = "1"
+    case Lapchild = "2"
+    case PetinCabin = "3"
+    case Unaccompaniedminor = "4"
+    case Bassinet = "5"
+    case Hearingimpaired = "6"
+    case Visionimpaired = "7"
+    case Language = "8"
+    case Deportedprisoner = "9"
+    case AINDALFO = "10"
+    case Serviceanimal = "11"
+    case MedicalO2 = "12"
+    case Voluntaryprovisionsofemergencyservice = "13"
+    case NonGovernment = "14"
+    case PersonalProtective  = "15"
+    case GovernmentEscort  = "16"
+    case ChildTravelingwithGovernmentEscort = "17"
+    case YPTA = "18"
+
     
     
     
     func SSRs() -> String {
         switch self {
         case .Wheelchair:
-            return "eye"
+            return "Wheelchair"
         case .DisabledPassengerDPNA:
-            return "action"
+            return "SSR_DPNA_full"
         case .Lapchild:
-            return "eye"
+            return "LapChild"
         case .PetinCabin:
-            return "eye"
-        } /*{
-           case SSRsType.DisabledPassengerDPNA:
-           return "eye"
-           /*case Day.Monday, Day.Tuesday, Day.Wednessday, Day.Thursday, Day.Friday
-            return "Weekday"*/
-           case .Wheelchair:
-           return "whee"
-           case .Lapchild:
-           return "lap"
-           case .PetinCabin:
-           return "p"
-           
-           }*/
+            return "SSR_pet_full"
+        case .Unaccompaniedminor:
+            return "SSR_mi_full"
+        case .Bassinet:
+            return "SSR_bass_full"
+        case .Hearingimpaired:
+            return "SSR_hi_full"
+        case .Visionimpaired:
+            return "SSR_vi_full"
+        case .Language:
+            return "SSR_message_full"
+        case .Deportedprisoner:
+            return "SSR_ha_full"
+        case .AINDALFO:
+            return "SSR_AIND_full"
+        case .Serviceanimal:
+            return "SSR_add pet_full"
+        case .MedicalO2:
+            return "SSR_ox_full"
+        case .Voluntaryprovisionsofemergencyservice:
+            return "SSR_es_full"
+        case .NonGovernment:
+            return "nonGovt"
+        case .PersonalProtective:
+            return "SSR_PPEX_full"
+        case .GovernmentEscort:
+            return "SSR_escort_full"
+        case .ChildTravelingwithGovernmentEscort:
+            return "SSR_child_full"
+        case .YPTA:
+            return "SSR_YPTA_full"
+        }
     }
 }
 /*enum Bar : String{
