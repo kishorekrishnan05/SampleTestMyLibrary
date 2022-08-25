@@ -33,8 +33,9 @@ enum SeatsColor: String, Codable {
         }
     }
 }
-public enum QuickView: String, Codable {
-    case SSRs = "SSRs"
+public enum QuickView: String {
+    case none = ""
+    case sSRs = "SSRs"
     case Status = "Status"
     
     
@@ -42,69 +43,87 @@ public enum QuickView: String, Codable {
 }
 
 public enum SSRsType : String{
-    case Wheelchair = "WCHR"
-    case DisabledPassengerDPNA = "A1"
-    case Lapchild = "A2"
-    case PetinCabin = "A3"
-    case Unaccompaniedminor = "A4"
-    case Bassinet = "A5"
-    case Hearingimpaired = "A6"
-    case Visionimpaired = "A7"
-    case Language = "A8"
-    case Deportedprisoner = "A9"
-    case AINDALFO = "A10"
-    case Serviceanimal = "A11"
-    case MedicalO2 = "A12"
-    case Voluntaryprovisionsofemergencyservice = "A13"
-    case NonGovernment = "A14"
-    case PersonalProtective  = "A15"
-    case GovernmentEscort  = "A16"
-    case ChildTravelingwithGovernmentEscort = "A17"
-    case YPTA = "A18"
+    case none = ""
+    case wheelchair = "WCHR"
+    case wheelchair1 = "WCBD"
+    case wheelchair2 = "WCBW"
+    case wheelchair3 = "WCHC"
+    case wheelchair4 = "WCHS"
+    case wheelchair5 = "WCMP"
+    case disabledPassengerDPNA = "DPNA"
+    case Lapchild = "INFT"
+    case petinCabin = "PETC"
+    case unaccompaniedminor = "UMNR"
+    case bassinet = "BSCT"
+    case hearingimpaired = "DEAF"
+    case visionimpaired = "BLND"
+    case language = "LANG"
+    case deportedprisoner = "DEPA"
+    case deportedprisoner1 = "DEPU"
+    case deportedprisoner2 = "ACPR"
+    case aIND = "AIND"
+    case aLEO = "ALEO"
+    case serviceanimal = "ESAN"
+    case serviceanimal1 = "SVAN"
+    case medicalO2 = "OXYG"
+    case medicalO21 = "PPOC"
+    case medicalO22 = "MEDA"
+    case voluntaryprovisionsofemergencyservice = "VPES"
+    case nonGovernment = "NGTR"
+    case personalProtective  = "PPEX"
+    case governmentEscort  = "GSME"
+    case childTravelingwithGovernmentEscort = "GSMC"
+    case yPTA = "YPTA"
+    case extraSeat = "EXST"
+    case extraSeat1 = "CBBG"
 
     
     
     
     func SSRs() -> String {
         switch self {
-        case .Wheelchair:
-            return "Wheelchair"
-        case .DisabledPassengerDPNA:
+        case .none:
+            return ""
+        case .wheelchair , .wheelchair1 , .wheelchair2 , .wheelchair3 ,.wheelchair4,.wheelchair5:
+            return "SSR_Wheelchair"
+        case .disabledPassengerDPNA:
             return "SSR_DPNA_full"
         case .Lapchild:
-            return "LapChild"
-        case .PetinCabin:
+            return "SSR_LapChild"
+        case .petinCabin:
             return "SSR_pet_full"
-        case .Unaccompaniedminor:
+        case .unaccompaniedminor:
             return "SSR_mi_full"
-        case .Bassinet:
+        case .bassinet:
             return "SSR_bass_full"
-        case .Hearingimpaired:
+        case .hearingimpaired:
             return "SSR_hi_full"
-        case .Visionimpaired:
+        case .visionimpaired:
             return "SSR_vi_full"
-        case .Language:
+        case .language:
             return "SSR_message_full"
-        case .Deportedprisoner:
+        case .deportedprisoner , .deportedprisoner1 , .deportedprisoner2:
             return "SSR_ha_full"
-        case .AINDALFO:
+        case .aIND , .aLEO:
             return "SSR_AIND_full"
-        case .Serviceanimal:
+        case .serviceanimal , .serviceanimal1:
             return "SSR_add pet_full"
-        case .MedicalO2:
+        case .medicalO2 , .medicalO21 , .medicalO22:
             return "SSR_ox_full"
-        case .Voluntaryprovisionsofemergencyservice:
+        case .voluntaryprovisionsofemergencyservice:
             return "SSR_es_full"
-        case .NonGovernment:
-            return "nonGovt"
-        case .PersonalProtective:
+        case .nonGovernment:
+            return "SSR_nonGovt"
+        case .personalProtective:
             return "SSR_PPEX_full"
-        case .GovernmentEscort:
+        case .governmentEscort:
             return "SSR_escort_full"
-        case .ChildTravelingwithGovernmentEscort:
+        case .childTravelingwithGovernmentEscort:
             return "SSR_child_full"
-        case .YPTA:
+        case .yPTA:
             return "SSR_YPTA_full"
+        case .extraSeat , .extraSeat1:
+            return "SSR_ssr_exst_full"
         }
     }
 }
