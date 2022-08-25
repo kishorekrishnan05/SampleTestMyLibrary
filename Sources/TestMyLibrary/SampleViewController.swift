@@ -29,7 +29,7 @@ public class SampleViewController: UIViewController{
     var imageView = UIImageView()
     var button = UIButton()
     var height:CGFloat = 0
-    var quickViewType : QuickView = .SSRs
+    public var quickViewType : QuickView = .SSRs
     
     var yOffset:CGFloat = 8
     var xOffset:CGFloat = 16

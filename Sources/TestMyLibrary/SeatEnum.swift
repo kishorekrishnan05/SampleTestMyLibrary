@@ -33,7 +33,7 @@ enum SeatsColor: String, Codable {
         }
     }
 }
-enum QuickView: String, Codable {
+public enum QuickView: String, Codable {
     case SSRs = "SSRs"
     case Status = "Status"
     
@@ -41,7 +41,7 @@ enum QuickView: String, Codable {
     
 }
 
-enum SSRsType : String{
+public enum SSRsType : String{
     case Wheelchair = "WCHR"
     case DisabledPassengerDPNA = "1"
     case Lapchild = "2"
