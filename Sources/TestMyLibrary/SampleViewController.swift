@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 
 
-public protocol scrollviewDelegete: AnyObject {
+public protocol seatDetailsDelegete: AnyObject {
     func deatilsSeats(seats :Seats)
 }
 
@@ -17,7 +17,7 @@ public protocol scrollviewDelegete: AnyObject {
 
 public class SampleViewController: UIViewController{
     
-    public var delegate : scrollviewDelegete?
+    public var delegate : seatDetailsDelegete?
     
     
     @IBOutlet weak var seatScrollView: UIScrollView!
@@ -29,7 +29,7 @@ public class SampleViewController: UIViewController{
     var imageView = UIImageView()
     var button = UIButton()
     var height:CGFloat = 0
-    public var quickViewType : QuickView = .none
+    public var quickViewType : QuickViewOptionSelected = .none
     
     var yOffset:CGFloat = 8
     var xOffset:CGFloat = 16
