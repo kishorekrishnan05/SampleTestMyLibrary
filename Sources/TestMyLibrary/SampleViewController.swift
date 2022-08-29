@@ -85,13 +85,13 @@ public class SampleViewController: UIViewController{
         let rowCount = (row.count) + 1
         var headerBool = 0
         for rowIndex in 0..<rowCount{
-            if cabinIndex == 0 && headerBool == 0{
+            //if cabinIndex == 0 && headerBool == 0{
                 yOffset = height
                 xOffset = 16
-            } else {
+           /* } else {
                 xOffset = 16
                 yOffset = height
-            }
+            }*/
             
             let seatSize  = setupSeatSize(index: row[0].seats?.count ?? 0) - CGFloat(8)
             if headerBool == 0 {
