@@ -269,7 +269,7 @@ public class SampleViewController: UIViewController{
     }
     func setupStatusImage(seatSize : CGFloat,imageNameString : String) -> UIImageView{
         let imageView = UIImageView()
-        let imageValue = CGFloat(seatSize * 0.7)
+        let imageValue = CGFloat(seatSize * 1)
         imageView.tintColor = .white
         imageView.frame = CGRect(x:button.center.x - (imageValue / 2) , y: yOffset, width: imageValue, height: imageValue)
         imageView.contentMode = .scaleAspectFit
