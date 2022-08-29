@@ -127,6 +127,47 @@ public enum SSRsType : String{
         }
     }
 }
+public enum StatusType : String{
+    case none = ""
+    case globalServices = "GS"//
+    case oneK = "1K"//
+    case premierPlatinum = "PLATINUM"//
+    case premierGold = "GOLD"//
+    case premierSilver = "SILVER"//
+    case generalMember = "k"
+    case starAllianceGold = "Gold"//
+    case starAllianceSilver = "Silver"//
+    case starAllianceNonMember = "s" //
+
+
+    
+    
+    
+    func SSRs() -> String {
+        switch self {
+        case .none:
+            return ""
+        case .globalServices:
+            return "ic_mp_status_GlobalServices"
+        case .oneK:
+            return "ic_mp_status_1K"
+        case .premierPlatinum:
+            return "ic_mp_status_Platinum"
+        case .premierGold:
+            return "ic_mp_status_Gold"
+        case .premierSilver:
+            return "ic_mp_status_Silver"
+        case .generalMember:
+            return "ic_mp_status_GM"
+        case .starAllianceGold:
+            return "ic_mp_status_StarAllianceGold"
+        case .starAllianceSilver:
+            return "ic_mp_status_StarAllianceSilver"
+        case .starAllianceNonMember:
+            return ""
+        }
+    }
+}
 /*enum Bar : String{
  case unknown
  case secondCase
