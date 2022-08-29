@@ -148,7 +148,7 @@ public enum StatusType : String{
         case .none:
             return ""
         case .globalServices:
-            return "ic_mp_status_Global Services"
+            return "ic_mp_status_GlobalServices"
         case .oneK:
             return "ic_mp_status_1K"
         case .premierPlatinum:
