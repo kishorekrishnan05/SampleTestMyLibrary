@@ -137,7 +137,7 @@ public enum StatusType : String{
     case generalMember = "GM"
     case starAllianceGold = "Gold"//
     case starAllianceSilver = "Silver"//
-    case starAllianceNonMember = "s" //
+    case starAllianceNonMember = "Non" //
 
 
     
