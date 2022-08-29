@@ -33,7 +33,7 @@ enum SeatsColor: String, Codable {
         }
     }
 }
-public enum QuickView: String {
+public enum QuickViewOptionSelected: String {
     case none = ""
     case sSRs = "SSRs"
     case Status = "Status"
