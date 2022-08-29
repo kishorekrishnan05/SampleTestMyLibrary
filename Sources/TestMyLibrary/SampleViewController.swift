@@ -198,6 +198,9 @@ public class SampleViewController: UIViewController{
                 if seat.crmInfo?.accountSummary?.mileagePlusNumber?.count ?? 0 > 0 {
                     let statusType : StatusType = StatusType(rawValue: seat.crmInfo?.accountSummary?.eliteStatus?.description ?? "") ?? .none
                     seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: statusType.Status()))
+                    let starAlliance : StatusType =  StatusType(rawValue: seat.crmInfo?.accountSummary?.eliteStatus?.starEliteDescription ?? "") ?? .none
+                    seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: starAlliance.Status()))
+                    
                 }else{
                     let statusType : StatusType = StatusType(rawValue:"GM") ?? .none
                     seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: statusType.Status()))
