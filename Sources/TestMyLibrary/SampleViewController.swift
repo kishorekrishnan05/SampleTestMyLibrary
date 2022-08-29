@@ -197,10 +197,10 @@ public class SampleViewController: UIViewController{
             case .Status:
                 if seat.crmInfo?.accountSummary?.mileagePlusNumber?.count ?? 0 > 0 {
                     let statusType : StatusType = StatusType(rawValue: seat.crmInfo?.accountSummary?.eliteStatus?.description ?? "") ?? .none
-                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: statusType.Status()))
+                    seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: statusType.Status()))
                 }else{
                     let statusType : StatusType = StatusType(rawValue:"GM") ?? .none
-                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: statusType.Status())) 
+                    seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: statusType.Status()))
                 }
                 break
                 
@@ -259,6 +259,16 @@ public class SampleViewController: UIViewController{
         let imageValue = CGFloat(seatSize * 0.6)
         imageView.tintColor = .white
         imageView.frame = CGRect(x:button.center.x - (imageValue / 2) , y: button.center.y - (imageValue / 2), width: imageValue, height: imageValue)
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named:imageNameString)
+        imageView.backgroundColor = UIColor.clear
+        return imageView
+    }
+    func setupStatusImage(seatSize : CGFloat,imageNameString : String) -> UIImageView{
+        let imageView = UIImageView()
+        let imageValue = CGFloat(seatSize * 0.7)
+        imageView.tintColor = .white
+        imageView.frame = CGRect(x:button.center.x - (imageValue / 2) , y: 0, width: imageValue, height: imageValue)
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named:imageNameString)
         imageView.backgroundColor = UIColor.clear
