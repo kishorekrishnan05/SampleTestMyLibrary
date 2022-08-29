@@ -195,7 +195,13 @@ public class SampleViewController: UIViewController{
                     seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: ssrType.SSRs()))
                 }
             case .Status:
-                print("Kishore")
+                if seat.crmInfo?.accountSummary?.mileagePlusNumber?.count ?? 0 > 0 {
+                    let statusType : StatusType = StatusType(rawValue: seat.crmInfo?.accountSummary?.eliteStatus?.description ?? "") ?? .none
+                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: statusType.Status()))
+                }else{
+                    let statusType : StatusType = StatusType(rawValue:"GM") ?? .none
+                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: statusType.Status())) 
+                }
                 break
                 
             case .none:

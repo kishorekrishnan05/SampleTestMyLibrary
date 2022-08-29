@@ -134,7 +134,7 @@ public enum StatusType : String{
     case premierPlatinum = "PLATINUM"//
     case premierGold = "GOLD"//
     case premierSilver = "SILVER"//
-    case generalMember = "k"
+    case generalMember = "GM"
     case starAllianceGold = "Gold"//
     case starAllianceSilver = "Silver"//
     case starAllianceNonMember = "s" //
@@ -143,7 +143,7 @@ public enum StatusType : String{
     
     
     
-    func SSRs() -> String {
+    func Status() -> String {
         switch self {
         case .none:
             return ""
