@@ -268,7 +268,7 @@ public class SampleViewController: UIViewController{
         let imageView = UIImageView()
         let imageValue = CGFloat(seatSize * 0.7)
         imageView.tintColor = .white
-        imageView.frame = CGRect(x:button.center.x - (imageValue / 2) , y: 0, width: imageValue, height: imageValue)
+        imageView.frame = CGRect(x:button.center.x - (imageValue / 2) , y: yOffset, width: imageValue, height: imageValue)
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named:imageNameString)
         imageView.backgroundColor = UIColor.clear
