@@ -210,7 +210,7 @@ public class SampleViewController: UIViewController{
                 }
                 break
             case .meals:
-                if seatCount < 9 {
+                if seatCount < 8 {
                 if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 && seat.crmInfo?.crmProfile?.preOrderMeals?.count  ?? 0 > 0 {
                     seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "SPML/PREO")?.meals() ?? "" ))
                 }else if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 {
