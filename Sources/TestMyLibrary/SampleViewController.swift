@@ -271,7 +271,7 @@ public class SampleViewController: UIViewController{
     //ignorne image Like SSR ,SpmL/Preo We will the create enum.code will be update
     func setupImage(seatSize : CGFloat,imageNameString : String) -> UIImageView{
         let imageView = UIImageView()
-        let imageValue = CGFloat(seatSize * 0.6)
+        let imageValue = CGFloat(seatSize * 0.7)
         imageView.tintColor = .white
         imageView.frame = CGRect(x:button.center.x - (imageValue / 2) , y: button.center.y - (imageValue / 2), width: imageValue, height: imageValue)
         imageView.contentMode = .scaleAspectFit
