@@ -37,6 +37,7 @@ public enum QuickViewOptionSelected: String {
     case none = ""
     case sSRs = "SSRs"
     case Status = "Status"
+    case meals = "SPML/PREO"
     
     
     
@@ -165,6 +166,27 @@ public enum StatusType : String{
             return "ic_mp_status_StarAllianceSilver"
         case .starAllianceNonMember:
             return ""
+        }
+    }
+}
+
+public enum MealsType : String{
+    case none = ""
+    case spml = "SPML"
+    case preo = "PREO"
+    case spmlpreo = "SPML/PREO"
+
+    func meals() -> String {
+        switch self {
+        case .none:
+            return "iconmeals"
+        case .spml:
+            return "SPML"
+        case .preo:
+            return "PREO"
+        case .spmlpreo:
+            return "SPMLandPREO"
+       
         }
     }
 }

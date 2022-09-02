@@ -32,6 +32,7 @@ public struct CrmProfile : Codable {
 	let lapChild : String?
 	let ssrs : [Ssrs]?
 	let specialMeals : [SpecialMeals]?
+    let preOrderMeals : [PreOrderMeals]?
 	let tripHistoryList : [TripHistoryList]?
 	let keyInsights : KeyInsights?
 	let keyInsightsResponseList : [KeyInsightsResponseList]?
@@ -65,6 +66,7 @@ public struct CrmProfile : Codable {
 		case lapChild = "lapChild"
 		case ssrs = "ssrs"
 		case specialMeals = "specialMeals"
+        case preOrderMeals = "preOrderMeals"
 		case tripHistoryList = "tripHistoryList"
 		case keyInsights = "keyInsights"
 		case keyInsightsResponseList = "keyInsightsResponseList"
@@ -99,6 +101,7 @@ public struct CrmProfile : Codable {
 		lapChild = try values.decodeIfPresent(String.self, forKey: .lapChild)
 		ssrs = try values.decodeIfPresent([Ssrs].self, forKey: .ssrs)
 		specialMeals = try values.decodeIfPresent([SpecialMeals].self, forKey: .specialMeals)
+        preOrderMeals = try values.decodeIfPresent([PreOrderMeals].self, forKey: .preOrderMeals)
 		tripHistoryList = try values.decodeIfPresent([TripHistoryList].self, forKey: .tripHistoryList)
         keyInsights = try values.decodeIfPresent(KeyInsights.self, forKey: .keyInsights)
 		keyInsightsResponseList = try values.decodeIfPresent([KeyInsightsResponseList].self, forKey: .keyInsightsResponseList)

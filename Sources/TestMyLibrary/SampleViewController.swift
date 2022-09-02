@@ -209,7 +209,16 @@ public class SampleViewController: UIViewController{
                     seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: statusType.Status()))
                 }
                 break
-                
+            case .meals:
+                if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 && seat.crmInfo?.crmProfile?.preOrderMeals?.count  ?? 0 > 0 {
+                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "SPML/PREO")?.meals() ?? "" ))
+                }else if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 {
+                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "SPML")?.meals() ?? "" ))
+                }
+                else if seat.crmInfo?.crmProfile?.preOrderMeals?.count ?? 0 > 0 {
+                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "PREO")?.meals() ?? "" ))
+                }
+
             case .none:
                 break
             }
