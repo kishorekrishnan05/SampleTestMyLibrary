@@ -145,7 +145,7 @@ public class SampleViewController: UIViewController{
                 setupISExit(seat: seats, index: seatIndex, seatSize: seatSize)
             }
             if let seatsNumber = row.seats?[seatIndex] {
-                setupSeatRowNumber(seat: seatsNumber, rowNumber: row.number ?? "", seatSize: seatSize,index : seatIndex, cabinindex: cabinindex )
+                setupSeatRowNumber(seat: seatsNumber, rowNumber: row.number ?? "", seatSize: seatSize,index : seatIndex, cabinindex: cabinindex, seatCount: (row.seats?.count ?? -1) )
             }
             if seatIndex  == (row.seats?.count ?? 0) - 1{
                 height = yOffset + seatSize + 8//yaxis padding
@@ -167,7 +167,7 @@ public class SampleViewController: UIViewController{
             }
         }
     }
-    func setupSeatRowNumber(seat: Seats, rowNumber: String,seatSize: CGFloat,index: Int,cabinindex: Int) {
+    func setupSeatRowNumber(seat: Seats, rowNumber: String,seatSize: CGFloat,index: Int,cabinindex: Int,seatCount : Int) {
         if seat.seatvalue == "-"  {
             button = UIButton()
             button.backgroundColor = UIColor.clear
@@ -210,6 +210,7 @@ public class SampleViewController: UIViewController{
                 }
                 break
             case .meals:
+                if seatCount < 9 {
                 if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 && seat.crmInfo?.crmProfile?.preOrderMeals?.count  ?? 0 > 0 {
                     seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "SPML/PREO")?.meals() ?? "" ))
                 }else if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 {
@@ -217,6 +218,11 @@ public class SampleViewController: UIViewController{
                 }
                 else if seat.crmInfo?.crmProfile?.preOrderMeals?.count ?? 0 > 0 {
                     seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "PREO")?.meals() ?? "" ))
+                }
+                }else {
+                    if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 || seat.crmInfo?.crmProfile?.preOrderMeals?.count  ?? 0 > 0 {
+                        seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "common")?.meals() ?? "" ))
+                    }
                 }
 
             case .none:
