@@ -172,6 +172,7 @@ public enum StatusType : String{
 
 public enum MealsType : String{
     case none = ""
+    case common = "common"
     case spml = "SPML"
     case preo = "PREO"
     case spmlpreo = "SPML/PREO"
@@ -179,6 +180,8 @@ public enum MealsType : String{
     func meals() -> String {
         switch self {
         case .none:
+            return ""
+        case .common:
             return "iconmeals"
         case .spml:
             return "SPML"
