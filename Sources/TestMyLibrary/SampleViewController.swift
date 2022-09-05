@@ -191,22 +191,25 @@ public class SampleViewController: UIViewController{
             switch quickViewType {
             case .sSRs:
                 for item in seat.crmInfo?.crmProfile?.ssrs ?? [] {
-                    let ssrType : SSRsType = SSRsType(rawValue: item.code ?? "") ?? .none
+                    if let ssrType : SSRsType = SSRsType(rawValue: item.code ?? "") {
                     seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: ssrType.SSRs()))
+                }
                 }
             case .Status:
                 if seat.crmInfo?.accountSummary?.mileagePlusNumber?.count ?? 0 > 0 {
                     if seat.crmInfo?.accountSummary?.eliteStatus?.starEliteDescription ?? "" == "Gold" || seat.crmInfo?.accountSummary?.eliteStatus?.starEliteDescription ?? "" == "Silver" {
-                        let starAlliance : StatusType =  StatusType(rawValue: seat.crmInfo?.accountSummary?.eliteStatus?.starEliteDescription ?? "") ?? .none
+                        if let starAlliance : StatusType =  StatusType(rawValue: seat.crmInfo?.accountSummary?.eliteStatus?.starEliteDescription ?? "") {
                         seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: starAlliance.Status()))
+                        }
                     }else {
-                        let statusType : StatusType = StatusType(rawValue: seat.crmInfo?.accountSummary?.eliteStatus?.description ?? "") ?? .none
-                        seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: statusType.Status()))
+                        if let statusType : StatusType = StatusType(rawValue: seat.crmInfo?.accountSummary?.eliteStatus?.description ?? "") {                        seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: statusType.Status()))
+                        }
                     }
                     
                 }else{
-                    let statusType : StatusType = StatusType(rawValue:"GM") ?? .none
+                    if let statusType : StatusType = StatusType(rawValue:"GM") {
                     seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: statusType.Status()))
+                    }
                 }
                 break
             case .meals:
@@ -224,7 +227,13 @@ public class SampleViewController: UIViewController{
                         seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "common")?.meals() ?? "" ))
                     }
                 }
-
+            case.connections:
+                if seat.crmInfo?.crmProfile?.connection != ""{
+                    if let connectionsType : ConnectionsType = ConnectionsType(rawValue:  seat.crmInfo?.crmProfile?.connection ?? "") {
+                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: connectionsType.connections()))
+                }
+                }
+                break
             case .none:
                 break
             }

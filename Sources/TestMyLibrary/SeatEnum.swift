@@ -38,13 +38,13 @@ public enum QuickViewOptionSelected: String {
     case sSRs = "SSRs"
     case Status = "Status"
     case meals = "SPML/PREO"
+    case connections = "Connections"
     
     
     
 }
 
 public enum SSRsType : String{
-    case none = ""
     case wheelchair = "WCHR"
     case wheelchair1 = "WCBD"
     case wheelchair2 = "WCBW"
@@ -83,8 +83,6 @@ public enum SSRsType : String{
     
     func SSRs() -> String {
         switch self {
-        case .none:
-            return ""
         case .wheelchair , .wheelchair1 , .wheelchair2 , .wheelchair3 ,.wheelchair4,.wheelchair5:
             return "SSR_Wheelchair"
         case .disabledPassengerDPNA:
@@ -129,7 +127,6 @@ public enum SSRsType : String{
     }
 }
 public enum StatusType : String{
-    case none = ""
     case globalServices = "GS"//
     case oneK = "1K"//
     case premierPlatinum = "PLATINUM"//
@@ -146,8 +143,6 @@ public enum StatusType : String{
     
     func Status() -> String {
         switch self {
-        case .none:
-            return ""
         case .globalServices:
             return "ic_mp_status_GlobalServices"
         case .oneK:
@@ -171,7 +166,6 @@ public enum StatusType : String{
 }
 
 public enum MealsType : String{
-    case none = ""
     case common = "common"
     case spml = "SPML"
     case preo = "PREO"
@@ -179,8 +173,6 @@ public enum MealsType : String{
 
     func meals() -> String {
         switch self {
-        case .none:
-            return ""
         case .common:
             return "iconmeals"
         case .spml:
@@ -189,6 +181,20 @@ public enum MealsType : String{
             return "PREO"
         case .spmlpreo:
             return "SPMLandPREO"
+       
+        }
+    }
+}
+public enum ConnectionsType : String{
+    case tightConnections = "MCT"
+    case outBoundConnections = "Connection"
+
+    func connections() -> String {
+        switch self {
+        case .tightConnections:
+            return "connection_Red"
+        case .outBoundConnections:
+            return "connection_White"
        
         }
     }
