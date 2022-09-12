@@ -192,14 +192,14 @@ public class SampleViewController: UIViewController{
             case .sSRs:
                 for item in seat.crmInfo?.crmProfile?.ssrs ?? [] {
                     if let ssrType : SSRsType = SSRsType(rawValue: item.code ?? "") {
-                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: ssrType.SSRs()))
-                }
+                        seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: ssrType.SSRs()))
+                    }
                 }
             case .Status:
                 if seat.crmInfo?.accountSummary?.mileagePlusNumber?.count ?? 0 > 0 {
                     if seat.crmInfo?.accountSummary?.eliteStatus?.starEliteDescription ?? "" == "Gold" || seat.crmInfo?.accountSummary?.eliteStatus?.starEliteDescription ?? "" == "Silver" {
                         if let starAlliance : StatusType =  StatusType(rawValue: seat.crmInfo?.accountSummary?.eliteStatus?.starEliteDescription ?? "") {
-                        seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: starAlliance.Status()))
+                            seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: starAlliance.Status()))
                         }
                     }else {
                         if let statusType : StatusType = StatusType(rawValue: seat.crmInfo?.accountSummary?.eliteStatus?.description ?? "") {                        seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: statusType.Status()))
@@ -208,32 +208,38 @@ public class SampleViewController: UIViewController{
                     
                 }else{
                     if let statusType : StatusType = StatusType(rawValue:"GM") {
-                    seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: statusType.Status()))
+                        seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: statusType.Status()))
                     }
                 }
                 break
             case .meals:
-               // if seatCount < 8 {
-                if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 && seat.crmInfo?.crmProfile?.preOrderMeals?.count  ?? 0 > 0 {
-                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "SPML/PREO")?.meals() ?? "" ))
-                }else if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 {
-                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "SPML")?.meals() ?? "" ))
-                }
-                else if seat.crmInfo?.crmProfile?.preOrderMeals?.count ?? 0 > 0 {
-                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "PREO")?.meals() ?? "" ))
-                }
-               /* }else {
+                if seatCount < 8 {
+                    if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 && seat.crmInfo?.crmProfile?.preOrderMeals?.count  ?? 0 > 0 {
+                        seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "SPML/PREO")?.meals() ?? "" ))
+                    }else if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 {
+                        seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "SPML")?.meals() ?? "" ))
+                    }
+                    else if seat.crmInfo?.crmProfile?.preOrderMeals?.count ?? 0 > 0 {
+                        seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "PREO")?.meals() ?? "" ))
+                    }
+                }else {
                     if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 || seat.crmInfo?.crmProfile?.preOrderMeals?.count  ?? 0 > 0 {
                         seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "common")?.meals() ?? "" ))
                     }
-                }*/
+                }
             case.connections:
                 if seat.crmInfo?.crmProfile?.connection != ""{
                     if let connectionsType : ConnectionsType = ConnectionsType(rawValue:  seat.crmInfo?.crmProfile?.connection ?? "") {
-                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: connectionsType.connections()))
-                }
+                        seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: connectionsType.connections()))
+                    }
                 }
                 break
+            case .recognition:
+                if seat.crmInfo?.crmProfile?.birthdayIndicator ?? false {
+                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: RecognitionType(rawValue: "birthdayRecognition")?.recognition() ?? "" ))
+                    
+                } else if seat.crmInfo?.crmProfile?.legMillionMilerIndicator ?? false {
+                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: RecognitionType(rawValue: "MillerMilestoneRecognition")?.recognition() ?? "" ))                }
             case .none:
                 break
             }

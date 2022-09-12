@@ -39,6 +39,7 @@ public enum QuickViewOptionSelected: String {
     case Status = "Status"
     case meals = "SPML/PREO"
     case connections = "Connections"
+    case recognition = "Recognition"
     
     
     
@@ -195,6 +196,20 @@ public enum ConnectionsType : String{
             return "connection_Red"
         case .outBoundConnections:
             return "connection_White"
+       
+        }
+    }
+}
+public enum RecognitionType : String{
+    case birthdayRecognition = "birthdayRecognition"
+    case MillerMilestoneRecognition = "MillerMilestoneRecognition"
+
+    func recognition() -> String {
+        switch self {
+        case .birthdayRecognition:
+            return "bdayRecognition"
+        case .MillerMilestoneRecognition:
+            return "MMRecognition"
        
         }
     }
