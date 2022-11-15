@@ -8,6 +8,19 @@
 import UIKit
 import Foundation
 
+public struct  ModelHeader{
+    var height: CGFloat?
+    var name: String?
+    var configuration : String?
+    var seatSize : CGFloat?
+    var xyPositon : [ModelxyPosition]?
+}
+
+public struct  ModelxyPosition {
+    var configuationChar : String?
+    var xValue : CGFloat?
+    var yValue : CGFloat?
+}
 
 public protocol seatDetailsDelegete: AnyObject {
     func deatilsSeats(seats :Seats)
@@ -21,6 +34,9 @@ public class SampleViewController: UIViewController{
     
     
     @IBOutlet weak var seatScrollView: UIScrollView!
+    
+    var booltest = false
+    var viewContent = UIView()
     
     public var modelSeat : ModelSeatMap?
     var headerValue = [ModelHeader]()
@@ -64,7 +80,13 @@ public class SampleViewController: UIViewController{
                 
             }
         }
-        seatScrollView.contentSize = CGSize(width: 0, height: height)
+       // seatScrollView.contentSize = CGSize(width: 0, height: height)
+        seatScrollView.contentSize = CGSize(width: 1, height: height)
+        
+        viewContent.frame = CGRect(x: 0, y: 0, width: seatScrollView.frame.width, height: height)
+        viewContent.layer.masksToBounds = false
+        self.seatScrollView.addSubview(viewContent)
+        self.seatScrollView.bringSubviewToFront(viewContent)
     }
     
     func setupHeader(title: String,configuration: String,headerIndex:Int) {
@@ -78,7 +100,7 @@ public class SampleViewController: UIViewController{
         setupWingHeader(LeftWing: true)
         setupWingHeader(LeftWing: false)
         height += 24
-        seatScrollView.addSubview(labelView)
+        viewContent.addSubview(labelView)
     }
     func setupRows(row : [Rows],cabinIndex: Int,configuration:String,configutationHeader : String)
     {
@@ -125,7 +147,7 @@ public class SampleViewController: UIViewController{
             
             button.frame = CGRect(x: xOffset, y: CGFloat(yOffset), width: seatSize, height: seatSize)
             xOffset = xOffset  + CGFloat(8) + seatSize
-            seatScrollView.addSubview(button)
+            viewContent.addSubview(button)
             if configurationIndex  == (configuration.count ) - 1{
                 height = yOffset + seatSize + 8  //+ 10//yaxis padding
             }
@@ -137,7 +159,7 @@ public class SampleViewController: UIViewController{
         imageView.contentMode = .scaleAspectFit
         imageView.image = LeftWing ? UIImage(named:"leftUE") : UIImage(named:"RightUE")
         imageView.backgroundColor = UIColor.clear
-        seatScrollView.addSubview(imageView)
+        viewContent.addSubview(imageView)
     }
     func setupSeat(seatSize: CGFloat,row :Rows,rowindex: Int,cabinindex:Int){
         for seatIndex in 0..<(row.seats?.count ?? -1){
@@ -158,12 +180,12 @@ public class SampleViewController: UIViewController{
             button = UIButton()
             button.backgroundColor = .colorPinkRed
             button.frame = CGRect(x: 4, y: CGFloat(yOffset), width: 5, height: seatSize)
-            seatScrollView.addSubview(button)
+            viewContent.addSubview(button)
             if index  == (seat.count ) - 1{
                 button = UIButton()
                 button.backgroundColor = .colorPinkRed
                 button.frame = CGRect(x: xOffset + seatSize + 10 , y: CGFloat(yOffset), width: 5, height: seatSize)
-                seatScrollView.addSubview(button)
+                viewContent.addSubview(button)
             }
         }
     }
@@ -178,7 +200,7 @@ public class SampleViewController: UIViewController{
             }
             button.frame = CGRect(x: xOffset, y: CGFloat(yOffset), width: seatSize, height: seatSize)
             xOffset = xOffset  + CGFloat(8) + seatSize
-            seatScrollView.addSubview(button)
+            viewContent.addSubview(button)
         }else{
             setupSeatColor(seatValue: seat.seatvalue ?? "")
             let seatValue = seatDetails(target: self, action: #selector(setupSeatValue(sender:)))
@@ -187,66 +209,66 @@ public class SampleViewController: UIViewController{
             button.imageView?.contentMode = .scaleAspectFit
             button.frame = CGRect(x: xOffset, y: CGFloat(yOffset), width: seatSize, height: seatSize)
             xOffset = xOffset  + CGFloat(8) + seatSize
-            seatScrollView.addSubview(button)
+            viewContent.addSubview(button)
             switch quickViewType {
             case .sSRs:
                 for item in seat.crmInfo?.crmProfile?.ssrs ?? [] {
                     if let ssrType : SSRsType = SSRsType(rawValue: item.code ?? "") {
-                        seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: ssrType.SSRs()))
+                        viewContent.addSubview(setupImage(seatSize: seatSize, imageNameString: ssrType.SSRs()))
                     }
                 }
             case .Status:
                 if seat.crmInfo?.accountSummary?.mileagePlusNumber?.count ?? 0 > 0 {
                     if seat.crmInfo?.accountSummary?.eliteStatus?.starEliteDescription ?? "" == "Gold" || seat.crmInfo?.accountSummary?.eliteStatus?.starEliteDescription ?? "" == "Silver" {
                         if let starAlliance : StatusType =  StatusType(rawValue: seat.crmInfo?.accountSummary?.eliteStatus?.starEliteDescription ?? "") {
-                            seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: starAlliance.Status()))
+                            viewContent.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: starAlliance.Status()))
                         }
                     }else {
-                        if let statusType : StatusType = StatusType(rawValue: seat.crmInfo?.accountSummary?.eliteStatus?.description ?? "") {                        seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: statusType.Status()))
+                        if let statusType : StatusType = StatusType(rawValue: seat.crmInfo?.accountSummary?.eliteStatus?.description ?? "") {                        viewContent.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: statusType.Status()))
                         }
                     }
                     
                 }else{
                     if let statusType : StatusType = StatusType(rawValue:"GM") {
-                        seatScrollView.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: statusType.Status()))
+                        viewContent.addSubview(setupStatusImage(seatSize: seatSize, imageNameString: statusType.Status()))
                     }
                 }
                 break
             case .meals:
                 if seatCount < 8 {
                     if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 && seat.crmInfo?.crmProfile?.preOrderMeals?.count  ?? 0 > 0 {
-                        seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "SPML/PREO")?.meals() ?? "" ))
+                        viewContent.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "SPML/PREO")?.meals() ?? "" ))
                     }else if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 {
-                        seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "SPML")?.meals() ?? "" ))
+                        viewContent.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "SPML")?.meals() ?? "" ))
                     }
                     else if seat.crmInfo?.crmProfile?.preOrderMeals?.count ?? 0 > 0 {
-                        seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "PREO")?.meals() ?? "" ))
+                        viewContent.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "PREO")?.meals() ?? "" ))
                     }
                 }else {
                     if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 || seat.crmInfo?.crmProfile?.preOrderMeals?.count  ?? 0 > 0 {
-                        seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "common")?.meals() ?? "" ))
+                        viewContent.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "common")?.meals() ?? "" ))
                     }
                 }
             case.connections:
                 if seat.crmInfo?.crmProfile?.connection != ""{
                     if let connectionsType : ConnectionsType = ConnectionsType(rawValue:  seat.crmInfo?.crmProfile?.connection ?? "") {
-                        seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: connectionsType.connections()))
+                        viewContent.addSubview(setupImage(seatSize: seatSize, imageNameString: connectionsType.connections()))
                     }
                 }
                 break
             case .recognition:
                 if seat.crmInfo?.crmProfile?.birthdayIndicator ?? false {
-                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: RecognitionType(rawValue: "birthdayRecognition")?.recognition() ?? "" ))
+                    viewContent.addSubview(setupImage(seatSize: seatSize, imageNameString: RecognitionType(rawValue: "birthdayRecognition")?.recognition() ?? "" ))
                     
                 } else if seat.crmInfo?.crmProfile?.legMillionMilerIndicator ?? false {
-                    seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: RecognitionType(rawValue: "MillerMilestoneRecognition")?.recognition() ?? "" ))                }
+                    viewContent.addSubview(setupImage(seatSize: seatSize, imageNameString: RecognitionType(rawValue: "MillerMilestoneRecognition")?.recognition() ?? "" ))                }
             case .none:
                 break
             }
         // seatScrollView.addSubview(setupImage(seatSize: seatSize, imageNameString: "Icons_24px_Travel_"))
             //Recognition Function need to confirm the key
             if seat.crmInfo?.crmProfile?.actionIndicator ?? false{
-                seatScrollView.addSubview(setupbadge(imageNameString: "action", backgroundColor: .colorPinkRed))
+                viewContent.addSubview(setupbadge(imageNameString: "action", backgroundColor: .colorPinkRed))
             }
             
         }
@@ -346,9 +368,274 @@ public class SampleViewController: UIViewController{
     
 }
 extension SampleViewController : UIScrollViewDelegate{
+    
+    
+    
     public func scrollViewDidScroll(_ scrollView: UIScrollView){
-        setupScrollHeader(scrollYPosition: scrollView.contentOffset.y)
+        /*if(scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 0)
+           {
+               print("up")
+           }
+          else
+          {
+               print("down")
+          }
+          if scrollView.panGestureRecognizer.translation(in: scrollView.superview).x > 0 {
+             print("left")
+          } else {
+             print("right")
+          }*/
+         /* let originVisible = seatScrollView.contentOffset
+          let convertedPoint = seatScrollView.convert(originVisible, to: viewContent).scaledBy(scale: seatScrollView.zoomScale)
+          let imageViewPoint = CGPoint(x: convertedPoint.x + seatScrollView.center.x,
+                                       y: convertedPoint.y + seatScrollView.center.y)*/
+         // print(imageViewPoint)
+        //print("\(seatScrollView.contentOffset.x) seatScrollView.contentOffset.x ")
+       // print(seatScrollView.contentOffset.x )//  * scrollView.zoomScale )
+        //print("\(headerValue.first?.xyPositon?.first?.configuationChar) -  \((headerValue.first?.xyPositon?.first?.xValue)! * scrollView.zoomScale) test")
+       // print(("\(headerValue.first?.xyPositon?[2].configuationChar) -  \((((headerValue.first?.xyPositon?[2].xValue)! + (headerValue.first?.seatSize)!))) test"))
+        //print("\(headerValue.first?.xyPositon?[2].configuationChar) -  \(((((headerValue.first?.xyPositon?[2].xValue)! * scrollView.zoomScale) + (headerValue.first?.seatSize)!)  )) test")
+        //print("\(headerValue.first?.xyPositon?[3].configuationChar) -  \((((headerValue.first?.xyPositon?[3].xValue)! * scrollView.zoomScale)   )) test")
+        /*viewHeader.isHidden =   false
+        viewHeader.subviews.forEach { temp in
+            temp.removeFromSuperview()
+        }
+        viewHeader.layoutSubviews()
+        label.textColor = UIColor.colorDarkblue
+        label.font = UIFont(name: "OpenSans-SemiBold", size: 16)
+        var leadingValue : CGFloat = 0
+        label.text = "United Polaris business"
+        label.frame = CGRect(x: 0, y: 0, width: viewHeader.frame.width, height: 24)
+        label.textAlignment = .center
+        viewHeader.addSubview(label)
+        for configurationValue in 0..<(headerValue.first?.configuration?.count ?? -1){
+            let index = String.Index(encodedOffset: configurationValue)
+            button = UIButton()
+            button.backgroundColor = UIColor.clear
+            for item in (headerValue.first?.xyPositon ?? []) {
+               // if Int(seatScrollView.contentOffset.x) == Int(((item.xValue)! * scrollView.zoomScale)   ) {
+                if item.configuationChar != "-" {
+                    print(item.configuationChar)
+
+                    button.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 12)
+                    button.setTitle(item.configuationChar, for: .normal)
+                    button.setTitleColor(UIColor.red, for: .normal)
+                }
+                //((headerValue.first?.xyPositon?[3].xValue)! * scrollView.zoomScale)
+                let testheight : CGFloat = item.xValue! * scrollView.zoomScale
+                print(testheight)
+                button.frame = CGRect(x: testheight, y: CGFloat(36), width: headerValue.first?.seatSize ?? 0, height: 16)
+                
+                print(button.frame.size.width)
+                //leadingValue = leadingValue  + CGFloat(8) + (headerValue.first?.seatSize ?? 0)
+                viewHeader.addSubview(button)
+                viewHeader.bringSubviewToFront(button)
+                view.addSubview(viewHeader)
+                
+                  //  button.frame = CGRect(x: CGFloat((item.xValue)!), y: CGFloat(36), width: (headerValue.first?.seatSize ?? 0) * scrollView.zoomScale, height: 16)
+                    //viewHeader.addSubview(button)
+                    /*let index = String.Index(encodedOffset: configurationValue)
+                    
+                    if let congifuration = (headerValue.first?.xyPositon?[configurationValue].configuationChar){
+                        if congifuration != "-" {
+                            button.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 12)
+                            button.setTitle("\((headerValue.first?.xyPositon?[configurationValue].configuationChar)!)", for: .normal)
+                            button.setTitleColor(UIColor.red, for: .normal)
+                        }
+                    }
+                    
+                    button.frame = CGRect(x: CGFloat((headerValue.first?.xyPositon?[configurationValue].xValue)!), y: CGFloat(36), width: (headerValue.first?.seatSize ?? 0) * scrollView.zoomScale, height: 16)
+                    
+                    leadingValue = ((headerValue.first?.xyPositon?[configurationValue].xValue)!)  + 8 + (headerValue.first?.seatSize ?? 0) * scrollView.zoomScale
+                    viewHeader.addSubview(button)*/
+
+                                        
+                //}
+            }
+            
+            
+
+        }*/
+        
+       // print("\((headerValue.first?.xValue)! * seatScrollView.zoomScale) headerValue.first?.xValue ")
+       // print("\(headerValue.first?.yValue) headerValue.first?.yValue")
+        
+        if booltest == true {
+        setupScrollHeaderZoom(scrollYPosition: scrollView.contentOffset.y)
+        }else {
+            setupScrollHeader(scrollYPosition: scrollView.contentOffset.y)
+        }
     }
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        
+        //viewContent.backgroundColor = .systemPink
+        //testView.backgroundColor = .red
+            return viewContent
+       // return testView//seatScrollView.superview
+        return nil
+    }
+    
+    
+    public func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+        booltest = true
+        //viewHeader.isHidden = true
+        /*seatScrollView.subviews.forEach { temp in
+            temp.removeFromSuperview()
+        }
+        seatScrollView.layoutSubviews()
+        setupSeat()
+        seatScrollView.addSubview(contentViewTest)*/
+        //setupSeat1()
+      /*  testView.isHidden = false
+        viewContent.isHidden = true
+        
+        setupSeat1()
+        testView.isHidden = false
+        testView.frame = CGRect(x: 0, y: 0, width: 0, height: height)
+        testView.backgroundColor = .green
+        testView.layer.masksToBounds = false
+        self.seatScrollView.addSubview(testView)
+        self.seatScrollView.bringSubviewToFront(testView)*/
+        print("scrollViewWillBeginZooming")
+    }
+    public func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+        print("scrollViewDidEndZooming")
+        /*seatScrollView.subviews.forEach { temp in
+            temp.removeFromSuperview()
+        }
+        seatScrollView.layoutSubviews()
+       setupSeat()*/
+        /*testView.isHidden = true
+        viewContent.isHidden = false
+      //  seatScrollView.layoutIfNeeded()
+        seatScrollView.contentSize = CGSize(width: 0, height: height)
+        viewContent.frame = CGRect(x: 0, y: 0, width: 0, height: height)*/
+        //seatScrollView.contentInset = .zero
+        /*seatScrollView.subviews.forEach { temp in
+            temp.removeFromSuperview()
+        }
+        seatScrollView.layoutSubviews()*/
+        //contentViewTest.reloadInputViews()
+        //self.seatScrollView.setZoomScale(0.0, animated: false)
+      //  contentViewTest?.isHidden = true
+      //  normalViewTest?.isHidden = false
+        
+        //normalViewTest.backgroundColor = .colorPinkRed
+        //seatScrollView.addSubview(normalViewTest ?? contentViewTest)
+        
+        
+        
+    }
+    public func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        if seatScrollView.zoomScale != 1.0 ||  seatScrollView.zoomScale < 0{
+            
+        }else {
+         booltest = false
+         seatScrollView.contentSize = CGSize(width: 1.0, height: height)
+        }
+        /*print(self.seatScrollView.frame.size.height)
+         print(self.viewContent.frame.size.height)
+         print(height)
+         print(self.seatScrollView.contentSize.height)
+         print(seatScrollView.zoomScale * viewContent.bounds.size.height)
+        print(scrollView.contentSize.height)*/
+    
+    }
+    
+    // Kihore zoom
+    /*public func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        seatScrollView.pinchGestureRecognizer
+        //scro
+       //print(viewContent.location(in: view).x)
+        let pointXY:CGPoint = (button.superview?.convert(button.frame.origin, to: nil))!
+        print("button pointXY: \(pointXY.debugDescription)")
+        //print(seatScrollView.zoomScale)
+        if seatScrollView.zoomScale != 1.0 ||  seatScrollView.zoomScale < 0{
+            print("Kishore != 1 < 0")
+            
+        seatScrollView.layoutIfNeeded()
+            seatScrollView.contentSize = CGSize(width: viewContent.frame.width * seatScrollView.zoomScale, height: viewContent.frame.height * seatScrollView.zoomScale)
+            print(viewContent.frame.width * seatScrollView.zoomScale)
+       // viewContent.frame = CGRect(x: 0, y: 0, width: 0, height: height)
+      //  viewContent.frame = CGRect(x: testX, y: testy, width: 100, height: 100)
+        //viewContent.backgroundColor = .green
+        viewContent.layer.masksToBounds = false
+        self.seatScrollView.addSubview(viewContent)
+        self.seatScrollView.bringSubviewToFront(viewContent)
+        }else{
+            print("Kishore kssdfsd")
+            seatScrollView.layoutIfNeeded()
+            seatScrollView.contentSize = CGSize(width: 0, height: height)
+           // viewContent.frame = CGRect(x: 0, y: 0, width: 0, height: height)
+           // viewContent.frame = CGRect(x: 0, y: 0, width: 0, height: height)
+            //viewContent.backgroundColor = .green
+            viewContent.layer.masksToBounds = false
+            self.seatScrollView.addSubview(viewContent)
+            self.seatScrollView.bringSubviewToFront(viewContent)
+        }
+       /* if seatScrollView.zoomScale != 1.0 ||  seatScrollView.zoomScale < 0{
+            testView.isHidden = false
+            viewContent.isHidden = true
+            
+            
+            /*self.seatScrollView.addSubview(testView)
+            self.seatScrollView.bringSubviewToFront(testView)*/
+           /* seatScrollView.subviews.forEach { temp in
+                temp.removeFromSuperview()
+            }
+            seatScrollView.layoutSubviews()*/
+            setupSeat1()
+            
+            //testView.transform = CATransform3DMakeScale(newScale, newScale, 1.0);
+           // self.testView.bounds = CGRect(x: 0, y: 0, width: 100 * 50, height: 100 * 50)//CGRectMake(0, 0, 100 * 5, 100 * 5); // supposing that label's original size is {100, 100}
+              //  self.testView.layer.affineTransform = CGAffineTransformMakeScale(1.0/5, 1.0/5);
+            testView.isHidden = false
+            seatScrollView.contentSize = CGSize(width: 1000000, height: 100000)
+            testView.frame = CGRect(x: 0, y: 0, width: 1000000, height: 1000000)
+            //testView.backgroundColor = .green
+            testView.layer.masksToBounds = false
+           // self.CentreScrollViewContents()
+            self.seatScrollView.addSubview(testView)
+            self.seatScrollView.bringSubviewToFront(testView)
+         /*   imageView.image = UIImage(named:"leftUE")
+                if let image = imageView.image {
+
+                    let ratioW = imageView.frame.width / image.size.width
+                    let ratioH = imageView.frame.height / image.size.height
+
+                    let ratio = ratioW < ratioH ? ratioW:ratioH
+
+                    let newWidth = image.size.width*ratio
+                    let newHeight = image.size.height*ratio
+
+                    let left = 0.5 * (newWidth * scrollView.zoomScale > imageView.frame.width ? (newWidth - imageView.frame.width) : (scrollView.frame.width - scrollView.contentSize.width))
+                    let top = 0.5 * (newHeight * scrollView.zoomScale > imageView.frame.height ? (newHeight - imageView.frame.height) : (scrollView.frame.height - scrollView.contentSize.height))
+
+                    seatScrollView.contentInset = UIEdgeInsets(top: top, left: left, bottom: top, right: left)
+                }*/
+            } else {
+                print("Kishore\(testheight)")
+                /*seatScrollView.subviews.forEach { temp in
+                    temp.removeFromSuperview()
+                }
+                seatScrollView.layoutSubviews()*/
+                //setupSeat()
+               // viewContent.backgroundColor = .systemPink
+               // testView.backgroundColor = .green
+                testView.isHidden = true
+                viewContent.isHidden = false
+                seatScrollView.layoutIfNeeded()
+                seatScrollView.contentSize = CGSize(width: 0, height: testheight)
+               // viewContent.frame = CGRect(x: 0, y: 0, width: 0, height: height)
+                viewContent.frame = CGRect(x: 0, y: 0, width: 0, height: testheight)
+                //viewContent.backgroundColor = .green
+                viewContent.layer.masksToBounds = false
+                self.seatScrollView.addSubview(viewContent)
+                self.seatScrollView.bringSubviewToFront(viewContent)
+                //viewContent.backgroundColor = .systemPink
+            }*/
+    }*/
+
 }
 extension SampleViewController{
     func setupScrollHeader(scrollYPosition: CGFloat)
@@ -396,6 +683,61 @@ extension SampleViewController{
             leadingValue = leadingValue  + CGFloat(8) + (value.seatSize ?? 0)
             viewHeader.addSubview(button)
         }
+    }
+    
+    func setupScrollHeaderZoom(scrollYPosition: CGFloat)
+    {
+        let leadingValue: CGFloat = 24
+        viewHeader.isHidden =  scrollYPosition > 0 ? false : true
+        
+        for (itemIndex,itemValue) in headerValue.enumerated() {
+           // if itemIndex != headerValue.count - 1 {
+            if headerValue[itemIndex].height! * seatScrollView.zoomScale  - 120 < seatScrollView.contentOffset.y {
+                viewHeader.subviews.forEach { temp in
+                    temp.removeFromSuperview()
+                }
+                viewHeader.layoutSubviews()
+            for i in headerValue[itemIndex].xyPositon ?? [] {
+                setupScrollHeaderValueZoom(Index1: itemIndex, value: i.configuationChar!, xAxis: i.xValue! * seatScrollView.zoomScale, headerName: headerValue[itemIndex].name ?? "", seatSize: headerValue[itemIndex].seatSize!)
+                
+            }
+            }
+            
+        }
+        
+    }
+    func setupScrollHeaderValueZoom(Index1 : Int, value:String ,xAxis: CGFloat ,headerName : String,seatSize : CGFloat){
+        label.textColor = UIColor.colorDarkblue
+        label.font = UIFont(name: "OpenSans-SemiBold", size: 16)
+        var leadingValue = xAxis
+        label.text = headerName
+        label.frame = CGRect(x: 0, y: 4, width: viewHeader.frame.width, height: 24)
+        label.textAlignment = .center
+        viewHeader.addSubview(label)
+       // print(value.xyPositon?.first?.xValue)
+       // for configurationValue in 0..<(value.configuration?.count ?? -1){
+           
+           // let index = String.Index(encodedOffset: configurationValue)
+            button = UIButton()
+            button.backgroundColor = UIColor.clear
+       // if let congifuration = value {
+                if value != "-" {
+                    button.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 12)
+                    button.setTitle("\(value)", for: .normal)
+                    button.setTitleColor(UIColor.colorGray, for: .normal)
+                    /*button.titleLabel?.text = value
+                    button.titleLabel!.textAlignment = .center*/
+                }
+           // }
+        let test : CGFloat = 56.66666666666667
+            button.frame = CGRect(x: xAxis + 10, y: CGFloat(36), width: seatSize, height: 16)
+            
+            //leadingValue = leadingValue  + CGFloat(8) + (value.seatSize ?? 0)
+            
+        viewHeader.frame = CGRect(x: -seatScrollView.contentOffset.x, y: 0, width: seatScrollView.contentSize.width, height: 65)
+        viewHeader.addSubview(button)
+        view.addSubview(viewHeader)
+       // }
     }
 }
 
