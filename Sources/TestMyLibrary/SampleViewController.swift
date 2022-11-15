@@ -53,6 +53,12 @@ public class SampleViewController: UIViewController{
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        self.seatScrollView.panGestureRecognizer.delaysTouchesBegan = self.seatScrollView.delaysContentTouches;
+
+        //seatScrollView.canCancelContentTouches = true
+        //seatScrollView.delaysContentTouches = true;
+        seatScrollView.maximumZoomScale = 2
+        seatScrollView.minimumZoomScale = 1
         setupScrollheaderView()
         for family in UIFont.familyNames {
             print("family:", family)
