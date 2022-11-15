@@ -59,7 +59,7 @@ public class SampleViewController: UIViewController{
         //seatScrollView.delaysContentTouches = true;
         seatScrollView.maximumZoomScale = 2
         seatScrollView.minimumZoomScale = 1
-        
+        setupScrollheaderView()
         for family in UIFont.familyNames {
             print("family:", family)
             for font in UIFont.fontNames(forFamilyName: family) {
@@ -67,7 +67,6 @@ public class SampleViewController: UIViewController{
             }
         }
         setupSeat()
-        setupScrollheaderView()
         seatScrollView.delegate = self
         
     }
@@ -376,7 +375,7 @@ public class SampleViewController: UIViewController{
     }
     
     func setupScrollheaderView(){
-        viewHeader.frame = CGRect(x: 0, y: 0, width: seatScrollView.contentSize.width, height: 65)
+        viewHeader.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 65)
         viewHeader.backgroundColor = .colorGhostWhite
         viewHeader.layer.masksToBounds = false
         viewHeader.layer.shadowOffset = CGSize(width: -1, height: 1)
