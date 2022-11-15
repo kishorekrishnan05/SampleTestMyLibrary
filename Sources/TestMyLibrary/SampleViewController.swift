@@ -765,7 +765,7 @@ extension SampleViewController{
             
             //leadingValue = leadingValue  + CGFloat(8) + (value.seatSize ?? 0)
             
-        viewHeader.frame = CGRect(x: -seatScrollView.contentOffset.x, y: 0, width: seatScrollView.contentSize.width, height: 65)
+        viewHeader.frame = CGRect(x: -seatScrollView.contentOffset.x, y: 0, width: seatScrollView.contentSize.width + 10, height: 65)
         viewHeader.addSubview(button)
         view.addSubview(viewHeader)
        // }
