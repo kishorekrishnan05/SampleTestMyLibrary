@@ -266,7 +266,7 @@ public class SampleViewController: UIViewController{
                 }
                 break
             case .meals:
-                if seatCount < 8 {
+               // if seatCount < 8 {
                     if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 && seat.crmInfo?.crmProfile?.preOrderMeals?.count  ?? 0 > 0 {
                         viewContent.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "SPML/PREO")?.meals() ?? "" ))
                     }else if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 {
@@ -275,11 +275,11 @@ public class SampleViewController: UIViewController{
                     else if seat.crmInfo?.crmProfile?.preOrderMeals?.count ?? 0 > 0 {
                         viewContent.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "PREO")?.meals() ?? "" ))
                     }
-                }else {
+                /*}else {
                     if seat.crmInfo?.crmProfile?.specialMeals?.count ?? 0 > 0 || seat.crmInfo?.crmProfile?.preOrderMeals?.count  ?? 0 > 0 {
                         viewContent.addSubview(setupImage(seatSize: seatSize, imageNameString: MealsType(rawValue: "common")?.meals() ?? "" ))
                     }
-                }
+                }*/
             case.connections:
                 if seat.crmInfo?.crmProfile?.connection != ""{
                     if let connectionsType : ConnectionsType = ConnectionsType(rawValue:  seat.crmInfo?.crmProfile?.connection ?? "") {
