@@ -712,6 +712,7 @@ extension SampleViewController{
             button.frame = CGRect(x: leadingValue, y: CGFloat(36), width: value.seatSize ?? 0, height: 16)
             
             leadingValue = leadingValue  + CGFloat(8) + (value.seatSize ?? 0)
+            viewHeader.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 65)
             viewHeader.addSubview(button)
         }
     }
