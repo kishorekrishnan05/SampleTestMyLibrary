@@ -136,10 +136,35 @@ public class SampleViewController: UIViewController{
     
     func setupConfiguration(configuration: String,seatSize: CGFloat,configurationHeader : String){
         var header = ModelHeader()
+        var leadingValue : CGFloat = 16
         header.height = height
         header.name = configurationHeader
         header.configuration = configuration
         header.seatSize = seatSize
+        var xyposition = ModelxyPosition()
+        var testData = [ModelxyPosition]()
+      //  if let congfiguration3 = configuration  ?? "" {
+            for (configurationIndex,configurationValue) in configuration.enumerated() {
+                xyposition.configuationChar = "\(configurationValue)"
+                xyposition.xValue = leadingValue
+                xyposition.yValue = height
+               /* header.xyPositon?[configurationIndex].xValue = leadingValue
+                header.xyPositon?[configurationIndex].yValue = leadingValue
+                header.xyPositon?[configurationIndex].configuationChar = "\(configurationValue)"*/
+               /* button = UIButton()
+                button.backgroundColor = UIColor.clear
+                    if configurationValue != "-" {
+                        button.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 12)
+                        button.setTitle("\(configurationValue)", for: .normal)
+                        button.setTitleColor(UIColor.colorGray, for: .normal)
+                    }
+                
+                button.frame = CGRect(x: leadingValue, y: CGFloat(36), width: seatSize ?? 0, height: 16)*/
+                
+                leadingValue = leadingValue  + CGFloat(8) + (seatSize )
+                testData.append(xyposition)//append(xyposition)//append(xyposition)
+            }
+        header.xyPositon = testData
         headerValue.append(header)
         for configurationIndex in 0..<configuration.count{
             let index = String.Index(encodedOffset: configurationIndex)
