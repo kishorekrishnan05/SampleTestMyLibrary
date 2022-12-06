@@ -32,8 +32,10 @@ public class SampleViewController: UIViewController{
     
     public var delegate : seatDetailsDelegete?
     
+    public var seatScrollView: UIScrollView!
     
-    @IBOutlet weak var seatScrollView: UIScrollView!
+    
+   // @IBOutlet weak var seatScrollView: UIScrollView!
     
     var booltest = false
     var viewContent = UIView()
