@@ -89,6 +89,11 @@ public class SampleViewController: UIViewController{
                 
             }
         }
+        
+        viewContent.frame = CGRect(x: 0, y: 0, width: seatScrollView.frame.width, height: height)
+        viewContent.layer.masksToBounds = false
+        self.seatScrollView.addSubview(viewContent)
+        self.seatScrollView.bringSubviewToFront(viewContent)
         seatScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: height)
         seatScrollView.contentSize = CGSize(width: 1, height: height)
         self.view.addSubview(seatScrollView)
@@ -96,10 +101,6 @@ public class SampleViewController: UIViewController{
        // seatScrollView.contentSize = CGSize(width: 0, height: height)
         seatScrollView.contentSize = CGSize(width: 1, height: height)
         
-        viewContent.frame = CGRect(x: 0, y: 0, width: seatScrollView.frame.width, height: height)
-        viewContent.layer.masksToBounds = false
-        self.seatScrollView.addSubview(viewContent)
-        self.seatScrollView.bringSubviewToFront(viewContent)
     }
     
     func setupHeader(title: String,configuration: String,headerIndex:Int) {
