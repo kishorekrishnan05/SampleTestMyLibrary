@@ -55,6 +55,7 @@ public class SampleViewController: UIViewController{
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        print(Bundle.main)
         self.seatScrollView.panGestureRecognizer.delaysTouchesBegan = self.seatScrollView.delaysContentTouches;
 
         //seatScrollView.canCancelContentTouches = true
