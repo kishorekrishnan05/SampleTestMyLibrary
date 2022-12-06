@@ -89,7 +89,8 @@ public class SampleViewController: UIViewController{
                 
             }
         }
-        /*seatScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: height)*/
+        seatScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: height)
+        seatScrollView.contentSize = CGSize(width: 1, height: height)
         self.view.addSubview(seatScrollView)
         self.view.bringSubviewToFront(seatScrollView)
        // seatScrollView.contentSize = CGSize(width: 0, height: height)
