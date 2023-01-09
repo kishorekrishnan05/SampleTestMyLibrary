@@ -13,4 +13,11 @@ public struct  ModelHeader{
     var name: String?
     var configuration : String?
     var seatSize : CGFloat?
+    var xyPositon : [ModelxyPosition]?
+}
+
+public struct  ModelxyPosition {
+    var configuationChar : String?
+    var xValue : CGFloat?
+    var yValue : CGFloat?
 }

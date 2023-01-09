@@ -30,7 +30,8 @@ public class SampleViewController: UIViewController{
     var button = UIButton()
     var height:CGFloat = 0
     var quickViewType : QuickView = .SSRs
-    
+    var booltest = false
+    var viewHeaderTitle = UIView()
     var yOffset:CGFloat = 8
     var xOffset:CGFloat = 16
     
@@ -108,10 +109,37 @@ public class SampleViewController: UIViewController{
     
     func setupConfiguration(configuration: String,seatSize: CGFloat,configurationHeader : String){
         var header = ModelHeader()
+        var leadingValue : CGFloat = 16
         header.height = height
         header.name = configurationHeader
         header.configuration = configuration
         header.seatSize = seatSize
+        var xyposition = ModelxyPosition()
+        var testData = [ModelxyPosition]()
+      //  if let congfiguration3 = configuration  ?? "" {
+        for (_,configurationValue) in configuration.enumerated() {
+                xyposition.configuationChar = "\(configurationValue)"
+                xyposition.xValue = leadingValue
+                xyposition.yValue = height
+               /* header.xyPositon?[configurationIndex].xValue = leadingValue
+                header.xyPositon?[configurationIndex].yValue = leadingValue
+                header.xyPositon?[configurationIndex].configuationChar = "\(configurationValue)"*/
+               /* button = UIButton()
+                button.backgroundColor = UIColor.clear
+                    if configurationValue != "-" {
+                        button.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 12)
+                        button.setTitle("\(configurationValue)", for: .normal)
+                        button.setTitleColor(UIColor.colorGray, for: .normal)
+                    }
+                
+                button.frame = CGRect(x: leadingValue, y: CGFloat(36), width: seatSize ?? 0, height: 16)*/
+                
+                leadingValue = leadingValue  + CGFloat(8) + (seatSize )
+                testData.append(xyposition)//append(xyposition)//append(xyposition)
+            }
+        header.xyPositon = testData
+       // header.xyPositon?.append(xyposition)
+       // }
         headerValue.append(header)
         for configurationIndex in 0..<configuration.count{
             let index = String.Index(encodedOffset: configurationIndex)
@@ -133,7 +161,12 @@ public class SampleViewController: UIViewController{
     }
     func setupWingHeader(LeftWing : Bool){
         let imageView = UIImageView()
+        if view.frame.width > 390 {
         imageView.frame = CGRect(x:LeftWing ? view.frame.width - 120 : 8, y: height + 5, width: 100, height: 24)
+        }
+        else {
+            imageView.frame = CGRect(x:LeftWing ? view.frame.width - 90 : 8, y: height + 5, width: 75, height: 24)
+        }
         imageView.contentMode = .scaleAspectFit
         imageView.image = LeftWing ? UIImage(named:"leftUE") : UIImage(named:"RightUE")
         imageView.backgroundColor = UIColor.clear
@@ -293,10 +326,98 @@ public class SampleViewController: UIViewController{
 }
 extension SampleViewController : UIScrollViewDelegate{
     public func scrollViewDidScroll(_ scrollView: UIScrollView){
-        setupScrollHeader(scrollYPosition: scrollView.contentOffset.y)
+        if booltest == true {
+            setupScrollHeaderZoom(scrollYPosition: scrollView.contentOffset.y)
+        }else {
+            viewHeaderTitle.isHidden = true
+            setupScrollHeader(scrollYPosition: scrollView.contentOffset.y)
+        }
+    }
+    public func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+        // viewHeader.isHidden = true
+        booltest = true
+        print("scrollViewWillBeginZooming")
+    }
+    public func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        print(seatScrollView.zoomScale)
+        if seatScrollView.zoomScale < 1 {
+            viewHeader.isHidden = true
+            viewHeaderTitle.isHidden = true
+        }else if seatScrollView.zoomScale > 1 && seatScrollView.zoomScale < 2 {
+            
+            viewHeader.isHidden = false
+            viewHeaderTitle.isHidden = false
+        }
+        else if seatScrollView.zoomScale == 1 {
+            booltest = false
+            setupScrollHeader(scrollYPosition: scrollView.contentOffset.y)
+            viewHeaderTitle.isHidden = true
+            // viewHeader.isHidden = false
+            seatScrollView.contentSize = CGSize(width: 1.0, height: height)
+        }
+        
     }
 }
-extension SampleViewController{
+extension SampleViewController {
+    func setupScrollHeaderZoom(scrollYPosition: CGFloat)
+    {
+        let leadingValue: CGFloat = 2
+        viewHeader.isHidden =  scrollYPosition > 0 ? false : true
+        
+        viewHeaderTitle.isHidden  = scrollYPosition > 0 ? false : true
+        for (itemIndex,itemValue) in headerValue.enumerated() {
+           // if itemIndex != headerValue.count - 1 {
+            if headerValue[itemIndex].height! * seatScrollView.zoomScale  - 120 < seatScrollView.contentOffset.y {
+                viewHeaderTitle.removeFromSuperview()
+                viewHeader.subviews.forEach { temp in
+                    temp.removeFromSuperview()
+                }
+                viewHeaderTitle.layoutSubviews()
+                viewHeader.layoutSubviews()
+            for i in headerValue[itemIndex].xyPositon ?? [] {
+                setupScrollHeaderValueZoom(Index1: itemIndex, value: i.configuationChar!, xAxis: i.xValue! * seatScrollView.zoomScale, headerName: headerValue[itemIndex].name ?? "", seatSize: headerValue[itemIndex].seatSize!)
+                
+            }
+            }
+            
+        }
+        
+    }
+    func setupScrollHeaderValueZoom(Index1 : Int, value:String ,xAxis: CGFloat ,headerName : String,seatSize : CGFloat){
+        label.textColor = UIColor.colorDarkblue
+        label.font = UIFont(name: "OpenSans-SemiBold", size: 16)
+        var leadingValue = xAxis
+        label.text = headerName
+        label.frame = CGRect(x: 0, y: 4, width: view.frame.width, height: 24)
+        label.textAlignment = .center
+        viewHeaderTitle.addSubview(label)
+       // print(value.xyPositon?.first?.xValue)
+       // for configurationValue in 0..<(value.configuration?.count ?? -1){
+           
+           // let index = String.Index(encodedOffset: configurationValue)
+            button = UIButton()
+            button.backgroundColor = UIColor.clear
+       // if let congifuration = value {
+                if value != "-" {
+                    button.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 12)
+                    button.setTitle("\(value)", for: .normal)
+                    button.setTitleColor(UIColor.colorGray, for: .normal)
+                    /*button.titleLabel?.text = value
+                    button.titleLabel!.textAlignment = .center*/
+                }
+           // }
+        let test : CGFloat = 56.66666666666667
+            button.frame = CGRect(x: xAxis + 10, y: CGFloat(12), width: seatSize, height: 16)
+            
+            //leadingValue = leadingValue  + CGFloat(8) + (value.seatSize ?? 0)
+            
+        viewHeader.frame = CGRect(x: -seatScrollView.contentOffset.x, y: 24, width: seatScrollView.contentSize.width, height: 41)
+        viewHeader.addSubview(button)
+        
+        view.addSubview(viewHeader)
+        view.addSubview(viewHeaderTitle)
+       // }
+    }
     func setupScrollHeader(scrollYPosition: CGFloat)
     {
         let leadingValue: CGFloat = 24
